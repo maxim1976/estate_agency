@@ -8,7 +8,7 @@ def home(request):
     context = {
         'featured_properties': featured_properties,
     }
-    return render(request, 'home.html', context)
+    return render(request, 'properties/home.html', context)
 
 
 def property_list(request):
@@ -31,7 +31,7 @@ def property_list(request):
     context = {
         'properties': properties,
     }
-    return render(request, 'property_list.html', context)
+    return render(request, 'properties/property_list.html', context)
 
 
 def property_detail(request, pk):
@@ -39,7 +39,7 @@ def property_detail(request, pk):
     context = {
         'property': property,
     }
-    return render(request, 'property_detail.html', context)
+    return render(request, 'properties/property_detail.html', context)
 
 
 def agent_list(request):
@@ -47,7 +47,7 @@ def agent_list(request):
     context = {
         'agents': agents,
     }
-    return render(request, 'agent.html', context)
+    return render(request, 'properties/agent.html', context)
 
 
 def contacts(request):
@@ -72,7 +72,7 @@ def contacts(request):
         messages.success(request, 'Thank you for contacting us! We will get back to you soon.')
         return redirect('contacts')
     
-    return render(request, 'contacts.html')
+    return render(request, 'properties/contacts.html')
 
 
 def about(request):
@@ -80,4 +80,4 @@ def about(request):
     context = {
         'agents': agents,
     }
-    return render(request, 'about.html', context)
+    return render(request, 'properties/about.html', context)
