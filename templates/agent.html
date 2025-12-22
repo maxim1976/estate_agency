@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agent Profile - EstateAgency</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#1754cf",
+                "background-light": "#f6f6f8",
+                "background-dark": "#111621",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+      </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-display">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 bg-white dark:bg-[#1a202c] border-b border-gray-200 dark:border-gray-800">
+<div class="px-4 md:px-10 py-3 max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-2 text-[#111318] dark:text-white" href="#">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined !text-3xl">real_estate_agent</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">EstateAgency</h2>
+</a>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Buy</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Sell</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Rent</a>
+<a class="text-sm font-medium text-primary font-bold" href="#">Agents</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="md:hidden p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="hidden md:flex gap-4">
+<label class="flex flex-col min-w-40 !h-10 max-w-64 relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full rounded-lg bg-gray-100 dark:bg-gray-800 border-none focus:ring-2 focus:ring-primary h-10 pl-10 pr-4 text-sm" placeholder="Search" value=""/>
+</label>
+<button class="h-10 px-6 bg-primary hover:bg-primary/90 text-white text-sm font-bold rounded-lg transition-colors">
+                        Log In
+                    </button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 md:px-10 py-8">
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Left Sidebar: Profile Card (Sticky) -->
+<aside class="w-full lg:w-[340px] flex-shrink-0">
+<div class="lg:sticky lg:top-24 flex flex-col gap-6">
+<!-- Profile Card -->
+<div class="bg-white dark:bg-[#1e2530] rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm">
+<!-- Cover Image/Background -->
+<div class="h-32 bg-primary/10 w-full relative">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/10"></div>
+</div>
+<div class="px-6 pb-6 -mt-16 flex flex-col items-center relative">
+<!-- Avatar -->
+<div class="size-32 rounded-full border-4 border-white dark:border-[#1e2530] shadow-md bg-gray-200 overflow-hidden mb-4">
+<img alt="Professional headshot of Jane Doe smiling" class="w-full h-full object-cover" data-alt="Professional headshot of Jane Doe smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8a66j9loJpUKbxN52-2dAUqK2mgahkJNe27WkC_jqrM9fV0ZBkeGL-0f6V3aIRxzz_KfI1iyVvp1nBTBbzgl7h_giI5XjQbA458wa9c5Cx8429pzXfOBYGj_AN_5FQvIfftYIe3RRClMOsA6UOzyaZTTiruzyryK_5HoAgl5lxYHUlrFv-rEtMP1N51U1LEm66r9BL8foCKMNuqzAPtmFPJ4sOOnycBfrrfmo-CMYD0kg5jz4zSNdC5Nh-2sLNLYthuDlqVzul7QT"/>
+</div>
+<!-- Name & Title -->
+<div class="text-center mb-6">
+<div class="flex items-center justify-center gap-2 mb-1">
+<h1 class="text-2xl font-bold text-gray-900 dark:text-white">Jane Doe</h1>
+<span class="material-symbols-outlined text-blue-500 text-[20px]" title="Verified Agent">verified</span>
+</div>
+<p class="text-gray-500 dark:text-gray-400 font-medium">Senior Realtor | Luxury Estate Specialist</p>
+<div class="flex items-center justify-center gap-1 mt-2 text-sm text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span>Downtown Market Expert</span>
+</div>
+</div>
+<!-- Quick Actions -->
+<div class="w-full grid grid-cols-2 gap-3 mb-6">
+<button class="flex items-center justify-center gap-2 h-10 px-4 bg-primary text-white rounded-lg text-sm font-bold hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-[18px]">call</span>
+                                    Call
+                                </button>
+<button class="flex items-center justify-center gap-2 h-10 px-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-bold hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+                                    Email
+                                </button>
+</div>
+<!-- Stats Row -->
+<div class="flex justify-between w-full py-4 border-t border-b border-gray-100 dark:border-gray-700 mb-6">
+<div class="flex flex-col items-center px-2">
+<span class="text-lg font-bold text-gray-900 dark:text-white">15+</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Years</span>
+</div>
+<div class="w-px bg-gray-200 dark:bg-gray-700 h-10 self-center"></div>
+<div class="flex flex-col items-center px-2">
+<span class="text-lg font-bold text-gray-900 dark:text-white">120</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Sold</span>
+</div>
+<div class="w-px bg-gray-200 dark:bg-gray-700 h-10 self-center"></div>
+<div class="flex flex-col items-center px-2">
+<span class="text-lg font-bold text-gray-900 dark:text-white">4.9</span>
+<div class="flex items-center gap-0.5">
+<span class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Rating</span>
+<span class="material-symbols-outlined text-yellow-400 text-[14px] fill-current">star</span>
+</div>
+</div>
+</div>
+<!-- Social Links -->
+<div class="flex gap-4 justify-center">
+<a class="size-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="size-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+</a>
+<a class="size-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.047-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465 1.067-.047 1.407-.06 4.123-.06h.08zm-1.63 2H7.63c-2.583 0-4.63 2.047-4.63 4.63v7.37c0 2.583 2.047 4.63 4.63 4.63h8.74c2.583 0 4.63-2.047 4.63-4.63v-7.37c0-2.583-2.047-4.63-4.63-4.63h-3.055z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="size-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-primary/10 hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fill-rule="evenodd"></path></svg>
+</a>
+</div>
+</div>
+</div>
+<!-- Awards/Badges -->
+<div class="bg-white dark:bg-[#1e2530] rounded-xl border border-gray-200 dark:border-gray-700 p-5 shadow-sm">
+<h3 class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-3">Achievements</h3>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400 text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">trophy</span> Top Seller 2023
+                            </span>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">star</span> 5-Star Agent
+                            </span>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]">verified</span> Verified Pro
+                            </span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Right Content: Bio & Listings -->
+<section class="flex-1 min-w-0">
+<!-- About Section -->
+<div class="mb-10">
+<h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">About Jane</h2>
+<div class="prose prose-slate dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+<p class="leading-relaxed">
+                            With over 15 years of experience in the downtown market, Jane helps families find their dream homes. 
+                            She specializes in luxury estates and high-rise condominiums, bringing a wealth of knowledge about local market trends and property values. 
+                            Jane prides herself on her integrity, tireless work ethic, and ability to negotiate the best deals for her clients.
+                        </p>
+<p class="leading-relaxed mt-2 hidden sm:block">
+                            Before real estate, Jane worked in interior design, giving her a unique eye for potential in every property. 
+                            When she's not hosting open houses, you can find her hiking the local trails or volunteering at the city animal shelter.
+                        </p>
+</div>
+</div>
+<!-- Listings Header -->
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold text-gray-900 dark:text-white">Current Listings (12)</h2>
+<div class="flex gap-2">
+<select class="form-select text-sm border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-[#1e2530] text-gray-700 dark:text-gray-200 py-2 pr-8 pl-3 focus:ring-primary focus:border-primary">
+<option>Newest First</option>
+<option>Price: High to Low</option>
+<option>Price: Low to High</option>
+</select>
+</div>
+</div>
+<!-- Listings Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
+<!-- Listing Card 1 -->
+<div class="group bg-white dark:bg-[#1e2530] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute top-3 left-3 z-10 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded shadow-sm">For Sale</div>
+<img alt="Modern luxury home with large windows" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern luxury home with large windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACpNZWjDjxCAGoOiQUl-uUBU4TTkqT5UOnMDDEfGaxqtwGbOrD6DTndz_UfNhPRkhpZ4kVV1IpGRwQKdvwomL82IhomwcMi1ZnUgq50lqMKYhqvVMik0BQQ1_rpW-ZrBtssBeyKFZJQOAx3GoCjv-OJ8HVvZlXI0jPIpNYsGuErEgitSbGCIUBE9ymUEYMLziGjAcu1bekFl_3VhkVc_Do01i7_dtuGl1kRlyunP4Ciq3eWHtn9s_1m3j6fX8BQ6MdryafKKOXk3WR"/>
+<button class="absolute bottom-3 right-3 p-2 bg-white/90 backdrop-blur-sm rounded-full text-gray-700 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="p-4">
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">$850,000</h3>
+<p class="text-gray-600 dark:text-gray-400 text-sm mb-3 truncate">123 Maple Street, Downtown District</p>
+<div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700 pt-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bed</span>
+<span>3 Beds</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bathtub</span>
+<span>2 Baths</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">square_foot</span>
+<span>1,500 sqft</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Listing Card 2 -->
+<div class="group bg-white dark:bg-[#1e2530] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute top-3 left-3 z-10 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded shadow-sm">New Listing</div>
+<img alt="Bright suburban house with manicured lawn" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Bright suburban house with manicured lawn" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc9z_ptGOM8bhK-N4PKO2okY7tBknenDumMMJZfLUYzz8MsA7-aI0hHuwdVUvFwwz-E5uxzHp9sa0MQcnFFvXrQfX0q7tmuov2wE4P85XUKdXdKINItBri7P39tj6-ElUn_hDkg7AneqCFrKfJl8Rp_dlvQWUUFrHlc0Rk_v6OQ1kSzS6lVvxlnBB4I4r7asYHvjOPwUcwNjqL6-B2cfC2M99c6JV8hBDoMl_rgnDFFyi05YwbuNbMvacsTdtU-zw-EhWIFBG-8hxe"/>
+<button class="absolute bottom-3 right-3 p-2 bg-white/90 backdrop-blur-sm rounded-full text-gray-700 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="p-4">
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">$1,250,000</h3>
+<p class="text-gray-600 dark:text-gray-400 text-sm mb-3 truncate">88 Ocean View Dr, Coastal Heights</p>
+<div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700 pt-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bed</span>
+<span>4 Beds</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bathtub</span>
+<span>3.5 Baths</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">square_foot</span>
+<span>2,800 sqft</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Listing Card 3 -->
+<div class="group bg-white dark:bg-[#1e2530] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute top-3 left-3 z-10 bg-gray-800 text-white text-xs font-bold px-2 py-1 rounded shadow-sm">Under Offer</div>
+<img alt="Interior of a modern living room" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Interior of a modern living room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX0CpP7YVtl81bC0f5M-Linqhmo67faW19sizaHm1RhulHa1z6jGxx-rqf-cGp1kVQPycg9WDFjnpQBpP3UzoKX3iKsjMhAAlVWjxn_p0nbC72G8OF5gsqqPNDZ21c1y8z2Zv3b8mX6Nxr6FzH52mquQj1FnLe5vKHhKAlJPBLrk9x-gca66SzULPHF-VpWNr6jaYhtbNiVuno7cZtRWPYL7z5C96TOPXOOeydBCAiBdwEz2Z4Jm-hpkoQbKdysySb3sDp-SVK8dTv"/>
+<div class="absolute inset-0 bg-black/10"></div>
+</div>
+<div class="p-4">
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">$620,000</h3>
+<p class="text-gray-600 dark:text-gray-400 text-sm mb-3 truncate">452 Pine Lane, Northwood</p>
+<div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700 pt-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bed</span>
+<span>2 Beds</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bathtub</span>
+<span>2 Baths</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">square_foot</span>
+<span>1,100 sqft</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Listing Card 4 -->
+<div class="group bg-white dark:bg-[#1e2530] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute top-3 left-3 z-10 bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded shadow-sm">Open House</div>
+<img alt="Modern kitchen with island" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern kitchen with island" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB4__ldkCWcaGcjrxRI1ve92OQdHEAjp1tRHtMhzpQHUmvRwTU3wlJLWeoOxQZ3Eg4DoKQVd0hH6QWrMKtRso7hWI7XrHj3ENc-FM6ll4YFN4Z_G-6VWYsEt5tIbysVC6e6MOcDTO507EmaHhXLwSgKTFRUMOsBWMUuKOYjs4nE5m4ozAxkDI6OPnVWW747taMVfVIQYLB4cREdKts5M7Vt33hWSxng5DlurpW9_3yPmTyeSbAW71yxDhqt3tbEkH7t4xmw9DJI0X9"/>
+<button class="absolute bottom-3 right-3 p-2 bg-white/90 backdrop-blur-sm rounded-full text-gray-700 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="p-4">
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">$950,000</h3>
+<p class="text-gray-600 dark:text-gray-400 text-sm mb-3 truncate">77 Sunset Blvd, West End</p>
+<div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700 pt-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bed</span>
+<span>3 Beds</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bathtub</span>
+<span>2.5 Baths</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">square_foot</span>
+<span>2,100 sqft</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Listing Card 5 -->
+<div class="group bg-white dark:bg-[#1e2530] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute top-3 left-3 z-10 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded shadow-sm">For Sale</div>
+<img alt="Large backyard with pool" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Large backyard with pool" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeNQASaAcVTXsd1xzzdsLd8XsyO12Y-5tHH31VSQ6RzUwe5kxdTcDnsWP4fDAacU67FzzmcuHsgRzC3ivo6vP4_613R6E3FCp5OCm2rxNEGaXEgiAmFs2tN42MY11TNBD1kxKm31Dnm8QnKLoZhisCQWDEYr7XdZZ_9qoNNxnCy6VVvzpI7goNyOWrZ_l6JwR1SmtcS3Szkc4vxPXksrtBhT9xn3kD6bdWnNDG-FOD0V8KUQBJtwodwKYy3bUurwdYK7ccTHHPEhgg"/>
+<button class="absolute bottom-3 right-3 p-2 bg-white/90 backdrop-blur-sm rounded-full text-gray-700 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="p-4">
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">$1,800,000</h3>
+<p class="text-gray-600 dark:text-gray-400 text-sm mb-3 truncate">500 Hilltop Road, The Ridge</p>
+<div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700 pt-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bed</span>
+<span>5 Beds</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bathtub</span>
+<span>4 Baths</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">square_foot</span>
+<span>4,500 sqft</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Listing Card 6 -->
+<div class="group bg-white dark:bg-[#1e2530] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute top-3 left-3 z-10 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded shadow-sm">For Sale</div>
+<img alt="Apartment balcony with city view" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Apartment balcony with city view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSEtWkueYKhXikaKIWKXHJW-X4iIXrNgpU0g_fhOa2gbzMyzXlIaJtAUs7_EWkftZj3zBuwUkZXYDgdjFlbtTAauU9JrisHtODfQOmPHSDwX5CNdTrmy_32uOg9RCOWnuKgIh8L3ukcpY9pMgvEpbkMJXcKhBTUuTKFhO-rdBmfuspzjLDYObrV4n7hplV9mQKpFjj3Q8w9nf6hbtZ5SuCJ_jvHEjOtXF8SugTex2H1Evv_K8NUpcm7Q1NbuY_mutxUcE_ubSWKZaH"/>
+<button class="absolute bottom-3 right-3 p-2 bg-white/90 backdrop-blur-sm rounded-full text-gray-700 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="p-4">
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">$450,000</h3>
+<p class="text-gray-600 dark:text-gray-400 text-sm mb-3 truncate">210 City Walk #4B, Downtown</p>
+<div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700 pt-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bed</span>
+<span>1 Bed</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bathtub</span>
+<span>1 Bath</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">square_foot</span>
+<span>850 sqft</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonials -->
+<div class="bg-primary/5 dark:bg-primary/10 rounded-2xl p-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 -mt-4 -mr-4 text-primary/10 dark:text-primary/20">
+<span class="material-symbols-outlined text-[160px]">format_quote</span>
+</div>
+<h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6 relative z-10">Client Stories</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+<div class="bg-white dark:bg-[#1e2530] p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+<div class="flex items-center gap-1 text-yellow-400 mb-3">
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+</div>
+<p class="text-gray-600 dark:text-gray-300 italic mb-4">"Jane was incredible to work with. She sold our house in just 3 days and above asking price! Her marketing strategy is unmatched."</p>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-gray-200 overflow-hidden">
+<img alt="Headshot of client Mark S." data-alt="Headshot of client Mark S." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdkBjyxpma-UzLXnG08SjDH4Oqw-3R6UsM8DyKrn8tOGu5r3V-ySJj1Hdrtc9swNeRascv0TNIa8dzymSP9zRuHn0ecwKNLmSEytMPlHHNp4TxNrVZSIMk3gmn-UYpqgmPOU20a9djoJixRIY9t8jRT3qPcWevy_5oK1TUgvvZByr9fkn2fKc7-pLDHHyup-eaifQDZOlwEc32wbePjL6PgpNXYfDj2B1_2VTKoSIm8fp_S1HD54EWx2dNO_FO4FCdO3bnuzXxudBg"/>
+</div>
+<div>
+<p class="text-sm font-bold text-gray-900 dark:text-white">Mark S.</p>
+<p class="text-xs text-gray-500">Seller</p>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1e2530] p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+<div class="flex items-center gap-1 text-yellow-400 mb-3">
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+<span class="material-symbols-outlined text-[18px] fill-current">star</span>
+</div>
+<p class="text-gray-600 dark:text-gray-300 italic mb-4">"As first-time buyers, we were nervous. Jane guided us through every step and found us a gem in a great neighborhood."</p>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-gray-200 overflow-hidden">
+<img alt="Headshot of client Sarah L." data-alt="Headshot of client Sarah L." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuqGs934PI5yJv7PE16DecFZaFbwNyVoXcabrNINvECxM0T0LVbLSaQywnSJyvSnUKDrJdZ9gQe8roZAgy2aZgDHPWgGN3b2rvin1oLOyEE3Y27tWbf7yYoIWWTUrCHJOR_D4DSaeNncP1G8LP702Lz2p9QeG1HDPys-hzjTrIgurBvjC6Cy2pCE71wSQgsr8JIovLk-wqxtrSr08CbnMTsvitjBq1WG5n4z1NEol5LkpEHO1MbiWYWqv_5cHYLOWVds6w3YHXU-No"/>
+</div>
+<div>
+<p class="text-sm font-bold text-gray-900 dark:text-white">Sarah L.</p>
+<p class="text-xs text-gray-500">Buyer</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-[#1a202c] border-t border-gray-200 dark:border-gray-800 mt-auto">
+<div class="max-w-7xl mx-auto px-4 md:px-10 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 text-[#111318] dark:text-white mb-4">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined !text-3xl">real_estate_agent</span>
+</div>
+<h2 class="text-lg font-bold">EstateAgency</h2>
+</div>
+<p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                        Helping you find the perfect place to call home since 2008. We are committed to excellence and integrity.
+                    </p>
+</div>
+<div>
+<h3 class="font-bold text-gray-900 dark:text-white mb-4">Quick Links</h3>
+<ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+<li><a class="hover:text-primary" href="#">Buy a Home</a></li>
+<li><a class="hover:text-primary" href="#">Sell your Home</a></li>
+<li><a class="hover:text-primary" href="#">Rentals</a></li>
+<li><a class="hover:text-primary" href="#">Agents</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-gray-900 dark:text-white mb-4">Support</h3>
+<ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+<li><a class="hover:text-primary" href="#">Contact Us</a></li>
+<li><a class="hover:text-primary" href="#">FAQ</a></li>
+<li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-gray-900 dark:text-white mb-4">Subscribe</h3>
+<div class="flex gap-2">
+<input class="flex-1 bg-gray-100 dark:bg-gray-800 border-none rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-primary" placeholder="Enter your email" type="email"/>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary/90">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+<p>© 2024 EstateAgency. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="hover:text-primary" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="hover:text-primary" href="#"><span class="material-symbols-outlined">share</span></a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

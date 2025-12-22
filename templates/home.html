@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EstateAgency - Find Your Dream Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1754cf",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2231",
+                        "text-main-light": "#111318",
+                        "text-main-dark": "#f0f2f4",
+                        "text-secondary-light": "#636f88",
+                        "text-secondary-dark": "#9ba6b8",
+                        "border-light": "#dcdfe5",
+                        "border-dark": "#2d3748",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark transition-colors duration-200">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark px-6 py-3 shadow-sm transition-colors duration-200">
+<div class="mx-auto flex h-12 max-w-7xl items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="size-8 rounded bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">real_estate_agent</span>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight">EstateAgency</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Buy</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Rent</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Sell</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Agents</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Blog</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-bold border border-transparent transition-all">
+<span class="truncate">Log In</span>
+</button>
+<button class="flex items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary hover:bg-blue-700 text-white text-sm font-bold shadow-md hover:shadow-lg transition-all">
+<span class="truncate">List Property</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative w-full">
+<div class="relative w-full h-[600px] flex items-center justify-center bg-cover bg-center" data-alt="Modern luxury house exterior with large glass windows and pool" style='background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9QlhifVlgsFY9yKSU8nwTIIDDqgfSfATNWtakuXn9NewPn0bKUjmvmMZ7ARPC8DpfKrM0a4DTzAQOlUzQstnb23ZtO--Rh_sAPTFU9rPb4HG0rwSCXkZqK127o3VXy4-dBsYSixppE5ZVWsgQ8jB5Z_YyV_P9eVb9jCSwNL_q_Kji4Ae2H1-gK4KaIQsT3Iw6QubTg0YhHVis06TYs3EGp7a6uJJI-UktqxIyf0KxnKB5vew-WknmSrY-YTYCA_vfJJBiovt10Z6c");'>
+<div class="container mx-auto px-4 z-10 flex flex-col items-center">
+<div class="text-center mb-8 max-w-3xl">
+<h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight mb-4 drop-shadow-lg">
+                            Find Your Dream Home with Confidence
+                        </h1>
+<p class="text-gray-100 text-lg md:text-xl font-medium drop-shadow-md">
+                            Browse thousands of premium properties in your area.
+                        </p>
+</div>
+<!-- Search Box -->
+<div class="w-full max-w-4xl bg-surface-light dark:bg-surface-dark rounded-xl shadow-2xl p-2 md:p-3">
+<div class="flex gap-2 mb-3 px-2">
+<button class="text-sm font-bold text-primary border-b-2 border-primary pb-1">Buy</button>
+<button class="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-text-main-light dark:hover:text-text-main-dark transition-colors px-3 pb-1">Rent</button>
+<button class="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-text-main-light dark:hover:text-text-main-dark transition-colors px-3 pb-1">Sell</button>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-2">
+<div class="flex-1 w-full relative group">
+<div class="absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary-light dark:text-text-secondary-dark">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full h-12 pl-10 pr-4 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-0 text-text-main-light dark:text-text-main-dark placeholder-text-secondary-light dark:placeholder-text-secondary-dark transition-all" placeholder="Enter an address, neighborhood, city, or ZIP code" type="text"/>
+</div>
+<div class="hidden md:block w-px h-8 bg-border-light dark:bg-border-dark mx-2"></div>
+<div class="w-full md:w-48 relative">
+<select class="w-full h-12 pl-3 pr-8 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-0 text-text-main-light dark:text-text-main-dark appearance-none cursor-pointer">
+<option>Property Type</option>
+<option>House</option>
+<option>Apartment</option>
+<option>Condo</option>
+<option>Land</option>
+</select>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-text-secondary-light">
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+<button class="w-full md:w-auto h-12 px-8 bg-primary hover:bg-blue-700 text-white font-bold rounded-lg shadow-md transition-colors flex items-center justify-center gap-2">
+<span>Search</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content -->
+<main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+<div>
+<h2 class="text-2xl md:text-3xl font-bold text-text-main-light dark:text-text-main-dark mb-2">Latest Properties on the Market</h2>
+<p class="text-text-secondary-light dark:text-text-secondary-dark">Handpicked listings just for you.</p>
+</div>
+<a class="text-primary font-semibold hover:underline flex items-center gap-1" href="#">
+                    View all listings <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Listings Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<article class="group bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-border-light dark:border-border-dark flex flex-col">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full z-10 uppercase tracking-wide">New Listing</div>
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Modern white two story suburban house with green lawn" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAXsDfivynDvAXJI9Iolrj8VegLl9L_qPA6Ej4L6MebOd_mWhqTUS-D06KkT3lPp2kAPElKXDR4JikKnV9ocdTluIfymHgiOykdc2738UEyTD4BOR0dvLs8M8eKXMYCbvfxT9MjMOohaXLZ0kGQCIc4z7UXhzx4LpIxdwPNiGdwBJsPcPy5vPWSP0ISp2jKA_MundjGq4RSQo_8N2ovT_6hv_KQt30KTZxqEzjwlT7yW82K3CabxHCcJjX_gfSHLvIO6bqvN_HWBG_y");'></div>
+<button class="absolute top-3 right-3 p-2 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full text-white transition-colors">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-2xl font-bold text-text-main-light dark:text-text-main-dark">$450,000</h3>
+</div>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm mb-4 line-clamp-1">123 Maple Street, Springfield, IL 62704</p>
+<div class="flex items-center gap-4 mb-4 text-sm text-text-main-light dark:text-text-main-dark">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-lg">bed</span>
+<span class="font-semibold">3</span> <span class="text-text-secondary-light dark:text-text-secondary-dark">Beds</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-lg">bathtub</span>
+<span class="font-semibold">2</span> <span class="text-text-secondary-light dark:text-text-secondary-dark">Baths</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-lg">square_foot</span>
+<span class="font-semibold">1,800</span> <span class="text-text-secondary-light dark:text-text-secondary-dark">Sqft</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-border-light dark:border-border-dark flex gap-2">
+<button class="flex-1 py-2 text-center text-sm font-semibold text-primary bg-primary/10 rounded-lg hover:bg-primary hover:text-white transition-all">
+                                View Details
+                             </button>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="group bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-border-light dark:border-border-dark flex flex-col">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute top-3 left-3 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10 uppercase tracking-wide">Open House</div>
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Luxurious modern apartment interior living room with city view" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAiApnttFYx6Ca25yxFUeaWdIMOVoOdWZDiQFYr0s-p-ec3MvQcOj4AwjQx9qgsi45WGSwzMvEhqTEeUSYHXPSEGfi0GANR9FC6-BWRL_T5Ofa7rjXxPv0CevKKdHdvZhq6uNvXlDvPYhXTwz065pslx5WFnt4dF3bkAnYjhfxKQivwBZSlo3PRpt9hZp1w3L0in-QorHiNtLHXw-Vu5eSqyBwTQV9ZJA5Bddk-wi13bfw49rELRzir4_wov81dxvCkY95b0-SvJ7Lv");'></div>
+<button class="absolute top-3 right-3 p-2 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full text-white transition-colors">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-2xl font-bold text-text-main-light dark:text-text-main-dark">$825,000</h3>
+</div>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm mb-4 line-clamp-1">456 Oak Avenue, Downtown, CA 90001</p>
+<div class="flex items-center gap-4 mb-4 text-sm text-text-main-light dark:text-text-main-dark">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-lg">bed</span>
+<span class="font-semibold">4</span> <span class="text-text-secondary-light dark:text-text-secondary-dark">Beds</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-lg">bathtub</span>
+<span class="font-semibold">3</span> <span class="text-text-secondary-light dark:text-text-secondary-dark">Baths</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-lg">square_foot</span>
+<span class="font-semibold">2,400</span> <span class="text-text-secondary-light dark:text-text-secondary-dark">Sqft</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-border-light dark:border-border-dark flex gap-2">
+<button class="flex-1 py-2 text-center text-sm font-semibold text-primary bg-primary/10 rounded-lg hover:bg-primary hover:text-white transition-all">
+                                View Details
+                             </button>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="group bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-border-light dark:border-border-dark flex flex-col">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute top-3 left-3 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10 uppercase tracking-wide">Featured</div>
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Traditional brick family home with large front porch and garden" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAbYp6XJbWkzr_8UH36fekYx-ye_QMKG1kXbApFAsi59M1Oe1BHyjJhy-EYrfieFrz3xW3aHKD-BfUZup-TMzx4CYjirB63PXQdC-NRQt89tdECz3G7rfeLsueia9D0pJC3OHgrHvFBwjq0MiZZrKaED8yLsdHODdDMafoLJRXiS5C8tXxKlsW5CMCWXMnEpdu3tKjlgqSRZvKLyyHU3DwuiKJS2BKZ61Nz-yyYhE9aU1XViyVN4oyTOcEvIbOhe8_qvh-vh3fiscpt");'></div>
+<button class="absolute top-3 right-3 p-2 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full text-white transition-colors">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-2xl font-bold text-text-main-light dark:text-text-main-dark">$620,000</h3>
+</div>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm mb-4 line-clamp-1">789 Pine Lane, Riverside, TX 75001</p>
+<div class="flex items-center gap-4 mb-4 text-sm text-text-main-light dark:text-text-main-dark">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-lg">bed</span>
+<span class="font-semibold">3</span> <span class="text-text-secondary-light dark:text-text-secondary-dark">Beds</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-lg">bathtub</span>
+<span class="font-semibold">2.5</span> <span class="text-text-secondary-light dark:text-text-secondary-dark">Baths</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-lg">square_foot</span>
+<span class="font-semibold">2,100</span> <span class="text-text-secondary-light dark:text-text-secondary-dark">Sqft</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-border-light dark:border-border-dark flex gap-2">
+<button class="flex-1 py-2 text-center text-sm font-semibold text-primary bg-primary/10 rounded-lg hover:bg-primary hover:text-white transition-all">
+                                View Details
+                             </button>
+</div>
+</div>
+</article>
+</div>
+<!-- Value Proposition Section -->
+<div class="mt-20">
+<div class="text-center max-w-2xl mx-auto mb-12">
+<h2 class="text-3xl font-bold text-text-main-light dark:text-text-main-dark mb-4">Why Choose EstateAgency?</h2>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-lg">We provide a seamless experience whether you are buying, selling, or renting.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-light dark:bg-surface-dark p-8 rounded-xl shadow-sm border border-border-light dark:border-border-dark text-center hover:shadow-md transition-shadow">
+<div class="w-14 h-14 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-3xl">location_city</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Local Expertise</h3>
+<p class="text-text-secondary-light dark:text-text-secondary-dark">Our agents live and work in the communities they serve, offering unmatched local knowledge.</p>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-8 rounded-xl shadow-sm border border-border-light dark:border-border-dark text-center hover:shadow-md transition-shadow">
+<div class="w-14 h-14 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-3xl">payments</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Transparent Pricing</h3>
+<p class="text-text-secondary-light dark:text-text-secondary-dark">No hidden fees. We believe in clear communication and straightforward pricing for all services.</p>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-8 rounded-xl shadow-sm border border-border-light dark:border-border-dark text-center hover:shadow-md transition-shadow">
+<div class="w-14 h-14 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-3xl">workspace_premium</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Award-Winning Service</h3>
+<p class="text-text-secondary-light dark:text-text-secondary-dark">Consistently rated as top performers for customer satisfaction and sales excellence.</p>
+</div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="mt-20 mb-10 rounded-2xl bg-primary relative overflow-hidden">
+<div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+<div class="relative z-10 flex flex-col md:flex-row items-center justify-between p-8 md:p-12 gap-8">
+<div class="text-white max-w-xl">
+<h2 class="text-3xl font-bold mb-4">Get a Free Home Valuation Today</h2>
+<p class="text-blue-100 text-lg">Curious about what your home is worth? Let our experts provide you with a comprehensive market analysis.</p>
+</div>
+<button class="flex-shrink-0 bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-lg shadow-lg transition-colors">
+                        Get Valuation
+                    </button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-light dark:bg-surface-dark border-t border-border-light dark:border-border-dark pt-16 pb-8">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 text-text-main-light dark:text-text-main-dark">
+<div class="size-6 rounded bg-primary flex items-center justify-center text-white text-xs">
+<span class="material-symbols-outlined text-sm">real_estate_agent</span>
+</div>
+<h3 class="text-lg font-bold">EstateAgency</h3>
+</div>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm leading-relaxed">
+                            Helping you find the perfect place to call home. Trusted by thousands of families since 2010.
+                        </p>
+<div class="flex gap-4 mt-2">
+<a class="text-text-secondary-light dark:text-text-secondary-dark hover:text-primary transition-colors" href="#">
+<span class="sr-only">Facebook</span>
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="text-text-secondary-light dark:text-text-secondary-dark hover:text-primary transition-colors" href="#">
+<span class="sr-only">Twitter</span>
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+</a>
+<a class="text-text-secondary-light dark:text-text-secondary-dark hover:text-primary transition-colors" href="#">
+<span class="sr-only">Instagram</span>
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465C9.673 2.013 10.03 2 12.457 2h-.142zm0 1.802c-2.39 0-2.67.01-3.61.053-.88.04-1.36.19-1.68.31-.418.163-.715.358-.985.628-.27.27-.466.567-.629.985-.12.32-.27.8-.31 1.68-.043.94-.053 1.22-.053 3.61v.055c0 2.39.01 2.67.053 3.61.04.88.19 1.36.31 1.68.163.418.358.715.628.985.27.27.567.466.985.629.32.12.8.27 1.68.31.94.043 1.22.053 3.61.053h.055c2.39 0 2.67-.01 3.61-.053.88-.04 1.36-.19 1.68-.31.418-.163.715-.358.985-.628.27-.27.466-.567.629-.985.12-.32.27-.8.31-1.68.043-.94.053-1.22.053-3.61v-.055c0-2.39-.01-2.67-.053-3.61-.04-.88-.19-1.36-.31-1.68-.163-.418-.358-.715-.628-.985-.27-.27-.567-.466-.985-.629-.32-.12-.8-.27-1.68-.31-.94-.043-1.22-.053-3.61-.053h-.055zm-1.698 4.453a3.655 3.655 0 115.19 5.189 3.655 3.655 0 01-5.19-5.19zm1.264 1.265a1.865 1.865 0 102.66 2.662 1.865 1.865 0 00-2.66-2.662zM17.514 5.378a1.196 1.196 0 110 2.39 1.196 1.196 0 010-2.39z" fill-rule="evenodd"></path></svg>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-sm font-bold uppercase tracking-wider text-text-main-light dark:text-text-main-dark mb-4">Company</h4>
+<ul class="flex flex-col gap-3 text-sm text-text-secondary-light dark:text-text-secondary-dark">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Press</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-sm font-bold uppercase tracking-wider text-text-main-light dark:text-text-main-dark mb-4">Resources</h4>
+<ul class="flex flex-col gap-3 text-sm text-text-secondary-light dark:text-text-secondary-dark">
+<li><a class="hover:text-primary transition-colors" href="#">Buyers Guide</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Sellers Guide</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Mortgage Calculator</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Relocation</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-sm font-bold uppercase tracking-wider text-text-main-light dark:text-text-main-dark mb-4">Newsletter</h4>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark mb-3">Subscribe to get the latest listings and market news.</p>
+<form class="flex gap-2">
+<input class="w-full text-sm px-3 py-2 rounded bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark focus:border-primary focus:ring-0 text-text-main-light dark:text-text-main-dark" placeholder="Your email" type="email"/>
+<button class="bg-primary text-white text-sm font-bold px-4 py-2 rounded hover:bg-blue-700 transition-colors" type="submit">
+                                Go
+                            </button>
+</form>
+</div>
+</div>
+<div class="border-t border-border-light dark:border-border-dark pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-text-secondary-light dark:text-text-secondary-dark">
+<p>© 2023 EstateAgency Inc. All rights reserved.</p>
+<div class="flex gap-4 mt-4 md:mt-0">
+<a class="hover:text-text-main-light dark:hover:text-text-main-dark" href="#">Privacy Policy</a>
+<a class="hover:text-text-main-light dark:hover:text-text-main-dark" href="#">Terms of Service</a>
+<a class="hover:text-text-main-light dark:hover:text-text-main-dark" href="#">Sitemap</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
