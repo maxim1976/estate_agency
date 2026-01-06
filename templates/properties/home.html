@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Home - Real Estate Listings{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Home - Real Estate Listings" %}{% endblock %}
 {% block content %}
 <!-- Hero Section -->
 <section class="relative w-full">
@@ -8,41 +9,41 @@
 <div class="container mx-auto px-4 z-10 flex flex-col items-center">
 <div class="text-center mb-8 max-w-3xl">
 <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight mb-4 drop-shadow-lg">
-                            Find Your Dream Home with Confidence
+                            {% trans "满怀信心地找到您的梦想之家" %}
                         </h1>
 <p class="text-gray-100 text-lg md:text-xl font-medium drop-shadow-md">
-                            Browse thousands of premium properties in your area.
+                            {% trans "浏览您所在地区的数千套优质房产" %}
                         </p>
 </div>
-<!-- Search Box -->
+<!-- {% trans "搜索框" %} -->
 <div class="w-full max-w-4xl bg-surface-light dark:bg-surface-dark rounded-xl shadow-2xl p-2 md:p-3">
 <div class="flex gap-2 mb-3 px-2">
-<button class="text-sm font-bold text-primary border-b-2 border-primary pb-1">Buy</button>
-<button class="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-text-main-light dark:hover:text-text-main-dark transition-colors px-3 pb-1">Rent</button>
-<button class="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-text-main-light dark:hover:text-text-main-dark transition-colors px-3 pb-1">Sell</button>
+<button class="text-sm font-bold text-primary border-b-2 border-primary pb-1">{% trans "Buy" %}</button>
+<button class="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-text-main-light dark:hover:text-text-main-dark transition-colors px-3 pb-1">{% trans "Rent" %}</button>
+<button class="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-text-main-light dark:hover:text-text-main-dark transition-colors px-3 pb-1">{% trans "Sell" %}</button>
 </div>
 <div class="flex flex-col md:flex-row items-center gap-2">
 <div class="flex-1 w-full relative group">
 <div class="absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary-light dark:text-text-secondary-dark">
 <span class="material-symbols-outlined">search</span>
 </div>
-<input class="w-full h-12 pl-10 pr-4 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-0 text-text-main-light dark:text-text-main-dark placeholder-text-secondary-light dark:placeholder-text-secondary-dark transition-all" placeholder="Enter an address, neighborhood, city, or ZIP code" type="text"/>
+<input class="w-full h-12 pl-10 pr-4 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-0 text-text-main-light dark:text-text-main-dark placeholder-text-secondary-light dark:placeholder-text-secondary-dark transition-all" placeholder="{% trans 'Enter an address, neighborhood, city, or ZIP code' %}" type="text"/>
 </div>
 <div class="hidden md:block w-px h-8 bg-border-light dark:bg-border-dark mx-2"></div>
 <div class="w-full md:w-48 relative">
 <select class="w-full h-12 pl-3 pr-8 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-0 text-text-main-light dark:text-text-main-dark appearance-none cursor-pointer">
-<option>Property Type</option>
-<option>House</option>
-<option>Apartment</option>
-<option>Condo</option>
-<option>Land</option>
+<option>{% trans "Property Type" %}</option>
+<option>{% trans "House" %}</option>
+<option>{% trans "Apartment" %}</option>
+<option>{% trans "Condo" %}</option>
+<option>{% trans "Land" %}</option>
 </select>
 <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-text-secondary-light">
 <span class="material-symbols-outlined text-sm">expand_more</span>
 </div>
 </div>
 <button class="w-full md:w-auto h-12 px-8 bg-primary hover:bg-blue-700 text-white font-bold rounded-lg shadow-md transition-colors flex items-center justify-center gap-2">
-<span>Search</span>
+<span>{% trans "Search" %}</span>
 </button>
 </div>
 </div>
@@ -54,11 +55,11 @@
 <!-- Section Header -->
 <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
 <div>
-<h2 class="text-2xl md:text-3xl font-bold text-text-main-light dark:text-text-main-dark mb-2">Featured Properties</h2>
-<p class="text-text-secondary-light dark:text-text-secondary-dark">Handpicked listings just for you.</p>
+<h2 class="text-2xl md:text-3xl font-bold text-text-main-light dark:text-text-main-dark mb-2">{% trans "Featured Properties" %}</h2>
+<p class="text-text-secondary-light dark:text-text-secondary-dark">{% trans "Handpicked listings just for you." %}</p>
 </div>
 <a class="text-primary font-semibold hover:underline flex items-center gap-1" href="{% url 'properties:property_list' %}">
-                    View all listings <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    {% trans "View all listings" %} <span class="material-symbols-outlined text-sm">arrow_forward</span>
 </a>
 </div>
 <!-- Listings Grid -->
@@ -69,7 +70,7 @@
 <a href="{% url 'properties:property_detail' property.pk %}" class="relative aspect-[4/3] overflow-hidden block">
 <div class="absolute top-3 left-3 z-10 flex flex-wrap gap-2">
 {% if property.featured %}
-<span class="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Featured</span>
+<span class="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">{% trans "Featured" %}</span>
 {% endif %}
 {% if property.status == 'available' %}
 <span class="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">{{ property.get_status_display }}</span>
@@ -97,11 +98,11 @@
 <div class="flex items-center gap-4 mb-4 text-sm text-text-main-light dark:text-text-main-dark flex-wrap">
 <div class="flex items-center gap-1">
 <span class="material-symbols-outlined text-primary text-lg">bed</span>
-<span class="font-semibold">{{ property.bedrooms }}</span> <span class="text-text-secondary-light dark:text-text-secondary-dark">Beds</span>
+<span class="font-semibold">{{ property.bedrooms }}</span> <span class="text-text-secondary-light dark:text-text-secondary-dark">{% trans "Beds" %}</span>
 </div>
 <div class="flex items-center gap-1">
 <span class="material-symbols-outlined text-primary text-lg">bathtub</span>
-<span class="font-semibold">{{ property.bathrooms }}</span> <span class="text-text-secondary-light dark:text-text-secondary-dark">Baths</span>
+<span class="font-semibold">{{ property.bathrooms }}</span> <span class="text-text-secondary-light dark:text-text-secondary-dark">{% trans "Baths" %}</span>
 </div>
 <div class="flex items-center gap-1">
 <span class="material-symbols-outlined text-primary text-lg">square_foot</span>
@@ -110,7 +111,7 @@
 </div>
 <div class="mt-auto pt-4 border-t border-border-light dark:border-border-dark flex gap-2">
 <a href="{% url 'properties:property_detail' property.pk %}" class="flex-1 py-2 text-center text-sm font-semibold text-primary bg-primary/10 rounded-lg hover:bg-primary hover:text-white transition-all">
-                                View Details
+                                {% trans "View Details" %}
                              </a>
 </div>
 </div>
@@ -122,10 +123,10 @@
 <div class="w-20 h-20 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
 <span class="material-symbols-outlined text-4xl text-gray-400">home</span>
 </div>
-<h3 class="text-xl font-bold text-text-main-light dark:text-text-main-dark mb-2">No Featured Properties</h3>
-<p class="text-text-secondary-light dark:text-text-secondary-dark mb-6">Check back soon for new listings!</p>
+<h3 class="text-xl font-bold text-text-main-light dark:text-text-main-dark mb-2">{% trans "No Featured Properties" %}</h3>
+<p class="text-text-secondary-light dark:text-text-secondary-dark mb-6">{% trans "Check back soon for new listings!" %}</p>
 <a href="{% url 'properties:property_list' %}" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-Browse All Properties
+{% trans "Browse All Properties" %}
 <span class="material-symbols-outlined text-sm">arrow_forward</span>
 </a>
 </div>
@@ -133,30 +134,30 @@ Browse All Properties
 <!-- Value Proposition Section -->
 <div class="mt-20">
 <div class="text-center max-w-2xl mx-auto mb-12">
-<h2 class="text-3xl font-bold text-text-main-light dark:text-text-main-dark mb-4">Why Choose EstateAgency?</h2>
-<p class="text-text-secondary-light dark:text-text-secondary-dark text-lg">We provide a seamless experience whether you are buying, selling, or renting.</p>
+<h2 class="text-3xl font-bold text-text-main-light dark:text-text-main-dark mb-4">{% trans "Why Choose EstateAgency?" %}</h2>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-lg">{% trans "We provide a seamless experience whether you are buying, selling, or renting." %}</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <div class="bg-surface-light dark:bg-surface-dark p-8 rounded-xl shadow-sm border border-border-light dark:border-border-dark text-center hover:shadow-md transition-shadow">
 <div class="w-14 h-14 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
 <span class="material-symbols-outlined text-3xl">location_city</span>
 </div>
-<h3 class="text-xl font-bold mb-3">Local Expertise</h3>
-<p class="text-text-secondary-light dark:text-text-secondary-dark">Our agents live and work in the communities they serve, offering unmatched local knowledge.</p>
+<h3 class="text-xl font-bold mb-3">{% trans "Local Expertise" %}</h3>
+<p class="text-text-secondary-light dark:text-text-secondary-dark">{% trans "Our agents live and work in the communities they serve, offering unmatched local knowledge." %}</p>
 </div>
 <div class="bg-surface-light dark:bg-surface-dark p-8 rounded-xl shadow-sm border border-border-light dark:border-border-dark text-center hover:shadow-md transition-shadow">
 <div class="w-14 h-14 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
 <span class="material-symbols-outlined text-3xl">payments</span>
 </div>
-<h3 class="text-xl font-bold mb-3">Transparent Pricing</h3>
-<p class="text-text-secondary-light dark:text-text-secondary-dark">No hidden fees. We believe in clear communication and straightforward pricing for all services.</p>
+<h3 class="text-xl font-bold mb-3">{% trans "Transparent Pricing" %}</h3>
+<p class="text-text-secondary-light dark:text-text-secondary-dark">{% trans "No hidden fees. We believe in clear communication and straightforward pricing for all services." %}</p>
 </div>
 <div class="bg-surface-light dark:bg-surface-dark p-8 rounded-xl shadow-sm border border-border-light dark:border-border-dark text-center hover:shadow-md transition-shadow">
 <div class="w-14 h-14 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
 <span class="material-symbols-outlined text-3xl">workspace_premium</span>
 </div>
-<h3 class="text-xl font-bold mb-3">Award-Winning Service</h3>
-<p class="text-text-secondary-light dark:text-text-secondary-dark">Consistently rated as top performers for customer satisfaction and sales excellence.</p>
+<h3 class="text-xl font-bold mb-3">{% trans "Award-Winning Service" %}</h3>
+<p class="text-text-secondary-light dark:text-text-secondary-dark">{% trans "Consistently rated as top performers for customer satisfaction and sales excellence." %}</p>
 </div>
 </div>
 </div>
@@ -165,13 +166,19 @@ Browse All Properties
 <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
 <div class="relative z-10 flex flex-col md:flex-row items-center justify-between p-8 md:p-12 gap-8">
 <div class="text-white max-w-xl">
-<h2 class="text-3xl font-bold mb-4">Get a Free Home Valuation Today</h2>
-<p class="text-blue-100 text-lg">Curious about what your home is worth? Let our experts provide you with a comprehensive market analysis.</p>
+<h2 class="text-3xl font-bold mb-4">{% trans "Get a Free Home Valuation Today" %}</h2>
+<p class="text-blue-100 text-lg">{% trans "Curious about what your home is worth? Let our experts provide you with a comprehensive market analysis." %}</p>
 </div>
 <button class="flex-shrink-0 bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-lg shadow-lg transition-colors">
-                        Get Valuation
+                        {% trans "Get Valuation" %}
                     </button>
 </div>
 </div>
 </main>
 {% endblock %}
+
+
+
+
+
+

@@ -28,7 +28,7 @@
                         {% get_available_languages as AVAILABLE_LANGUAGES %}
                         {% for lang_code, lang_name in AVAILABLE_LANGUAGES %}
                             <option value="{{ lang_code }}" {% if CURRENT_LANGUAGE == lang_code %}selected{% endif %}>
-                                {% if lang_code == 'en' %}🇬🇧 EN{% else %}🇹🇼 中文{% endif %}
+                                {% if lang_code == 'en' %}🇬🇧 EN{% elif lang_code == 'zh' %}🇹🇼 中文{% else %}{{ lang_name }}{% endif %}
                             </option>
                         {% endfor %}
                     </select>

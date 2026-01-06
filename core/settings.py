@@ -110,13 +110,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-# Default language (Traditional Chinese for Taiwan market)
-LANGUAGE_CODE = "zh-hant"
+# Default language
+LANGUAGE_CODE = "zh"
 
 # Supported languages
 LANGUAGES = [
     ('en', 'English'),
-    ('zh-hant', '繁體中文'),
+    ('zh', '繁體中文'),
 ]
 
 # Translation files location
