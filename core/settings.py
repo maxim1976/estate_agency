@@ -169,6 +169,13 @@ if not DEBUG:
     # Static files with Whitenoise
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     
+    # CSRF Trusted Origins - IMPORTANT for Railway!
+    CSRF_TRUSTED_ORIGINS = [
+        'https://' + host.strip() 
+        for host in os.environ.get('ALLOWED_HOSTS', '').split(',') 
+        if host.strip()
+    ]
+    
     # Security settings
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
