@@ -176,6 +176,9 @@ if not DEBUG:
         if host.strip()
     ]
     
+    # Railway proxy configuration - IMPORTANT!
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    
     # Security settings
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
