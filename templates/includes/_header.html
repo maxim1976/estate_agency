@@ -1,4 +1,5 @@
 <!-- Top Navigation Bar -->
+{% load i18n %}
 <header class="sticky top-0 z-50 w-full bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark px-6 py-3 shadow-sm transition-colors duration-200">
     <div class="mx-auto flex h-12 max-w-7xl items-center justify-between">
         <div class="flex items-center gap-4">
@@ -10,34 +11,51 @@
             </a>
         </div>
         <nav class="hidden md:flex items-center gap-8">
-            <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:property_list' %}?listing_type=sale">Buy</a>
-            <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:property_list' %}?listing_type=rent">Rent</a>
-            <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:contacts' %}">Sell</a>
-            <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:agent_list' %}">Agents</a>
-            <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:about' %}">About</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:property_list' %}?listing_type=sale">{% trans "Buy" %}</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:property_list' %}?listing_type=rent">{% trans "Rent" %}</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:contacts' %}">{% trans "Sell" %}</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:agent_list' %}">{% trans "Agents" %}</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:about' %}">{% trans "About" %}</a>
         </nav>
         <div class="flex items-center gap-3">
+            <!-- Language Switcher -->
+            <div class="relative">
+                <form action="{% url 'set_language' %}" method="post" class="inline">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.path }}">
+                    <select name="language" onchange="this.form.submit()" class="appearance-none bg-transparent border border-gray-300 dark:border-gray-700 text-sm rounded-lg px-3 py-1.5 pr-8 cursor-pointer hover:border-primary transition-colors">
+                        {% get_current_language as CURRENT_LANGUAGE %}
+                        {% get_available_languages as AVAILABLE_LANGUAGES %}
+                        {% for lang_code, lang_name in AVAILABLE_LANGUAGES %}
+                            <option value="{{ lang_code }}" {% if CURRENT_LANGUAGE == lang_code %}selected{% endif %}>
+                                {% if lang_code == 'en' %}🇬🇧 EN{% else %}🇹🇼 中文{% endif %}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </form>
+            </div>
+            
             {% if user.is_authenticated %}
                 <div class="hidden sm:flex items-center gap-2">
-                    <span class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Hi, {{ user.get_full_name|default:user.username }}</span>
+                    <span class="text-sm text-text-secondary-light dark:text-text-secondary-dark">{% trans "Hi" %}, {{ user.get_full_name|default:user.username }}</span>
                     <a href="{% url 'properties:agent_dashboard' %}" class="flex items-center gap-1 justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 hover:bg-primary/20 text-primary text-sm font-bold border border-primary/20 transition-all">
                         <span class="material-symbols-outlined text-[18px]">dashboard</span>
-                        <span class="truncate">Dashboard</span>
+                        <span class="truncate">{% trans "Dashboard" %}</span>
                     </a>
                     <a href="{% url 'properties:agent_logout' %}" class="flex items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-bold border border-transparent transition-all">
-                        <span class="truncate">Logout</span>
+                        <span class="truncate">{% trans "Logout" %}</span>
                     </a>
                 </div>
             {% else %}
                 <a href="{% url 'properties:agent_login' %}" class="hidden sm:flex items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-bold border border-transparent transition-all">
-                    <span class="truncate">Login</span>
+                    <span class="truncate">{% trans "Login" %}</span>
                 </a>
                 <a href="{% url 'properties:agent_register' %}" class="hidden sm:flex items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 hover:bg-primary/20 text-primary text-sm font-bold border border-primary/20 transition-all">
-                    <span class="truncate">Become an Agent</span>
+                    <span class="truncate">{% trans "Become an Agent" %}</span>
                 </a>
             {% endif %}
             <a href="{% url 'properties:contacts' %}" class="flex items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary hover:bg-blue-700 text-white text-sm font-bold shadow-md hover:shadow-lg transition-all">
-                <span class="truncate">Contact Us</span>
+                <span class="truncate">{% trans "Contact Us" %}</span>
             </a>
         </div>
     </div>

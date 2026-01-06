@@ -47,6 +47,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",  # Add Whitenoise for static files
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",  # Language detection and switching
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -109,13 +110,25 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+# Default language (Traditional Chinese for Taiwan market)
+LANGUAGE_CODE = "zh-hant"
 
-TIME_ZONE = "UTC"
+# Supported languages
+LANGUAGES = [
+    ('en', 'English'),
+    ('zh-hant', '繁體中文'),
+]
 
-USE_I18N = True
+# Translation files location
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
-USE_TZ = True
+TIME_ZONE = "Asia/Taipei"  # Taiwan timezone
+
+USE_I18N = True  # Enable internationalization
+
+USE_TZ = True  # Use timezone-aware datetimes
 
 
 # Static files (CSS, JavaScript, Images)
