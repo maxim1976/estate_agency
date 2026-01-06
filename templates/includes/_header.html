@@ -10,20 +10,30 @@
             </a>
         </div>
         <nav class="hidden md:flex items-center gap-8">
-            <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:property_list' %}">Buy</a>
-            <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:property_list' %}">Rent</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:property_list' %}?listing_type=sale">Buy</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:property_list' %}?listing_type=rent">Rent</a>
             <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:contacts' %}">Sell</a>
             <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:agent_list' %}">Agents</a>
             <a class="text-sm font-medium hover:text-primary transition-colors" href="{% url 'properties:about' %}">About</a>
         </nav>
         <div class="flex items-center gap-3">
             {% if user.is_authenticated %}
-                <a href="{% url 'admin:index' %}" class="hidden sm:flex items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-bold border border-transparent transition-all">
-                    <span class="truncate">Admin</span>
-                </a>
+                <div class="hidden sm:flex items-center gap-2">
+                    <span class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Hi, {{ user.get_full_name|default:user.username }}</span>
+                    <a href="{% url 'properties:agent_dashboard' %}" class="flex items-center gap-1 justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 hover:bg-primary/20 text-primary text-sm font-bold border border-primary/20 transition-all">
+                        <span class="material-symbols-outlined text-[18px]">dashboard</span>
+                        <span class="truncate">Dashboard</span>
+                    </a>
+                    <a href="{% url 'properties:agent_logout' %}" class="flex items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-bold border border-transparent transition-all">
+                        <span class="truncate">Logout</span>
+                    </a>
+                </div>
             {% else %}
-                <a href="{% url 'admin:login' %}" class="hidden sm:flex items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-bold border border-transparent transition-all">
-                    <span class="truncate">Log In</span>
+                <a href="{% url 'properties:agent_login' %}" class="hidden sm:flex items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-bold border border-transparent transition-all">
+                    <span class="truncate">Login</span>
+                </a>
+                <a href="{% url 'properties:agent_register' %}" class="hidden sm:flex items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 hover:bg-primary/20 text-primary text-sm font-bold border border-primary/20 transition-all">
+                    <span class="truncate">Become an Agent</span>
                 </a>
             {% endif %}
             <a href="{% url 'properties:contacts' %}" class="flex items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary hover:bg-blue-700 text-white text-sm font-bold shadow-md hover:shadow-lg transition-all">

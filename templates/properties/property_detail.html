@@ -1,101 +1,48 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
 
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Property Details - EstateAgency</title>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Theme Config -->
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#1754cf",
-                        "background-light": "#f6f6f8",
-                        "background-dark": "#111621",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.375rem", // rounded-md approx 6px
-                        "lg": "0.5rem",       // 8px
-                        "xl": "0.75rem",      // 12px
-                        "full": "9999px"
-                    },
-                },
-            },
-        }
-    </script>
-</head>
-<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased overflow-x-hidden">
-<!-- Top Navbar -->
-<div class="w-full bg-white dark:bg-[#1a202c] border-b border-gray-200 dark:border-gray-800">
-<div class="max-w-[1200px] mx-auto px-4 md:px-8">
-<header class="flex items-center justify-between h-16">
-<div class="flex items-center gap-8">
-<div class="flex items-center gap-2">
-<div class="text-primary">
-<span class="material-symbols-outlined text-3xl">real_estate_agent</span>
-</div>
-<h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">EstateAgency</h2>
-</div>
-<nav class="hidden md:flex items-center gap-6">
-<a class="text-sm font-medium hover:text-primary transition-colors text-slate-900 dark:text-white" href="#">Buy</a>
-<a class="text-sm font-medium hover:text-primary transition-colors text-slate-900 dark:text-white" href="#">Rent</a>
-<a class="text-sm font-medium hover:text-primary transition-colors text-slate-900 dark:text-white" href="#">Sell</a>
-<a class="text-sm font-medium hover:text-primary transition-colors text-slate-900 dark:text-white" href="#">Agents</a>
-</nav>
-</div>
-<div class="flex items-center gap-4">
-<button class="hidden sm:flex p-2 text-slate-500 hover:text-primary transition-colors">
-<span class="material-symbols-outlined">search</span>
-</button>
-<button class="bg-primary text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                        Sign In
-                    </button>
-</div>
-</header>
-</div>
-</div>
-<!-- Main Content Container -->
+{% block title %}{{ property.title }} - EstateAgency{% endblock %}
+
+{% block content %}
+<!-- Property Detail Main Wrapper -->
+<div class="min-h-screen bg-background-light dark:bg-background-dark">
 <main class="max-w-[1200px] mx-auto px-4 md:px-8 py-6 pb-20">
 <!-- Breadcrumbs -->
-<div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-6">
-<a class="hover:text-primary hover:underline" href="#">Home</a>
+<div class="flex items-center gap-2 text-sm text-text-muted mb-6">
+<a class="hover:text-primary hover:underline" href="{% url 'properties:home' %}">Home</a>
 <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-<a class="hover:text-primary hover:underline" href="#">California</a>
+<a class="hover:text-primary hover:underline" href="{% url 'properties:property_list' %}">Properties</a>
 <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-<a class="hover:text-primary hover:underline" href="#">San Francisco</a>
+<a class="hover:text-primary hover:underline" href="{% url 'properties:property_list' %}?city={{ property.city }}">{{ property.city }}</a>
 <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-<span class="text-slate-900 dark:text-white font-medium">123 Marina Blvd</span>
+<span class="text-text-main dark:text-white font-medium">{{ property.address }}</span>
 </div>
 <!-- Heading & Top Actions -->
 <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-4 mb-6">
 <div>
 <div class="flex flex-wrap gap-2 mb-3">
-<span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full uppercase tracking-wide">For Sale</span>
-<span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-semibold rounded-full uppercase tracking-wide">New Listing</span>
+{% if property.status == 'available' %}
+<span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full uppercase tracking-wide">{{ property.get_status_display }}</span>
+{% elif property.status == 'pending' %}
+<span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 text-xs font-semibold rounded-full uppercase tracking-wide">{{ property.get_status_display }}</span>
+{% else %}
+<span class="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-xs font-semibold rounded-full uppercase tracking-wide">{{ property.get_status_display }}</span>
+{% endif %}
+<span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-semibold rounded-full uppercase tracking-wide">{{ property.get_property_type_display }}</span>
+{% if property.featured %}
+<span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-xs font-semibold rounded-full uppercase tracking-wide">Featured</span>
+{% endif %}
 </div>
-<h1 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">123 Marina Blvd, San Francisco, CA 94123</h1>
-<p class="text-slate-500 dark:text-slate-400 mt-2 text-lg">Marina District • Built in 2018</p>
+<h1 class="text-3xl md:text-4xl font-black text-text-main dark:text-white tracking-tight leading-tight">{{ property.title }}</h1>
+<p class="text-text-muted mt-2 text-lg">{{ property.city }}{% if property.year_built %} • Built in {{ property.year_built }}{% endif %}</p>
 </div>
 <div class="flex gap-3">
-<button class="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm font-medium">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-card-dark hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm font-medium text-text-main dark:text-white">
 <span class="material-symbols-outlined text-[20px]">favorite</span>
                     Save
                 </button>
-<button class="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm font-medium">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-card-dark hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm font-medium text-text-main dark:text-white">
 <span class="material-symbols-outlined text-[20px]">ios_share</span>
                     Share
                 </button>
@@ -103,201 +50,210 @@
 </div>
 <!-- Image Gallery Grid -->
 <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-[400px] md:h-[500px] rounded-xl overflow-hidden mb-8 relative group">
+{% if property.images.all %}
 <!-- Main Hero Image -->
+{% with primary_image=property.images.first %}
 <div class="md:col-span-2 md:row-span-2 h-full relative cursor-pointer overflow-hidden">
-<div class="absolute inset-0 bg-cover bg-center hover:scale-105 transition-transform duration-500 ease-out" data-alt="Modern luxury home exterior with large windows and sunset view" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBG1F7XxCzqj6G2ra35T96S0XDcVoMPMS-G34mAaDPhcISZ0dJtRF4MkltLprBxoCmDiLE_YJItCsU1UIeDZf4TvXPuH2q_fUXi7Eq5Pk1a_qQXhZEH5QT-yCWsTYtMyWoX0rgcUC6Gwnw0nujeDl894HXPZgoOYcQGLWb443dunWtt6MIC3l_nX5WKMHy7gI7yfc69PxlXdLvhzCVR5y5IjTqYXsU1oHIaCbo_b1atIfXdMVatV96QlhsCVDmBfhUok3RueeBq890Q');"></div>
+<div class="absolute inset-0 bg-cover bg-center hover:scale-105 transition-transform duration-500 ease-out" style="background-image: url('{{ primary_image.image.url }}');"></div>
 </div>
+{% endwith %}
 <!-- Secondary Images -->
+{% for image in property.images.all|slice:"1:5" %}
 <div class="hidden md:block h-full relative cursor-pointer overflow-hidden">
-<div class="absolute inset-0 bg-cover bg-center hover:scale-105 transition-transform duration-500 ease-out" data-alt="Modern kitchen with marble island and pendant lights" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9Wh4VZNIZciolOm6u8U0583oItyBYSAsRzRNU1cA_5yHNopYTcZVvzi_9RyhpeiDZHJCtAX-6Ric_HpIz-uhQFGNv0Lbzj0rGbWNdm3F47Xi0lkLK9BsL4fOWZgT4VKCNVhvtVWECpy26UUuik_6WrGWwOATNwlWFL7__wYHEs9sWEDjDFDo2n16BzkcA_wwOzn6ApRAU38GyuwUMpAPWCcUtlQvJvwbTsP0kOY421ublq_bxp4zHpVGBPqAo1hMqU5lAClHqSfIZ');"></div>
-</div>
-<div class="hidden md:block h-full relative cursor-pointer overflow-hidden">
-<div class="absolute inset-0 bg-cover bg-center hover:scale-105 transition-transform duration-500 ease-out" data-alt="Spacious living room with fireplace and hardwood floors" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAI3FhYHltZWL8Xj4So0HyXVb0ZPAFB5dhttJr2Zh4cVtM3fuJql0fskbBC_wDcvftHlHzW-qw7l4or-mDEu7gCvOvEhV8tJQrzkCBBgnLQASruumjwMjWZEkYuyjixRjZetoOoRwyXCZQ2BWXg5k5hRYih-6G0POvrbrfvQFFor5TA9AjFMXqptzgL8yOtEN1QtLp59U_D5VWHMsH96HdSsIZmXwekTZluuqTIU2BcEQFQsDudj9SDHe1GyYNp-XTkZo077jslxXE6');"></div>
-</div>
-<div class="hidden md:block h-full relative cursor-pointer overflow-hidden">
-<div class="absolute inset-0 bg-cover bg-center hover:scale-105 transition-transform duration-500 ease-out" data-alt="Luxurious master bathroom with soaking tub" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2KhfA5PN0MmN5PEJ22vgjTIUuEp5wYo_rQRXK3iYD_WnGEmGwVrFR26NGVIFSUWJQEutZBgInXj2VbBC6l15h_vJsrDJzjHUZbBgBxrDzF8MkroWnlcUEFi4Smms_-KRDn_DmHg_CvM-jZVm3YBH1GcO34MG_9IV4kfzuaxtZZA2W2YbPTNPqsf3DU1Y5rwNd4jE1x3Y95BGRq6OdtmJh7n1gYCBm3v2_gWiUHDKrapNxA9H2Olu1qvdPPd2e5DTsUsbLa3Yx2szJ');"></div>
-</div>
-<div class="hidden md:block h-full relative cursor-pointer overflow-hidden">
-<div class="absolute inset-0 bg-cover bg-center hover:scale-105 transition-transform duration-500 ease-out" data-alt="Backyard patio with pool and garden" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB8QIhjUZR1nVx6-8JE0YbPOCRu8l2jQ7B-n61cKQXC1xGxIaVabsOQQaENPa878fj66z5hKhpLKl-XxR9JHho7MVsCF-ybia_aNP1wDQZwGInMsQv1MI4HJST6QnA9dSwWod45p5Omku0oTYkJRQn8HoSqF1rwf6-Ka49eiYcKQQ4w9F_9GqFNhBDn1uA74H2d63aogyjPcPBhZe8mOiC7DmTFh5J_qQXdnKwZbSIycFd0RvskW49J9PV-kIlro-O5JYpX54vYphFC');"></div>
+<div class="absolute inset-0 bg-cover bg-center hover:scale-105 transition-transform duration-500 ease-out" style="background-image: url('{{ image.image.url }}');"></div>
+{% if forloop.last and property.images.count > 5 %}
 <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
 <button class="bg-white/20 backdrop-blur-md border border-white/40 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/30 transition-all flex items-center gap-2">
 <span class="material-symbols-outlined text-[18px]">grid_view</span>
-                        View All Photos
+                        View All {{ property.images.count }} Photos
                     </button>
 </div>
+{% endif %}
 </div>
+{% endfor %}
+{% else %}
+<!-- Placeholder if no images -->
+<div class="md:col-span-2 md:row-span-2 h-full relative cursor-pointer overflow-hidden">
+<div class="absolute inset-0 bg-gray-300 dark:bg-gray-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-gray-400">home</span>
+</div>
+</div>
+{% endif %}
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 <!-- Left Column: Details (8 cols) -->
 <div class="lg:col-span-8 flex flex-col gap-10">
 <!-- Key Stats -->
-<div class="flex flex-wrap items-center justify-between gap-6 p-6 bg-white dark:bg-[#1a202c] rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm">
+<div class="flex flex-wrap items-center justify-between gap-6 p-6 bg-white dark:bg-card-dark rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary text-3xl">bed</span>
 <div>
-<p class="text-2xl font-bold text-slate-900 dark:text-white">4</p>
-<p class="text-xs font-medium text-slate-500 uppercase tracking-wide">Bedrooms</p>
+<p class="text-2xl font-bold text-text-main dark:text-white">{{ property.bedrooms }}</p>
+<p class="text-xs font-medium text-text-muted uppercase tracking-wide">Bedrooms</p>
 </div>
 </div>
 <div class="w-px h-10 bg-gray-200 dark:bg-gray-700"></div>
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary text-3xl">bathtub</span>
 <div>
-<p class="text-2xl font-bold text-slate-900 dark:text-white">3.5</p>
-<p class="text-xs font-medium text-slate-500 uppercase tracking-wide">Bathrooms</p>
+<p class="text-2xl font-bold text-text-main dark:text-white">{{ property.bathrooms }}</p>
+<p class="text-xs font-medium text-text-muted uppercase tracking-wide">Bathrooms</p>
 </div>
 </div>
-<div class="w-px h-10 bg-gray-200 dark:bg-gray-700 hidden sm:block"></div>
+<div class="w-px h-10 bg-gray-200 dark:border-gray-700 hidden sm:block"></div>
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary text-3xl">square_foot</span>
 <div>
-<p class="text-2xl font-bold text-slate-900 dark:text-white">2,850</p>
-<p class="text-xs font-medium text-slate-500 uppercase tracking-wide">Square Ft</p>
+<p class="text-2xl font-bold text-text-main dark:text-white">{{ property.area_sqm|floatformat:0 }}</p>
+<p class="text-xs font-medium text-text-muted uppercase tracking-wide">Square M</p>
 </div>
 </div>
+{% if property.parking_spaces %}
 <div class="w-px h-10 bg-gray-200 dark:bg-gray-700 hidden md:block"></div>
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary text-3xl">garage_home</span>
 <div>
-<p class="text-2xl font-bold text-slate-900 dark:text-white">2</p>
-<p class="text-xs font-medium text-slate-500 uppercase tracking-wide">Car Garage</p>
+<p class="text-2xl font-bold text-text-main dark:text-white">{{ property.parking_spaces }}</p>
+<p class="text-xs font-medium text-text-muted uppercase tracking-wide">Parking</p>
 </div>
 </div>
+{% endif %}
 </div>
 <!-- Description -->
 <div>
-<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">About this home</h3>
-<div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 leading-relaxed">
-<p class="mb-4">
-                            Welcome to 123 Marina Blvd, a masterpiece of modern design situated in the heart of San Francisco's prestigious Marina District. This stunning 4-bedroom, 3.5-bathroom residence seamlessly blends luxury living with everyday comfort. The open-concept main floor features soaring ceilings, white oak hardwood floors, and floor-to-ceiling windows that flood the space with natural light.
-                        </p>
-<p class="mb-4">
-                            The chef's kitchen is equipped with top-of-the-line Wolf and Sub-Zero appliances, custom Italian cabinetry, and a massive Calacatta marble island perfect for entertaining. Retreat to the primary suite, which occupies its own level and boasts a spa-inspired bathroom with a soaking tub, dual vanities, and a walk-in rain shower.
-                        </p>
-<p>
-                            Additional highlights include a private rooftop deck with panoramic views of the Golden Gate Bridge, a smart home automation system, and a 2-car garage with EV charging. Just steps from the Palace of Fine Arts and Crissy Field, this home offers the ultimate San Francisco lifestyle.
-                        </p>
+<h3 class="text-xl font-bold text-text-main dark:text-white mb-4">About this property</h3>
+<div class="prose prose-slate dark:prose-invert max-w-none text-text-main dark:text-gray-300 leading-relaxed">
+{{ property.description|linebreaks }}
 </div>
 </div>
-<!-- Amenities -->
+<!-- Property Info -->
 <div>
-<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6">Amenities &amp; Features</h3>
+<h3 class="text-xl font-bold text-text-main dark:text-white mb-6">Property Information</h3>
 <div class="grid grid-cols-2 sm:grid-cols-3 gap-y-4 gap-x-8">
-<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
-<span class="material-symbols-outlined text-primary">check_circle</span>
-<span>Air Conditioning</span>
-</div>
-<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
-<span class="material-symbols-outlined text-primary">check_circle</span>
-<span>Smart Home System</span>
-</div>
-<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
-<span class="material-symbols-outlined text-primary">check_circle</span>
-<span>Hardwood Floors</span>
-</div>
-<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
-<span class="material-symbols-outlined text-primary">check_circle</span>
-<span>Rooftop Deck</span>
-</div>
-<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
-<span class="material-symbols-outlined text-primary">check_circle</span>
-<span>Wine Cellar</span>
-</div>
-<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
-<span class="material-symbols-outlined text-primary">check_circle</span>
-<span>EV Charging</span>
-</div>
-<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
-<span class="material-symbols-outlined text-primary">check_circle</span>
-<span>Security System</span>
-</div>
-<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
-<span class="material-symbols-outlined text-primary">check_circle</span>
-<span>Fireplace</span>
-</div>
-<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
-<span class="material-symbols-outlined text-primary">check_circle</span>
-<span>Walk-in Closets</span>
+<div class="flex items-center gap-3 text-text-main dark:text-gray-300">
+<span class="material-symbols-outlined text-primary">home</span>
+<div>
+<p class="text-xs text-text-muted">Type</p>
+<p class="font-medium">{{ property.get_property_type_display }}</p>
 </div>
 </div>
+<div class="flex items-center gap-3 text-text-main dark:text-gray-300">
+<span class="material-symbols-outlined text-primary">sell</span>
+<div>
+<p class="text-xs text-text-muted">Status</p>
+<p class="font-medium">{{ property.get_status_display }}</p>
 </div>
-<!-- Tabs for details -->
-<div class="border-t border-gray-200 dark:border-gray-800 pt-8">
-<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6">Property Details</h3>
-<div class="flex flex-col gap-6">
-<!-- Accordion Item 1 -->
-<div class="bg-white dark:bg-[#1a202c] rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
-<div class="w-full px-6 py-4 flex justify-between items-center bg-gray-50 dark:bg-gray-800/50">
-<span class="font-semibold text-slate-900 dark:text-white">Interior Details</span>
-<span class="material-symbols-outlined text-slate-400">expand_less</span>
 </div>
-<div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-y-4 text-sm">
+{% if property.year_built %}
+<div class="flex items-center gap-3 text-text-main dark:text-gray-300">
+<span class="material-symbols-outlined text-primary">event</span>
+<div>
+<p class="text-xs text-text-muted">Year Built</p>
+<p class="font-medium">{{ property.year_built }}</p>
+</div>
+</div>
+{% endif %}
+<div class="flex items-center gap-3 text-text-main dark:text-gray-300">
+<span class="material-symbols-outlined text-primary">location_city</span>
+<div>
+<p class="text-xs text-text-muted">City</p>
+<p class="font-medium">{{ property.city }}</p>
+</div>
+</div>
+{% if property.postal_code %}
+<div class="flex items-center gap-3 text-text-main dark:text-gray-300">
+<span class="material-symbols-outlined text-primary">mail</span>
+<div>
+<p class="text-xs text-text-muted">Postal Code</p>
+<p class="font-medium">{{ property.postal_code }}</p>
+</div>
+</div>
+{% endif %}
+<div class="flex items-center gap-3 text-text-main dark:text-gray-300">
+<span class="material-symbols-outlined text-primary">square_foot</span>
+<div>
+<p class="text-xs text-text-muted">Area</p>
+<p class="font-medium">{{ property.area_sqm }} m²</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Address Details -->
+<div class="border-t border-gray-200 dark:border-gray-700 pt-8">
+<h3 class="text-xl font-bold text-text-main dark:text-white mb-6">Address</h3>
+<div class="bg-white dark:bg-card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+<div class="space-y-3 text-sm">
 <div class="flex justify-between border-b border-dashed border-gray-200 dark:border-gray-700 pb-2">
-<span class="text-slate-500">Heating</span>
-<span class="font-medium text-slate-900 dark:text-white">Radiant, Forced air</span>
-</div>
-<div class="flex justify-between border-b border-dashed border-gray-200 dark:border-gray-700 pb-2 md:ml-4">
-<span class="text-slate-500">Cooling</span>
-<span class="font-medium text-slate-900 dark:text-white">Central Air</span>
+<span class="text-text-muted">Street Address</span>
+<span class="font-medium text-text-main dark:text-white">{{ property.address }}</span>
 </div>
 <div class="flex justify-between border-b border-dashed border-gray-200 dark:border-gray-700 pb-2">
-<span class="text-slate-500">Appliances</span>
-<span class="font-medium text-slate-900 dark:text-white">Dishwasher, Freezer, Disposal</span>
+<span class="text-text-muted">City</span>
+<span class="font-medium text-text-main dark:text-white">{{ property.city }}</span>
 </div>
-<div class="flex justify-between border-b border-dashed border-gray-200 dark:border-gray-700 pb-2 md:ml-4">
-<span class="text-slate-500">Flooring</span>
-<span class="font-medium text-slate-900 dark:text-white">Hardwood, Tile</span>
+{% if property.postal_code %}
+<div class="flex justify-between border-b border-dashed border-gray-200 dark:border-gray-700 pb-2">
+<span class="text-text-muted">Postal Code</span>
+<span class="font-medium text-text-main dark:text-white">{{ property.postal_code }}</span>
 </div>
-</div>
-</div>
-<!-- Accordion Item 2 -->
-<div class="bg-white dark:bg-[#1a202c] rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
-<div class="w-full px-6 py-4 flex justify-between items-center bg-gray-50 dark:bg-gray-800/50">
-<span class="font-semibold text-slate-900 dark:text-white">Construction</span>
-<span class="material-symbols-outlined text-slate-400">expand_more</span>
-</div>
-</div>
-<!-- Accordion Item 3 -->
-<div class="bg-white dark:bg-[#1a202c] rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
-<div class="w-full px-6 py-4 flex justify-between items-center bg-gray-50 dark:bg-gray-800/50">
-<span class="font-semibold text-slate-900 dark:text-white">Utility &amp; Energy</span>
-<span class="material-symbols-outlined text-slate-400">expand_more</span>
-</div>
+{% endif %}
 </div>
 </div>
 </div>
 <!-- Map Section -->
 <div>
-<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Location</h3>
-<div class="w-full h-[320px] bg-gray-200 rounded-xl relative overflow-hidden group">
-<div class="absolute inset-0 bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Map view showing the location in San Francisco" data-location="San Francisco map view" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD9ncodsZwfx6GV4HqmJQP294EqRzFqec4ZRPclz2fI2noCcaj2u-QH2uFHrSA2LfJ9kJIdx32DgBj_KRCMBOaEW7BBImnfLjm7-T5NJN4r0inngSWXAq3PimCbdAHbPi4zhXr_L35FsLx97fg3Li7vc0WkVy2NR2oPN-1ZywOQFvTw2iUcWda41YbtMjkZ3XkJS566YR-D0K8jnsby56x0W5cxqxADnPqAG2pzM82etrqxXKnSi5kwF9C882lD6R66kG8LKEY37Gem');">
+<h3 class="text-xl font-bold text-text-main dark:text-white mb-4">Location</h3>
+{% if property.latitude and property.longitude %}
+<!-- Embedded Google Map -->
+<div class="w-full h-[320px] rounded-xl overflow-hidden shadow-md border border-gray-200 dark:border-gray-700 mb-3">
+<iframe
+                        width="100%"
+                        height="100%"
+                        frameborder="0"
+                        style="border:0"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps?q={{ property.latitude }},{{ property.longitude }}&z=15&output=embed"
+                        allowfullscreen>
+</iframe>
 </div>
-<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-<div class="bg-primary text-white p-3 rounded-full shadow-lg transform -translate-y-4">
-<span class="material-symbols-outlined text-2xl block">home_pin</span>
+{% else %}
+<!-- Placeholder Map -->
+<div class="w-full h-[320px] bg-gray-200 dark:bg-gray-700 rounded-xl relative overflow-hidden group mb-3">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-primary text-white p-3 rounded-full shadow-lg">
+<span class="material-symbols-outlined text-2xl block">location_on</span>
 </div>
 </div>
-<div class="absolute bottom-4 right-4">
-<button class="bg-white text-slate-900 text-xs font-bold px-3 py-2 rounded shadow hover:bg-gray-50">
-                                View on Google Maps
-                            </button>
+<div class="absolute inset-0 flex items-center justify-center pt-20">
+<p class="text-text-muted text-sm">Map coordinates not available</p>
 </div>
 </div>
-<p class="mt-3 text-slate-500 text-sm">123 Marina Blvd, San Francisco, CA 94123</p>
+{% endif %}
+<div class="flex items-center justify-between">
+<p class="text-text-muted text-sm">{{ property.address }}, {{ property.city }}{% if property.postal_code %} {{ property.postal_code }}{% endif %}</p>
+<a href="https://www.google.com/maps/search/?api=1&query={{ property.latitude|default:property.address|urlencode }},{{ property.longitude|default:property.city|urlencode }}" target="_blank" rel="noopener noreferrer" class="bg-primary text-white text-xs font-bold px-3 py-2 rounded-lg shadow hover:bg-blue-700 transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+<span>Open in Maps</span>
+</a>
+</div>
 </div>
 </div>
 <!-- Right Column: Sticky Sidebar (4 cols) -->
 <div class="lg:col-span-4 relative">
 <div class="sticky top-6 flex flex-col gap-6">
 <!-- Pricing Card -->
-<div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-lg">
+<div class="bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg">
 <div class="mb-6">
-<p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">List Price</p>
+<p class="text-text-muted text-sm font-medium mb-1">{% if property.status == 'sold' %}Sold Price{% else %}List Price{% endif %}</p>
 <div class="flex items-baseline gap-2">
-<h2 class="text-4xl font-black text-slate-900 dark:text-white tracking-tight">$4,500,000</h2>
+<h2 class="text-4xl font-black text-text-main dark:text-white tracking-tight">${{ property.price|floatformat:0|intcomma }}</h2>
 </div>
-<p class="text-sm text-green-600 dark:text-green-400 font-medium mt-1">Est. payment: $24,500/mo</p>
+{% if property.area_sqm %}
+<p class="text-sm text-text-muted font-medium mt-1">${{ property.price|floatformat:0|intcomma }} / {{ property.area_sqm }} m²</p>
+{% endif %}
 </div>
+{% if property.status == 'available' %}
 <button class="w-full bg-primary hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition-all mb-3 flex items-center justify-center gap-2">
 <span class="material-symbols-outlined">calendar_today</span>
                             Schedule a Tour
@@ -306,61 +262,67 @@
 <span class="material-symbols-outlined">chat_bubble</span>
                             Ask a Question
                         </button>
+{% else %}
+<div class="w-full bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 font-bold py-3 px-4 rounded-lg text-center">
+                            Property {{ property.get_status_display }}
+                        </div>
+{% endif %}
 </div>
 <!-- Agent Card -->
-<div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
+{% if property.agent %}
+<div class="bg-white dark:bg-card-dark p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
 <div class="flex items-center gap-4 mb-6">
 <div class="relative">
-<div class="w-16 h-16 rounded-full bg-gray-200 bg-cover bg-center border-2 border-white shadow-sm" data-alt="Portrait of real estate agent" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAuFEGBYMhYBamXT9Zjk-LGKeDQtKJ2XptjTAdLj7m7kyVwg6mxd9ir9G4mZugHwRXTl0qlb2_Ak-fcDRHhYgNrlWSxgUPwtBS2245YXd6rCKyKLMTGiB6MSKebfnzINfj7wUc8v1YDeKj63DwaU95KN2m4QN2ytJxwwQghuh1aL2l_5qYUEdcr_qgNVNeIA17tdaSvq2VfA9bhZpn3HX8Yo2zfoSGyiUo2hKonUtEgYrg1XuONK_ok4VYLnqBpj-DS2F5oQEPOID31');">
+{% if property.agent.photo %}
+<div class="w-16 h-16 rounded-full bg-gray-200 bg-cover bg-center border-2 border-white shadow-sm" style="background-image: url('{{ property.agent.photo.url }}');">
 </div>
+{% else %}
+<div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white text-2xl font-bold border-2 border-white shadow-sm">
+{{ property.agent.user.first_name|first }}{{ property.agent.user.last_name|first }}
+</div>
+{% endif %}
 <div class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
 </div>
 <div>
-<h4 class="text-lg font-bold text-slate-900 dark:text-white">Sarah Jenkins</h4>
-<p class="text-sm text-slate-500">Senior Real Estate Agent</p>
-<div class="flex gap-1 text-yellow-400 text-xs mt-1">
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star</span>
-<span class="material-symbols-outlined text-[16px] fill-current">star_half</span>
-<span class="text-slate-400 ml-1">(48 reviews)</span>
+<h4 class="text-lg font-bold text-text-main dark:text-white">{{ property.agent.user.get_full_name|default:property.agent.user.username }}</h4>
+{% if property.agent.specialization %}
+<p class="text-sm text-text-muted">{{ property.agent.specialization }}</p>
+{% else %}
+<p class="text-sm text-text-muted">Real Estate Agent</p>
+{% endif %}
+{% if property.agent.phone %}
+<p class="text-xs text-text-muted mt-1">{{ property.agent.phone }}</p>
+{% endif %}
 </div>
 </div>
-</div>
-<form class="flex flex-col gap-4">
+<form method="post" action="{% url 'properties:contacts' %}" class="flex flex-col gap-4">
+{% csrf_token %}
+<input type="hidden" name="property_id" value="{{ property.id }}">
 <div>
 <label class="sr-only" for="name">Name</label>
-<input class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border-transparent focus:border-primary focus:bg-white focus:ring-0 text-sm transition-colors" id="name" placeholder="Your Name" type="text"/>
+<input class="w-full px-4 py-3 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-2 focus:ring-primary text-sm transition-colors text-text-main dark:text-white" id="name" name="name" placeholder="Your Name" type="text" required/>
 </div>
 <div>
 <label class="sr-only" for="email">Email</label>
-<input class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border-transparent focus:border-primary focus:bg-white focus:ring-0 text-sm transition-colors" id="email" placeholder="Your Email" type="email"/>
+<input class="w-full px-4 py-3 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-2 focus:ring-primary text-sm transition-colors text-text-main dark:text-white" id="email" name="email" placeholder="Your Email" type="email" required/>
 </div>
 <div>
 <label class="sr-only" for="phone">Phone</label>
-<input class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border-transparent focus:border-primary focus:bg-white focus:ring-0 text-sm transition-colors" id="phone" placeholder="Your Phone" type="tel"/>
+<input class="w-full px-4 py-3 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-2 focus:ring-primary text-sm transition-colors text-text-main dark:text-white" id="phone" name="phone" placeholder="Your Phone" type="tel" required/>
 </div>
 <div>
 <label class="sr-only" for="message">Message</label>
-<textarea class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-800 border-transparent focus:border-primary focus:bg-white focus:ring-0 text-sm transition-colors min-h-[100px]" id="message" placeholder="I am interested in 123 Marina Blvd..."></textarea>
+<textarea class="w-full px-4 py-3 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-2 focus:ring-primary text-sm transition-colors min-h-[100px] text-text-main dark:text-white" id="message" name="message" placeholder="I am interested in {{ property.title }}..." required></textarea>
 </div>
-<button class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-opacity mt-2" type="button">
+<button class="w-full bg-primary hover:bg-primary-hover text-white font-bold py-3 px-4 rounded-lg transition-all mt-2 shadow-md" type="submit">
                                 Send Message
                             </button>
 </form>
-<div class="mt-4 text-center">
-<a class="text-xs text-slate-400 hover:text-primary transition-colors" href="#">View Agent Profile</a>
 </div>
-</div>
+{% endif %}
 </div>
 </div>
 </div>
 </main>
-<!-- Simple Footer for Context -->
-<footer class="bg-white dark:bg-[#1a202c] border-t border-gray-200 dark:border-gray-800 py-10 mt-auto">
-<div class="max-w-[1200px] mx-auto px-4 text-center text-slate-500 text-sm">
-<p>© 2023 EstateAgency Inc. All rights reserved.</p>
 </div>
-</footer>
-</body></html>
+{% endblock %}

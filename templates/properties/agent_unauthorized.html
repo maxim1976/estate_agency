@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Unauthorized - EstateAgency{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 py-16 text-center">
+    <span class="material-symbols-outlined text-8xl text-yellow-500 mb-4">pending</span>
+    <h1 class="text-3xl font-bold text-text-main-light dark:text-text-main-dark mb-4">Authorization Pending</h1>
+    <p class="text-text-secondary-light dark:text-text-secondary-dark mb-6">
+        Your agent account is currently pending authorization from our admin team. 
+        Once authorized, you'll be able to manage properties.
+    </p>
+    <p class="text-text-secondary-light dark:text-text-secondary-dark mb-8">
+        This typically takes 1-2 business days. We'll notify you once your account is activated.
+    </p>
+    <a href="{% url 'properties:home' %}" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+        <span class="material-symbols-outlined">home</span>
+        Back to Home
+    </a>
+</div>
+{% endblock %}

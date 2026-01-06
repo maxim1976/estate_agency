@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Property - EstateAgency{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 py-16">
+    <div class="bg-white dark:bg-surface-dark rounded-lg shadow-lg p-8">
+        <div class="text-center mb-6">
+            <span class="material-symbols-outlined text-6xl text-red-500 mb-4">warning</span>
+            <h1 class="text-2xl font-bold text-text-main-light dark:text-text-main-dark mb-2">Delete Property</h1>
+            <p class="text-text-secondary-light dark:text-text-secondary-dark">Are you sure you want to delete this property?</p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 mb-6">
+            <div class="flex items-center gap-4">
+                {% if property.images.all.first %}
+                <img src="{{ property.images.all.first.image.url }}" alt="{{ property.title }}" class="w-24 h-24 rounded object-cover">
+                {% else %}
+                <div class="w-24 h-24 rounded bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-gray-400 text-3xl">home</span>
+                </div>
+                {% endif %}
+                <div>
+                    <h3 class="font-bold text-text-main-light dark:text-text-main-dark">{{ property.title }}</h3>
+                    <p class="text-text-secondary-light dark:text-text-secondary-dark text-sm">{{ property.address }}, {{ property.city }}</p>
+                    <p class="text-primary font-semibold mt-1">${{ property.price|floatformat:0 }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-6">
+            <p class="text-red-800 dark:text-red-200 text-sm">
+                <strong>Warning:</strong> This action cannot be undone. All property data and images will be permanently deleted.
+            </p>
+        </div>
+
+        <form method="post" class="flex items-center justify-center gap-4">
+            {% csrf_token %}
+            <a href="{% url 'properties:agent_dashboard' %}" class="px-6 py-3 border border-gray-300 dark:border-gray-700 rounded-lg font-semibold text-text-main-light dark:text-text-main-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                Cancel
+            </a>
+            <button type="submit" class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold shadow-md transition-colors">
+                Delete Property
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

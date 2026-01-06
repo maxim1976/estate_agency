@@ -1,66 +1,8 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>About Us - EstateAgency</title>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#1754cf",
-                        "background-light": "#f6f6f8",
-                        "background-dark": "#111621",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"],
-                        "sans": ["Inter", "sans-serif"],
-                    },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-                },
-            },
-        }
-    </script>
-</head>
-<body class="font-display bg-background-light dark:bg-background-dark text-[#111318] dark:text-white">
-<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-<!-- Navigation -->
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e5e7eb] bg-white dark:bg-background-dark dark:border-[#2d3748] px-10 py-3 sticky top-0 z-50">
-<div class="flex items-center gap-4 text-[#111318] dark:text-white">
-<div class="size-8 text-primary">
-<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">EstateAgency</h2>
-</div>
-<div class="flex flex-1 justify-end gap-8 hidden lg:flex">
-<nav class="flex items-center gap-9">
-<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
-<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Listings</a>
-<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Agents</a>
-<a class="text-primary text-sm font-bold leading-normal" href="#">About Us</a>
-<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Contact</a>
-</nav>
-<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-bold leading-normal tracking-[0.015em]">
-<span class="truncate">List Your Property</span>
-</button>
-</div>
-<button class="lg:hidden text-[#111318] dark:text-white">
-<span class="material-symbols-outlined">menu</span>
-</button>
-</header>
+{% block title %}About Us - EstateAgency{% endblock %}
+
+{% block content %}
 <!-- Hero Section -->
 <div class="relative w-full">
 <div class="flex min-h-[500px] flex-col gap-6 bg-cover bg-center bg-no-repeat items-center justify-center p-4 relative" data-alt="Modern architectural office building with glass facade reflecting blue sky" style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPCYbOV36inGHUOBO81WtNVWBEl7uOtvX74EUGMrjDPeGoBemCNplXZpeBP_PiLVcJ24umsEz39mRzFlTQzf4G_snCgRt0FT8fscqsS0JjXVuBvHG-dLEKOZSH2XyWsNR59LIAxN5RFVylcicdmKuLXdorIqjoKeGnQWa0iheSORat68_C2dqrefKN4FMsBkLCtOoIe1J0wxKON_AuA986auOL1M1GEsURumgkkqfeDWkEsnE4WsxUMBtgbfSMsvh-Lb9uoILIUlg8");'>
@@ -191,78 +133,36 @@
 <p class="text-[#636f88] dark:text-gray-400 text-lg">The dedicated professionals making your dream home a reality.</p>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-<!-- Member 1 -->
+{% for agent in agents %}
+<!-- Agent Card -->
 <div class="group flex flex-col gap-4">
-<div class="relative overflow-hidden rounded-xl aspect-[3/4] bg-gray-100">
-<img alt="Portrait of James Wilson, Senior Broker" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Professional headshot of a man in a suit smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRWy0xU0zfy55VnMGMTcDekqlSubFzAyarZ-Vt5Yek_VFbMtoUWsM_l8Hc4-N8IB2M6GpvS19jE2z5IWm9E8xGQSGLPmxJiEzpiozcuZqWz1PDaYMBhmttLXtFuIjcIvi-OToesbF3LpWeiNWhcXIvEJ-hEgjONQVf5AVuZthUZEcd9e5xkLTm_8x8Nksz3NWqodstjHF615u7kJtUzNJJCmhK9X4Ui6TJit9NyqJvVBEQvRM-Bf0j8eLOCCczUgSpbZeVVSQFMUr4"/>
-<div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-<a class="bg-white text-primary p-2 rounded-full hover:bg-gray-100 transition-colors" href="#">
+<a href="{% url 'properties:agent_profile' agent.pk %}" class="relative overflow-hidden rounded-xl aspect-[3/4] bg-gray-100 block">
+{% if agent.photo %}
+<img alt="{{ agent }}" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="{{ agent.photo.url }}"/>
+{% else %}
+<div class="h-full w-full flex items-center justify-center bg-gray-300 text-gray-600 text-4xl font-bold">
+{{ agent.user.first_name.0 }}{{ agent.user.last_name.0 }}
+</div>
+{% endif %}
+</a>
+<div class="flex items-center justify-center gap-3 -mt-2">
+<a class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-primary p-2 rounded-full hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm" href="mailto:{{ agent.user.email }}" title="Email {{ agent }}">
 <span class="material-symbols-outlined text-xl">mail</span>
 </a>
-<a class="bg-white text-primary p-2 rounded-full hover:bg-gray-100 transition-colors" href="#">
+<a class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-primary p-2 rounded-full hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm" href="tel:{{ agent.phone }}" title="Call {{ agent }}">
 <span class="material-symbols-outlined text-xl">call</span>
 </a>
 </div>
-</div>
 <div class="flex flex-col text-center">
-<h3 class="text-lg font-bold text-[#111318] dark:text-white">James Wilson</h3>
-<p class="text-sm text-[#636f88] dark:text-gray-400 font-medium">Senior Broker</p>
+<a href="{% url 'properties:agent_profile' agent.pk %}" class="text-lg font-bold text-[#111318] dark:text-white hover:text-primary transition-colors">{{ agent }}</a>
+<p class="text-sm text-[#636f88] dark:text-gray-400 font-medium">{{ agent.specialization|default:"Real Estate Agent" }}</p>
 </div>
 </div>
-<!-- Member 2 -->
-<div class="group flex flex-col gap-4">
-<div class="relative overflow-hidden rounded-xl aspect-[3/4] bg-gray-100">
-<img alt="Portrait of Sarah Chen, Luxury Specialist" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Professional headshot of a woman in business attire smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlNTcq9KuxuyvxQJBxLGGYXEHWLFnnJ492qPybuyu_uR_b06MLBBP8rsdGrQurC--eK6pwkCF4jCP4nBbOAwGj8JfBEzm66TFRWBKUuXwC2Fx7G1syeWjinQOWaBbM4GNTW73mCmcq2VAsbwdfSFqKRWOOXKO61eS-nLMSSfar3K2eFZI8PnfcjPLFqz6q59NouBzV-umyhh2Iu3PwhRxrnz_nQs348IgqTjiAqQhgyo--fTtasqHUySM-EM7BldHkQl-FFyZ0qvoj"/>
-<div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-<a class="bg-white text-primary p-2 rounded-full hover:bg-gray-100 transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">mail</span>
-</a>
-<a class="bg-white text-primary p-2 rounded-full hover:bg-gray-100 transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">call</span>
-</a>
+{% empty %}
+<div class="col-span-full text-center py-12">
+<p class="text-lg text-[#636f88] dark:text-gray-400">No agents available at this time.</p>
 </div>
-</div>
-<div class="flex flex-col text-center">
-<h3 class="text-lg font-bold text-[#111318] dark:text-white">Sarah Chen</h3>
-<p class="text-sm text-[#636f88] dark:text-gray-400 font-medium">Luxury Specialist</p>
-</div>
-</div>
-<!-- Member 3 -->
-<div class="group flex flex-col gap-4">
-<div class="relative overflow-hidden rounded-xl aspect-[3/4] bg-gray-100">
-<img alt="Portrait of Michael Ross, Commercial Real Estate Agent" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Professional headshot of a man in a dark tie smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcJDlutkhN7xDE104dtLsIZtJR07YQhEekm1LKPkBoqE7Fh1slhAFlyqRHGvR4LCopwOu94RUr-CdVhaCkMau27WW7tUzH_ocndz278Oas1tUqucIdI4m-5aEtjTMb-Awbu62OTLwe1Ilyrg2dsFVVk9rrRXSg5SoQ5r9kRsaK86Y4Mh1xOFLifI5FTVfU9LeBztK-R4yU0Ke65VHjP8qW_kUpzaOmzLqXkFo9XbjLB4-v6sNi9JerHE0Jvh-1BkBxSHVahKZu04GD"/>
-<div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-<a class="bg-white text-primary p-2 rounded-full hover:bg-gray-100 transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">mail</span>
-</a>
-<a class="bg-white text-primary p-2 rounded-full hover:bg-gray-100 transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">call</span>
-</a>
-</div>
-</div>
-<div class="flex flex-col text-center">
-<h3 class="text-lg font-bold text-[#111318] dark:text-white">Michael Ross</h3>
-<p class="text-sm text-[#636f88] dark:text-gray-400 font-medium">Commercial Lead</p>
-</div>
-</div>
-<!-- Member 4 -->
-<div class="group flex flex-col gap-4">
-<div class="relative overflow-hidden rounded-xl aspect-[3/4] bg-gray-100">
-<img alt="Portrait of Elena Rodriguez, Residential Agent" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Professional headshot of a woman smiling warmly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFk-_JmH1ks8NLkEdJs0y0uw2o4y_J-VbMFIYQLtxTZLwJLwUfziF6Pa5JYMtBgqdvZpDPB8xoXzm12ddNJkHRgPIwQfXOdmIgVb2PAIVvBW2YChWvoloGcynampzRZ3AV41eG4bgEo9tbXxv5dpNIU0HTCV3Ht5RYtkczLqQqyWNKSlJiwLx_knKxEgx_r8AhJeej7HNA69WpPbvHl5H73cz4d-pThVLucMhQuqAXuJcysChTG1ar9pzdo0xOY4FZrtjynQtN2i-0"/>
-<div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-<a class="bg-white text-primary p-2 rounded-full hover:bg-gray-100 transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">mail</span>
-</a>
-<a class="bg-white text-primary p-2 rounded-full hover:bg-gray-100 transition-colors" href="#">
-<span class="material-symbols-outlined text-xl">call</span>
-</a>
-</div>
-</div>
-<div class="flex flex-col text-center">
-<h3 class="text-lg font-bold text-[#111318] dark:text-white">Elena Rodriguez</h3>
-<p class="text-sm text-[#636f88] dark:text-gray-400 font-medium">Residential Agent</p>
-</div>
-</div>
+{% endfor %}
 </div>
 </div>
 <!-- CTA Section -->
@@ -281,60 +181,4 @@
 </div>
 </div>
 </main>
-<!-- Footer -->
-<footer class="bg-white dark:bg-background-dark border-t border-[#e5e7eb] dark:border-[#2d3748] pt-16 pb-8 px-10">
-<div class="max-w-[1200px] mx-auto flex flex-col gap-12">
-<div class="flex flex-col lg:flex-row justify-between gap-10">
-<div class="flex flex-col gap-4 max-w-sm">
-<div class="flex items-center gap-2 text-[#111318] dark:text-white">
-<div class="size-6 text-primary">
-<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-<span class="text-xl font-bold">EstateAgency</span>
-</div>
-<p class="text-[#636f88] dark:text-gray-400 text-sm leading-relaxed">
-                            Helping people find their perfect place in the world since 1998. We are committed to excellence in every transaction.
-                        </p>
-<div class="flex gap-4 mt-2">
-<!-- Social Placeholders -->
-<a class="w-8 h-8 rounded-full bg-[#f0f2f4] dark:bg-[#2d3748] flex items-center justify-center text-[#636f88] hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined text-sm">public</span>
-</a>
-<a class="w-8 h-8 rounded-full bg-[#f0f2f4] dark:bg-[#2d3748] flex items-center justify-center text-[#636f88] hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined text-sm">alternate_email</span>
-</a>
-</div>
-</div>
-<div class="grid grid-cols-2 sm:grid-cols-3 gap-10 lg:gap-20">
-<div class="flex flex-col gap-4">
-<h4 class="text-[#111318] dark:text-white font-bold">Company</h4>
-<a class="text-[#636f88] dark:text-gray-400 text-sm hover:text-primary" href="#">About Us</a>
-<a class="text-[#636f88] dark:text-gray-400 text-sm hover:text-primary" href="#">Careers</a>
-<a class="text-[#636f88] dark:text-gray-400 text-sm hover:text-primary" href="#">Press</a>
-</div>
-<div class="flex flex-col gap-4">
-<h4 class="text-[#111318] dark:text-white font-bold">Resources</h4>
-<a class="text-[#636f88] dark:text-gray-400 text-sm hover:text-primary" href="#">Buyers Guide</a>
-<a class="text-[#636f88] dark:text-gray-400 text-sm hover:text-primary" href="#">Sellers Guide</a>
-<a class="text-[#636f88] dark:text-gray-400 text-sm hover:text-primary" href="#">Market Reports</a>
-</div>
-<div class="flex flex-col gap-4">
-<h4 class="text-[#111318] dark:text-white font-bold">Contact</h4>
-<p class="text-[#636f88] dark:text-gray-400 text-sm">123 Market St, Suite 400<br/>Seattle, WA 98101</p>
-<a class="text-[#636f88] dark:text-gray-400 text-sm hover:text-primary" href="#">(555) 123-4567</a>
-</div>
-</div>
-</div>
-<div class="border-t border-[#e5e7eb] dark:border-[#2d3748] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-<p class="text-[#9ca3af] text-xs">© 2023 EstateAgency Inc. All rights reserved.</p>
-<div class="flex gap-6">
-<a class="text-[#9ca3af] text-xs hover:text-[#111318] dark:hover:text-white" href="#">Privacy Policy</a>
-<a class="text-[#9ca3af] text-xs hover:text-[#111318] dark:hover:text-white" href="#">Terms of Service</a>
-</div>
-</div>
-</div>
-</footer>
-</div>
-</body></html>
+{% endblock %}

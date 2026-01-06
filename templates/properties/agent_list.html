@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Agents - EstateAgency{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="relative w-full bg-primary/5 dark:bg-primary/10">
+    <div class="flex min-h-[300px] flex-col gap-6 items-center justify-center p-4 relative max-w-7xl mx-auto">
+        <div class="flex flex-col gap-4 text-center max-w-[800px] z-10">
+            <h1 class="text-text-main-light dark:text-text-main-dark text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl">
+                Meet Our Expert Agents
+            </h1>
+            <p class="text-text-secondary-light dark:text-text-secondary-dark text-base font-medium leading-relaxed md:text-lg max-w-2xl mx-auto">
+                Our team of dedicated professionals is here to help you find your perfect property. With years of experience and local expertise, we're committed to making your real estate journey seamless.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Agents Grid -->
+<main class="flex flex-col items-center w-full py-20">
+    <div class="layout-content-container flex flex-col max-w-[1200px] w-full px-4 md:px-10">
+        {% if agents %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {% for agent in agents %}
+            <!-- Agent Card -->
+            <div class="group flex flex-col gap-4">
+                <a href="{% url 'properties:agent_profile' agent.pk %}" class="relative overflow-hidden rounded-xl aspect-[3/4] bg-gray-100 block">
+                    {% if agent.photo %}
+                    <img alt="{{ agent }}" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src="{{ agent.photo.url }}"/>
+                    {% else %}
+                    <div class="h-full w-full flex items-center justify-center bg-gray-300 text-gray-600 text-4xl font-bold">
+                        {{ agent.user.first_name.0 }}{{ agent.user.last_name.0 }}
+                    </div>
+                    {% endif %}
+                </a>
+                <div class="flex items-center justify-center gap-3 -mt-2">
+                    <a class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-primary p-2 rounded-full hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm" href="mailto:{{ agent.user.email }}" title="Email {{ agent }}">
+                        <span class="material-symbols-outlined text-xl">mail</span>
+                    </a>
+                    <a class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-primary p-2 rounded-full hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm" href="tel:{{ agent.phone }}" title="Call {{ agent }}">
+                        <span class="material-symbols-outlined text-xl">call</span>
+                    </a>
+                </div>
+                <div class="flex flex-col text-center">
+                    <a href="{% url 'properties:agent_profile' agent.pk %}" class="text-lg font-bold text-text-main-light dark:text-text-main-dark hover:text-primary transition-colors">{{ agent }}</a>
+                    <p class="text-sm text-text-secondary-light dark:text-text-secondary-dark font-medium">{{ agent.specialization|default:"Real Estate Agent" }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-20">
+            <span class="material-symbols-outlined text-6xl text-gray-300 dark:text-gray-600">group</span>
+            <p class="text-xl text-text-secondary-light dark:text-text-secondary-dark mt-4">No agents available at this time.</p>
+        </div>
+        {% endif %}
+    </div>
+</main>
+
+<!-- CTA Section -->
+<div class="w-full bg-background-light dark:bg-surface-dark py-20 px-4">
+    <div class="max-w-3xl mx-auto flex flex-col items-center text-center gap-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-text-main-light dark:text-text-main-dark">Ready to work with us?</h2>
+        <p class="text-text-secondary-light dark:text-text-secondary-dark text-lg">Whether you're buying, selling, or renting, our agents are here to guide you every step of the way.</p>
+        <div class="flex flex-col sm:flex-row gap-4 mt-4 w-full justify-center">
+            <a href="{% url 'properties:property_list' %}" class="flex items-center justify-center px-8 h-12 rounded-lg bg-primary hover:bg-primary-hover text-white font-bold text-base transition-colors shadow-lg">
+                Browse Properties
+            </a>
+            <a href="{% url 'properties:contacts' %}" class="flex items-center justify-center px-8 h-12 rounded-lg bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 text-text-main-light dark:text-text-main-dark font-bold text-base transition-colors">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

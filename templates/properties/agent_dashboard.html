@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block title %}Agent Dashboard - EstateAgency{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="mb-6">
+        <h1 class="text-3xl font-bold text-text-main-light dark:text-text-main-dark mb-2">Agent Dashboard</h1>
+        <p class="text-text-secondary-light dark:text-text-secondary-dark">Manage your property listings</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div class="bg-white dark:bg-surface-dark rounded-lg p-6 shadow-sm">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-text-secondary-light dark:text-text-secondary-dark text-sm">Total Properties</p>
+                    <p class="text-3xl font-bold text-text-main-light dark:text-text-main-dark mt-1">{{ total_properties }}</p>
+                </div>
+                <span class="material-symbols-outlined text-primary text-4xl">home_work</span>
+            </div>
+        </div>
+        
+        <div class="bg-white dark:bg-surface-dark rounded-lg p-6 shadow-sm">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-text-secondary-light dark:text-text-secondary-dark text-sm">Available</p>
+                    <p class="text-3xl font-bold text-green-600 mt-1">{{ available_properties }}</p>
+                </div>
+                <span class="material-symbols-outlined text-green-600 text-4xl">check_circle</span>
+            </div>
+        </div>
+        
+        <div class="bg-white dark:bg-surface-dark rounded-lg p-6 shadow-sm">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-text-secondary-light dark:text-text-secondary-dark text-sm">Pending</p>
+                    <p class="text-3xl font-bold text-yellow-600 mt-1">{{ pending_properties }}</p>
+                </div>
+                <span class="material-symbols-outlined text-yellow-600 text-4xl">pending</span>
+            </div>
+        </div>
+        
+        <div class="bg-white dark:bg-surface-dark rounded-lg p-6 shadow-sm">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-text-secondary-light dark:text-text-secondary-dark text-sm">Sold</p>
+                    <p class="text-3xl font-bold text-blue-600 mt-1">{{ sold_properties }}</p>
+                </div>
+                <span class="material-symbols-outlined text-blue-600 text-4xl">sell</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Property Button -->
+    <div class="mb-6">
+        <a href="{% url 'properties:property_create' %}" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-semibold shadow-md transition-colors">
+            <span class="material-symbols-outlined">add</span>
+            Add New Property
+        </a>
+    </div>
+
+    <!-- Properties Table -->
+    <div class="bg-white dark:bg-surface-dark rounded-lg shadow-sm overflow-hidden">
+        <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+            <h2 class="text-xl font-bold text-text-main-light dark:text-text-main-dark">Your Properties</h2>
+        </div>
+        
+        {% if properties %}
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead class="bg-gray-50 dark:bg-gray-800">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Property</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Type</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Price</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Featured</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                    {% for property in properties %}
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-800">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                {% if property.images.all.first %}
+                                <img src="{{ property.images.all.first.image.url }}" alt="{{ property.title }}" class="w-16 h-16 rounded object-cover">
+                                {% else %}
+                                <div class="w-16 h-16 rounded bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-gray-400">home</span>
+                                </div>
+                                {% endif %}
+                                <div>
+                                    <p class="font-semibold text-text-main-light dark:text-text-main-dark">{{ property.title }}</p>
+                                    <p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">{{ property.city }}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-text-main-light dark:text-text-main-dark">{{ property.get_property_type_display }}</td>
+                        <td class="px-6 py-4 font-semibold text-primary">${{ property.price|floatformat:0 }}</td>
+                        <td class="px-6 py-4">
+                            {% if property.status == 'available' %}
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Available</span>
+                            {% elif property.status == 'pending' %}
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">Pending</span>
+                            {% else %}
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">Sold</span>
+                            {% endif %}
+                        </td>
+                        <td class="px-6 py-4">
+                            {% if property.featured %}
+                            <span class="material-symbols-outlined text-yellow-500">star</span>
+                            {% else %}
+                            <span class="material-symbols-outlined text-gray-400">star</span>
+                            {% endif %}
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-2">
+                                <a href="{% url 'properties:property_detail' property.pk %}" class="text-blue-600 hover:text-blue-800 dark:text-blue-400" title="View">
+                                    <span class="material-symbols-outlined text-[20px]">visibility</span>
+                                </a>
+                                <a href="{% url 'properties:property_edit' property.pk %}" class="text-green-600 hover:text-green-800 dark:text-green-400" title="Edit">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </a>
+                                <a href="{% url 'properties:property_delete' property.pk %}" class="text-red-600 hover:text-red-800 dark:text-red-400" title="Delete">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="px-6 py-12 text-center">
+            <span class="material-symbols-outlined text-6xl text-gray-300 dark:text-gray-600">home_work</span>
+            <p class="text-text-secondary-light dark:text-text-secondary-dark mt-4">You haven't added any properties yet.</p>
+            <a href="{% url 'properties:property_create' %}" class="inline-block mt-4 text-primary hover:underline font-semibold">Add your first property</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

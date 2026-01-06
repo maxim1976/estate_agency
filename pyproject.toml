@@ -1,11 +1,15 @@
 [project]
 name = "agency"
 version = "0.1.0"
-description = "Add your description here"
+description = "Real Estate Agency Platform"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "django>=6.0",
     "django-extensions>=4.1",
     "pillow>=11.0.0",
+    "gunicorn>=21.2.0",
+    "whitenoise>=6.6.0",
+    "psycopg2-binary>=2.9.9",
+    "dj-database-url>=2.1.0",
 ]

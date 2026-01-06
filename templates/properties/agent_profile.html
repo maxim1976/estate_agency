@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% load property_filters %}
+
+{% block title %}{{ agent }} - Agent Profile{% endblock %}
+
+{% block content %}
+<!-- Main Content Area -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-4 md:px-10 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Left Sidebar: Profile Card (Sticky) -->
+        <aside class="w-full lg:w-[340px] flex-shrink-0">
+            <div class="lg:sticky lg:top-24 flex flex-col gap-6">
+                <!-- Profile Card -->
+                <div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm">
+                    <!-- Cover Image/Background -->
+                    <div class="h-32 bg-primary/10 w-full relative">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/10"></div>
+                    </div>
+                    <div class="px-6 pb-6 -mt-16 flex flex-col items-center relative">
+                        <!-- Avatar -->
+                        <div class="size-32 rounded-full border-4 border-white dark:border-surface-dark shadow-md bg-gray-200 overflow-hidden mb-4">
+                            {% if agent.photo %}
+                            <img alt="{{ agent }}" class="w-full h-full object-cover" src="{{ agent.photo.url }}"/>
+                            {% else %}
+                            <div class="w-full h-full flex items-center justify-center bg-gray-300 text-gray-600 text-3xl font-bold">
+                                {{ agent.user.first_name.0 }}{{ agent.user.last_name.0 }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <!-- Name & Title -->
+                        <div class="text-center mb-6">
+                            <div class="flex items-center justify-center gap-2 mb-1">
+                                <h1 class="text-2xl font-bold text-text-main-light dark:text-text-main-dark">{{ agent }}</h1>
+                                <span class="material-symbols-outlined text-primary text-[20px]" title="Verified Agent">verified</span>
+                            </div>
+                            <p class="text-text-secondary-light dark:text-text-secondary-dark font-medium">{{ agent.specialization|default:"Real Estate Agent" }}</p>
+                        </div>
+                        <!-- Quick Actions -->
+                        <div class="w-full grid grid-cols-2 gap-3 mb-6">
+                            <a href="tel:{{ agent.phone }}" class="flex items-center justify-center gap-2 h-10 px-4 bg-primary text-white rounded-lg text-sm font-bold hover:bg-primary-hover transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">call</span>
+                                Call
+                            </a>
+                            <a href="mailto:{{ agent.user.email }}" class="flex items-center justify-center gap-2 h-10 px-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-text-main-light dark:text-text-main-dark rounded-lg text-sm font-bold hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">mail</span>
+                                Email
+                            </a>
+                        </div>
+                        <!-- Stats Row -->
+                        <div class="flex justify-between w-full py-4 border-t border-b border-gray-100 dark:border-gray-700 mb-6">
+                            <div class="flex flex-col items-center px-2">
+                                <span class="text-lg font-bold text-text-main-light dark:text-text-main-dark">{{ total_properties }}</span>
+                                <span class="text-xs text-text-secondary-light dark:text-text-secondary-dark uppercase tracking-wider">Active</span>
+                            </div>
+                            <div class="w-px bg-gray-200 dark:bg-gray-700 h-10 self-center"></div>
+                            <div class="flex flex-col items-center px-2">
+                                <span class="text-lg font-bold text-text-main-light dark:text-text-main-dark">{{ sold_properties }}</span>
+                                <span class="text-xs text-text-secondary-light dark:text-text-secondary-dark uppercase tracking-wider">Sold</span>
+                            </div>
+                            <div class="w-px bg-gray-200 dark:bg-gray-700 h-10 self-center"></div>
+                            <div class="flex flex-col items-center px-2">
+                                <span class="text-lg font-bold text-text-main-light dark:text-text-main-dark">{{ agent.user.date_joined.year }}</span>
+                                <span class="text-xs text-text-secondary-light dark:text-text-secondary-dark uppercase tracking-wider">Joined</span>
+                            </div>
+                        </div>
+                        <!-- Contact Info -->
+                        <div class="w-full space-y-2">
+                            <div class="flex items-center gap-2 text-sm text-text-secondary-light dark:text-text-secondary-dark">
+                                <span class="material-symbols-outlined text-[18px]">call</span>
+                                <span>{{ agent.phone }}</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-text-secondary-light dark:text-text-secondary-dark">
+                                <span class="material-symbols-outlined text-[18px]">mail</span>
+                                <span class="truncate">{{ agent.user.email }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Content: Bio & Listings -->
+        <section class="flex-1 min-w-0">
+            <!-- About Section -->
+            {% if agent.bio %}
+            <div class="mb-10">
+                <h2 class="text-xl font-bold text-text-main-light dark:text-text-main-dark mb-3">About {{ agent.user.first_name }}</h2>
+                <div class="prose prose-slate dark:prose-invert max-w-none text-text-secondary-light dark:text-text-secondary-dark">
+                    <p class="leading-relaxed whitespace-pre-line">{{ agent.bio }}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Listings Header -->
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold text-text-main-light dark:text-text-main-dark">Current Listings ({{ total_properties }})</h2>
+            </div>
+
+            <!-- Listings Grid -->
+            {% if properties %}
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
+                {% for property in properties %}
+                <!-- Property Card -->
+                <div class="group bg-white dark:bg-surface-dark rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 flex flex-col">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        {% if property.images.all.first %}
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('{{ property.images.all.first.image.url }}');"></div>
+                        {% else %}
+                        <div class="absolute inset-0 bg-gray-300 dark:bg-gray-700 transition-transform duration-500 group-hover:scale-105 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-6xl text-gray-400">home</span>
+                        </div>
+                        {% endif %}
+                        <div class="absolute top-3 left-3 {{ property.listing_type|get_listing_badge }} text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">{{ property.listing_type|get_listing_text }}</div>
+                        <button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-black/50 hover:bg-white dark:hover:bg-black/70 rounded-full text-gray-700 dark:text-white transition-colors">
+                            <span class="material-symbols-outlined text-[20px] block">favorite</span>
+                        </button>
+                    </div>
+                    <div class="p-5 flex flex-col gap-3 grow">
+                        <div>
+                            <div class="flex items-center justify-between mb-1">
+                                <h3 class="text-2xl font-bold text-primary">${{ property.price|format_price }}</h3>
+                            </div>
+                            <p class="text-text-main-light dark:text-text-main-dark font-medium truncate">{{ property.address }}, {{ property.city }}</p>
+                        </div>
+                        <div class="flex items-center gap-4 py-3 border-y border-gray-100 dark:border-gray-800">
+                            <div class="flex items-center gap-1.5 text-text-secondary-light dark:text-text-secondary-dark text-sm">
+                                <span class="material-symbols-outlined text-[18px]">bed</span>
+                                <span>{{ property.bedrooms }} Bed{% if property.bedrooms != 1 %}s{% endif %}</span>
+                            </div>
+                            <div class="flex items-center gap-1.5 text-text-secondary-light dark:text-text-secondary-dark text-sm">
+                                <span class="material-symbols-outlined text-[18px]">bathtub</span>
+                                <span>{{ property.bathrooms }} Bath{% if property.bathrooms != 1 %}s{% endif %}</span>
+                            </div>
+                            <div class="flex items-center gap-1.5 text-text-secondary-light dark:text-text-secondary-dark text-sm">
+                                <span class="material-symbols-outlined text-[18px]">square_foot</span>
+                                <span>{{ property.area_sqm|sqm_to_sqft|floatformat:0 }} sqft</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-end mt-auto pt-1">
+                            <a href="{% url 'properties:property_detail' property.pk %}" class="text-primary hover:bg-primary/5 px-3 py-1.5 rounded text-sm font-semibold transition-colors">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="text-center py-12 bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-700">
+                <span class="material-symbols-outlined text-6xl text-gray-300 dark:text-gray-600">home_work</span>
+                <p class="text-xl text-text-secondary-light dark:text-text-secondary-dark mt-4">No active listings at this time</p>
+            </div>
+            {% endif %}
+        </section>
+    </div>
+</main>
+{% endblock %}

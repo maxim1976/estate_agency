@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Property Listings - EstateAgency</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1754cf",
+                        "primary-hover": "#1040a3",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1a2233",
+                        "text-main": "#111318",
+                        "text-muted": "#636f88",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom range slider styling for webkit */
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #1754cf;
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 0 2px rgba(0,0,0,0.2);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #e5e7eb;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-white transition-colors duration-200">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f4] dark:border-b-gray-800 bg-white dark:bg-card-dark px-4 lg:px-10 py-3 shadow-sm">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 flex items-center justify-center rounded bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-2xl">real_estate_agent</span>
+</div>
+<h2 class="text-text-main dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">EstateAgency</h2>
+</div>
+<!-- Desktop Menu -->
+<div class="hidden lg:flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-6">
+<a class="text-text-main dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Buy</a>
+<a class="text-text-main dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Rent</a>
+<a class="text-text-main dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Sell</a>
+<a class="text-text-main dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Agents</a>
+</div>
+<div class="flex gap-3">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-700 text-text-main dark:text-white text-sm font-bold leading-normal tracking-[0.015em] transition-colors">
+                    Log In
+                </button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-primary-hover text-white text-sm font-bold leading-normal tracking-[0.015em] transition-colors shadow-sm">
+                    Sign Up
+                </button>
+</div>
+</div>
+<!-- Mobile Menu Toggle -->
+<div class="lg:hidden">
+<button class="p-2 text-text-main dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content Layout -->
+<div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row min-h-[calc(100vh-64px)]">
+<!-- Sidebar Filters -->
+<aside class="w-full lg:w-80 shrink-0 p-4 lg:p-6 bg-white dark:bg-card-dark lg:border-r border-gray-100 dark:border-gray-800 lg:sticky lg:top-[65px] lg:h-[calc(100vh-65px)] lg:overflow-y-auto custom-scrollbar z-10">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold text-text-main dark:text-white">Filters</h3>
+<button class="text-sm font-medium text-primary hover:underline">Reset All</button>
+</div>
+<div class="space-y-6">
+<!-- Location -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-text-main dark:text-gray-200">Location</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 material-symbols-outlined text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-background-light dark:bg-background-dark border-none rounded-lg text-sm focus:ring-2 focus:ring-primary text-text-main dark:text-white placeholder-gray-500" placeholder="City, Zip, Address" type="text"/>
+</div>
+</div>
+<!-- Price Range -->
+<div class="space-y-3">
+<label class="text-sm font-semibold text-text-main dark:text-gray-200">Price Range</label>
+<div class="flex items-center gap-2">
+<div class="relative w-full">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">$</span>
+<input class="w-full pl-6 pr-2 py-2 bg-background-light dark:bg-background-dark border-none rounded-lg text-sm focus:ring-2 focus:ring-primary text-text-main dark:text-white" type="number" value="150000"/>
+</div>
+<span class="text-gray-400">-</span>
+<div class="relative w-full">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">$</span>
+<input class="w-full pl-6 pr-2 py-2 bg-background-light dark:bg-background-dark border-none rounded-lg text-sm focus:ring-2 focus:ring-primary text-text-main dark:text-white" type="number" value="850000"/>
+</div>
+</div>
+<input class="w-full accent-primary" max="2000000" min="0" step="10000" type="range"/>
+</div>
+<!-- Property Type -->
+<div class="space-y-3">
+<label class="text-sm font-semibold text-text-main dark:text-gray-200">Property Type</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input checked="" class="peer h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition-colors">House</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition-colors">Apartment</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition-colors">Condo</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition-colors">Townhouse</span>
+</label>
+</div>
+</div>
+<!-- Beds & Baths -->
+<div class="space-y-4">
+<div>
+<label class="text-sm font-semibold text-text-main dark:text-gray-200 block mb-2">Bedrooms</label>
+<div class="flex gap-2">
+<button class="h-9 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-card-dark text-sm hover:border-primary hover:text-primary transition-colors">Any</button>
+<button class="h-9 w-full rounded-lg bg-primary text-white text-sm font-medium shadow-sm">2+</button>
+<button class="h-9 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-card-dark text-sm hover:border-primary hover:text-primary transition-colors">3+</button>
+<button class="h-9 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-card-dark text-sm hover:border-primary hover:text-primary transition-colors">4+</button>
+</div>
+</div>
+<div>
+<label class="text-sm font-semibold text-text-main dark:text-gray-200 block mb-2">Bathrooms</label>
+<div class="flex gap-2">
+<button class="h-9 w-full rounded-lg bg-primary text-white text-sm font-medium shadow-sm">Any</button>
+<button class="h-9 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-card-dark text-sm hover:border-primary hover:text-primary transition-colors">2+</button>
+<button class="h-9 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-card-dark text-sm hover:border-primary hover:text-primary transition-colors">3+</button>
+</div>
+</div>
+</div>
+<!-- Amenities -->
+<div class="space-y-3 pt-2 border-t border-gray-100 dark:border-gray-800">
+<button class="flex w-full items-center justify-between text-sm font-semibold text-text-main dark:text-gray-200 py-2">
+<span>Amenities</span>
+<span class="material-symbols-outlined text-gray-400">expand_more</span>
+</button>
+<!-- Collapsed content would go here -->
+</div>
+<button class="w-full bg-primary hover:bg-primary-hover text-white h-12 rounded-lg font-bold text-sm shadow-md transition-colors mt-4">
+                    Show 124 Homes
+                </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-4 lg:p-8">
+<!-- Header Section -->
+<div class="flex flex-col gap-6 mb-8">
+<!-- Headline & Sort -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h1 class="text-2xl md:text-3xl font-bold text-text-main dark:text-white tracking-tight">Homes for Sale in New York</h1>
+<p class="text-text-muted mt-1">Showing 1-12 of 124 properties</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<select class="appearance-none bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 text-text-main dark:text-white text-sm rounded-lg pl-4 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer shadow-sm">
+<option>Newest Listings</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Square Feet</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none text-lg">expand_more</span>
+</div>
+<div class="flex bg-white dark:bg-card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-1 shadow-sm">
+<button class="p-1.5 rounded bg-gray-100 dark:bg-gray-700 text-text-main dark:text-white">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+<button class="p-1.5 rounded text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">view_list</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Active Filter Chips -->
+<div class="flex flex-wrap gap-2">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 rounded-full shadow-sm">
+<span class="text-xs font-medium text-text-main dark:text-white">New York, NY</span>
+<button class="text-gray-400 hover:text-red-500 flex items-center"><span class="material-symbols-outlined text-[16px]">close</span></button>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 rounded-full shadow-sm">
+<span class="text-xs font-medium text-text-main dark:text-white">$150k - $850k</span>
+<button class="text-gray-400 hover:text-red-500 flex items-center"><span class="material-symbols-outlined text-[16px]">close</span></button>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 rounded-full shadow-sm">
+<span class="text-xs font-medium text-text-main dark:text-white">2+ Beds</span>
+<button class="text-gray-400 hover:text-red-500 flex items-center"><span class="material-symbols-outlined text-[16px]">close</span></button>
+</div>
+<button class="text-primary text-sm font-medium hover:underline ml-2">Clear all</button>
+</div>
+</div>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="group bg-white dark:bg-card-dark rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 flex flex-col">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Modern suburban house with large driveway and green lawn" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAC6L3f3eIxVQS42Vvxk9FV8FwGk9YhObgM7SjcN0YHfMPO_reTq2pmpDB5pEWJEck2klC7orHwI57HtefRwYSGWrs1FavP3K8opFrsKXu75E2vniDJ8_abjVoyCLeVwQG6msqRh7IXj2BUzbbLMd2_S0d__09532yFWW9VH9YHkJEia5kDeReoyiPYOePDmHtGIcjhSJkAo3Glur5rQQrmUOIuBre3Wkrmk8lPLaC7lApd5gjmGYN6LB7DyC4GnqTOEzjRBNLaZ2KZ');"></div>
+<div class="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">FOR SALE</div>
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-black/50 hover:bg-white dark:hover:bg-black/70 rounded-full text-gray-700 dark:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px] block">favorite</span>
+</button>
+</div>
+<div class="p-5 flex flex-col gap-3 grow">
+<div>
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-2xl font-bold text-primary">$850,000</h3>
+</div>
+<p class="text-text-main dark:text-white font-medium truncate">123 Highland Ave, Brooklyn, NY</p>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">bed</span>
+<span>3 Beds</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">bathtub</span>
+<span>2 Baths</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">square_foot</span>
+<span>1,200 sqft</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-auto pt-1">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Portrait of real estate agent" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBnoIPDK-meLG00DLHwMiH1aYDwob3eV6B8gCIl7pqNAHjXck29A-A8F9NSceV04raxF88jt01PHhtox5eL2UgTflciEc3nNgi02HnbsIo5QBRAkRdeQ3oGN1_CoHgnMrGkgPvMOAXElj6a4sVy9eSgUOnxMaSeb_J-37yH76jUJLgUlFm8Cz1G-AsNqcNGhhAwUEVLmlbAARxTMhiHeqHEtzWVb-61qEPQekba1bCOnuRRzqo1yTlLkPJbKBYMhjNhH4roQKJ96oid')"></div>
+<span class="text-xs font-medium text-gray-500 dark:text-gray-400">Sarah Jenkins</span>
+</div>
+<button class="text-primary hover:bg-primary/5 px-3 py-1.5 rounded text-sm font-semibold transition-colors">View Details</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-white dark:bg-card-dark rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 flex flex-col">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Modern white two-story residential home with large windows" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAKPdJenLPu9aGDdLrcZ_JEh2WMSHFI9WvzytvQrhuRuM7ynKe4AG0J1OH9TNT8kFmuWwt2F76rPXk2CiRpDi1s6waGg6rhAN6RT1MPqA3w4uCnpHNd8xjKPdeSINzsaRAdmaPq88gNXLM6qZU4FbO8cIDQ2q24W3W0JQGaiHr5nPVZsMRl35ZCaGMwLEuu0mxOF-uQUjIN87PDHi0DUYwOEO2He_QKlippZTilQ80Tk5RMpWFIbEALE2XaIy3B0QS2YgGQnIJEDwp0');"></div>
+<div class="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">NEW</div>
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-black/50 hover:bg-white dark:hover:bg-black/70 rounded-full text-gray-700 dark:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px] block">favorite</span>
+</button>
+</div>
+<div class="p-5 flex flex-col gap-3 grow">
+<div>
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-2xl font-bold text-primary">$1,250,000</h3>
+</div>
+<p class="text-text-main dark:text-white font-medium truncate">88 West End Ave, New York, NY</p>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">bed</span>
+<span>4 Beds</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">bathtub</span>
+<span>3 Baths</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">square_foot</span>
+<span>2,100 sqft</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-auto pt-1">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Portrait of real estate agent" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAIB090JtLo4l-KZWwbiOIAXenXzyk-OX97YOARt6wp75xdGzuxH_3A8wj8pNsyvgbzvHweo8OK9TD7VlRkiHoeGKfOLJbipLcEgwZjJzUnjcDOZCr82zvomR92Ok6gnpVyC7JQkPMHTcq_T2JvdXFDSHg1rPiboYcFVcLu1ksiR-98Z2NAFMeODXRIFH6pP1KmgbBXTkIOWZMgk8bo24j7LYXq3C0U7MAT4XBGNbZtW3lcvHnox449UPoCBEzlNa3GGyeS-Eb4uv3q')"></div>
+<span class="text-xs font-medium text-gray-500 dark:text-gray-400">Mark Doe</span>
+</div>
+<button class="text-primary hover:bg-primary/5 px-3 py-1.5 rounded text-sm font-semibold transition-colors">View Details</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-white dark:bg-card-dark rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 flex flex-col">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Large luxury villa with swimming pool in twilight" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvO41rqTHdXY00dFfok-ClS4GK1vyrD3fP_QAA1pFBeG9r-K19MGK9MBPKjeQpRoRnl6DTq7SAynfULuZ8YzwtXJ34MIS7PH9jWK52S60ICiq4q88RCG9WnMPRltw5uQ_BfjYNCptdD8qSgdR62YFunfbjiPQwESamT-Y02coRf_DtzDuiz3s79wCMvzS6-dS_AcI1crSv6WUKKvz5Sa0fuziMse5-ivqN5UOCwUf8xt32UnO5NwINITM9naowHXN12VC86QDGn06Y');"></div>
+<div class="absolute top-3 left-3 bg-purple-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">PREMIUM</div>
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-black/50 hover:bg-white dark:hover:bg-black/70 rounded-full text-gray-700 dark:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px] block">favorite</span>
+</button>
+</div>
+<div class="p-5 flex flex-col gap-3 grow">
+<div>
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-2xl font-bold text-primary">$2,400,000</h3>
+</div>
+<p class="text-text-main dark:text-white font-medium truncate">55 River Road, Hudson, NY</p>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">bed</span>
+<span>5 Beds</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">bathtub</span>
+<span>4.5 Baths</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">square_foot</span>
+<span>3,500 sqft</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-auto pt-1">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Portrait of real estate agent" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0zgzsTl94INhjHV-9XmYLes-Op82QbdemugbO2QuVJTuTsR5JHS3C5qEbHSdwPR23uPf7-1jnagQON-BOHQrgTk7562BMNJItkgrFmy4Z_vy0LdPMZTSVrr4OmS_urX3yRCjnaB8Xec7v34TPqVwUvre4ad9ZEsoqBbknmQdtsF2xpCOSeJH_pmHbN97VJhJrfNejmPb6OQT71soyS1A6AzJ486pd4X62HoYfOkFmYIigU2L0gnmN8AitJOv9JGeuGxgfN2RIgZ9-')"></div>
+<span class="text-xs font-medium text-gray-500 dark:text-gray-400">Emily Stone</span>
+</div>
+<button class="text-primary hover:bg-primary/5 px-3 py-1.5 rounded text-sm font-semibold transition-colors">View Details</button>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group bg-white dark:bg-card-dark rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 flex flex-col">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Contemporary dark grey house exterior with minimalist garden" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB-XOnnO2AAYJ1wyt6WuAyBbsKXJLmJfmSCValCimyOUpAfi97T585tVMDBVg0Tp06Eh4LLvGmJR7Rokhekn6R5j9jPjxZYBSMy6qrkZK4P2_p-fRqk49_4WLNJGQSlEZi2HjKbMclkyUt58R-pRZVxhRDBeLk8i2YXrXxiuXtklWdhhcdCYbEyg07-JqeCdl5ccMhDx8RMiOdbV1jhTQK7SK50PSbhTmk23JMQSfJA_Oa22y19so-Wm2bIJdt_GDpLfcqOnV3Bni3Q');"></div>
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-black/50 hover:bg-white dark:hover:bg-black/70 rounded-full text-gray-700 dark:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px] block">favorite</span>
+</button>
+</div>
+<div class="p-5 flex flex-col gap-3 grow">
+<div>
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-2xl font-bold text-primary">$650,000</h3>
+</div>
+<p class="text-text-main dark:text-white font-medium truncate">24 Park Place, Queens, NY</p>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">bed</span>
+<span>2 Beds</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">bathtub</span>
+<span>2 Baths</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">square_foot</span>
+<span>980 sqft</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-auto pt-1">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Portrait of real estate agent" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAZ6ADmGNdr_YgWpy6q5G6Q4E3GjRTrcYt9rRJDssVvzd0pT59yCq-zUX3qyxNMAaWdNO1kpDoESUkCg251lgZ2IgxOd1byKlzUCFN3AFTotLjPEFH8ZWWayHTp_QZdMh0uHUJR-UBAajC_IeQnQxk5nYynOo23hPovXUMyMozQ_M_UvXtXHiMl0vLxXNIQ_gVYyP4ngQoyLT6wBgYA3wPxbVPai513QHql2lrKR6ty2IQh4noUm8Ypo-BjuPkohXDRKRPp52hkHBEB')"></div>
+<span class="text-xs font-medium text-gray-500 dark:text-gray-400">James Wilson</span>
+</div>
+<button class="text-primary hover:bg-primary/5 px-3 py-1.5 rounded text-sm font-semibold transition-colors">View Details</button>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="group bg-white dark:bg-card-dark rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 flex flex-col">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Classic brick apartment building exterior" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuClIGz55z_e4kbfGLP62dDTkKWMIq2Z6TD9s1xERBA5fst5UNIXAg6XxjYS6OWyzZJotlPxaTqEZvQR_3PHe4MbNyfQZ05b4KcaTGFYwKg23Glf3BsooAHjAiW4bS1NJuFBcrN36QOFQUD5uGEaWIutGk9vv1n9QTQ5z5p1SI7ffp-5tpjYSQWVSJCXpz5kQNkoiD7HlyxWzcCGEwBJCqJUqv2S3CyEoCMnr7yuXL0yJq8kyFuQL7mG3N0xxfwPRY8sfgLRrPDgxCmG');"></div>
+<div class="absolute top-3 left-3 bg-gray-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">OPEN HOUSE</div>
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-black/50 hover:bg-white dark:hover:bg-black/70 rounded-full text-gray-700 dark:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px] block">favorite</span>
+</button>
+</div>
+<div class="p-5 flex flex-col gap-3 grow">
+<div>
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-2xl font-bold text-primary">$450,000</h3>
+</div>
+<p class="text-text-main dark:text-white font-medium truncate">104 5th Ave, Apartment 4B, Brooklyn</p>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">bed</span>
+<span>1 Bed</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">bathtub</span>
+<span>1 Bath</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">square_foot</span>
+<span>750 sqft</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-auto pt-1">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Portrait of real estate agent" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAeyyyCSUmg_FH3M1sby0VNyaGEL8LliNZv7Z4sX7Ux-TqDEQEQZkvMgifUbPLzJtqacoKavD0rPn09EBr8iePrVmAHpLnK1h7Ahy7ZJv72GlK0XaxM9Axu919y974FT74k3kXWUJGqCRKqszbAI9iLZI7rFYbmUsm7DRKW5KAIXdoCZ6PPd2sR0muDIcOgYZQu6efAaButlo0ZGB0OSfqE5yI9a1uMoHMdVppu9Q3mHBYE5d-RsUVQ8225CvqEg9of6w4Gyf5KGxGB')"></div>
+<span class="text-xs font-medium text-gray-500 dark:text-gray-400">Linda Chen</span>
+</div>
+<button class="text-primary hover:bg-primary/5 px-3 py-1.5 rounded text-sm font-semibold transition-colors">View Details</button>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="group bg-white dark:bg-card-dark rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 flex flex-col">
+<div class="relative aspect-[4/3] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Modern cabin style house in the woods" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAY2yPw4XkOyBWwqvvByn5OHLgXb3MYaFUo23yJMjb2NiCLe-hAVWnun8O8HFgJC28iJ9rFO52N3OQnVr5R4xw4-_PpE_HPxmmzff4Qk8k2vjo0lW-L9x7YnW4Uh6KgSL7Ov29PUjKKAN57EdUeV9o1PPtS-1T_bHpPj4LDlfXfHm5r8nUBv_KeAWE7eOMQFN-pVaG1zqTPsLMHlfw5kp2SMq-KPKOj8ZNs7e0HJpe_L3Ptdt2wJ_ZF848Che_muZx-ag6mFgUzUljx');"></div>
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-black/50 hover:bg-white dark:hover:bg-black/70 rounded-full text-gray-700 dark:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px] block">favorite</span>
+</button>
+</div>
+<div class="p-5 flex flex-col gap-3 grow">
+<div>
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-2xl font-bold text-primary">$925,000</h3>
+</div>
+<p class="text-text-main dark:text-white font-medium truncate">77 Woodland Dr, Westchester, NY</p>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">bed</span>
+<span>3 Beds</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">bathtub</span>
+<span>2.5 Baths</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">square_foot</span>
+<span>1,850 sqft</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-auto pt-1">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-gray-200 bg-cover bg-center" data-alt="Portrait of real estate agent" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDYU1rkzlTJuvuHYhia0YHSyL3O5l0B5QfK8gnROIPc2tNWamsQ250k67LcwMT8ytGMwmcHmYL1lLnwZrojSRa072zKdWRLrYuyla3pTUAHYhEmOJsYDshu1U2XXcsGU60vRLMH6qMwS4bTt2LOboEEvJ6lFM5ogpZsYxrccVwsGVvGHmy9iUiEhfFs-LMqZCWcqcdmiUsD1OwT3IdGQE6WlHAiYjFi8sgsRTkVPA4b-iu9CibueOX7_hsPujFMqDmFxYK2hKQTn250')"></div>
+<span class="text-xs font-medium text-gray-500 dark:text-gray-400">Robert Fox</span>
+</div>
+<button class="text-primary hover:bg-primary/5 px-3 py-1.5 rounded text-sm font-semibold transition-colors">View Details</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-center gap-2 mt-12 mb-4">
+<button class="flex items-center justify-center size-10 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-card-dark text-gray-500 hover:text-primary hover:border-primary transition-colors disabled:opacity-50">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-lg bg-primary text-white font-semibold shadow-md">1</button>
+<button class="flex items-center justify-center size-10 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-card-dark text-text-main dark:text-white hover:border-primary hover:text-primary transition-colors">2</button>
+<button class="flex items-center justify-center size-10 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-card-dark text-text-main dark:text-white hover:border-primary hover:text-primary transition-colors">3</button>
+<span class="text-gray-400 px-2">...</span>
+<button class="flex items-center justify-center size-10 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-card-dark text-text-main dark:text-white hover:border-primary hover:text-primary transition-colors">12</button>
+<button class="flex items-center justify-center size-10 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-card-dark text-gray-500 hover:text-primary hover:border-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</main>
+</div>
+</body></html>
