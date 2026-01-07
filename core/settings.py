@@ -111,12 +111,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
 # Default language
-LANGUAGE_CODE = "zh"
+LANGUAGE_CODE = "zh-hant"
 
 # Supported languages
 LANGUAGES = [
     ('en', 'English'),
-    ('zh', '繁體中文'),
+    ('zh-hant', '繁體中文'),
 ]
 
 # Translation files location
