@@ -1,0 +1,264 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-07 11:32+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+#: .\templates\includes\_header.html:14 .\templates\properties\home.html:21
+msgid "Buy"
+msgstr ""
+
+#: .\templates\includes\_header.html:15 .\templates\properties\home.html:22
+msgid "Rent"
+msgstr ""
+
+#: .\templates\includes\_header.html:16 .\templates\properties\home.html:23
+msgid "Sell"
+msgstr ""
+
+#: .\templates\includes\_header.html:17
+msgid "Agents"
+msgstr ""
+
+#: .\templates\includes\_header.html:18
+msgid "About"
+msgstr ""
+
+#: .\templates\includes\_header.html:40
+msgid "Hi"
+msgstr ""
+
+#: .\templates\includes\_header.html:43
+msgid "Dashboard"
+msgstr ""
+
+#: .\templates\includes\_header.html:46
+msgid "Logout"
+msgstr ""
+
+#: .\templates\includes\_header.html:51
+msgid "Login"
+msgstr ""
+
+#: .\templates\includes\_header.html:54
+msgid "Become an Agent"
+msgstr ""
+
+#: .\templates\includes\_header.html:58
+msgid "Contact Us"
+msgstr ""
+
+#: .\templates\properties\home.html:4
+msgid "Home - Real Estate Listings"
+msgstr ""
+
+#: .\templates\properties\home.html:12
+msgid "满怀信心地找到您的梦想之家"
+msgstr ""
+
+#: .\templates\properties\home.html:15
+msgid "浏览您所在地区的数千套优质房产"
+msgstr ""
+
+#: .\templates\properties\home.html:18
+msgid "搜索框"
+msgstr ""
+
+#: .\templates\properties\home.html:30
+msgid "Enter an address, neighborhood, city, or ZIP code"
+msgstr ""
+
+#: .\templates\properties\home.html:35
+#: .\templates\properties\property_list.html:79
+msgid "Property Type"
+msgstr "物業類型"
+
+#: .\templates\properties\home.html:36
+#: .\templates\properties\property_list.html:85
+msgid "House"
+msgstr "獨立屋"
+
+#: .\templates\properties\home.html:37
+#: .\templates\properties\property_list.html:91
+msgid "Apartment"
+msgstr "公寓"
+
+#: .\templates\properties\home.html:38
+#: .\templates\properties\property_list.html:97
+msgid "Condo"
+msgstr "電梯大樓"
+
+#: .\templates\properties\home.html:39
+msgid "Land"
+msgstr "土地"
+
+#: .\templates\properties\home.html:46
+msgid "Search"
+msgstr ""
+
+#: .\templates\properties\home.html:58
+msgid "Featured Properties"
+msgstr ""
+
+#: .\templates\properties\home.html:59
+msgid "Handpicked listings just for you."
+msgstr ""
+
+#: .\templates\properties\home.html:62
+msgid "View all listings"
+msgstr ""
+
+#: .\templates\properties\home.html:73
+msgid "Featured"
+msgstr ""
+
+#: .\templates\properties\home.html:101
+msgid "Beds"
+msgstr ""
+
+#: .\templates\properties\home.html:105
+msgid "Baths"
+msgstr ""
+
+#: .\templates\properties\home.html:114
+msgid "View Details"
+msgstr ""
+
+#: .\templates\properties\home.html:126
+msgid "No Featured Properties"
+msgstr ""
+
+#: .\templates\properties\home.html:127
+msgid "Check back soon for new listings!"
+msgstr ""
+
+#: .\templates\properties\home.html:129
+msgid "Browse All Properties"
+msgstr ""
+
+#: .\templates\properties\home.html:137
+msgid "Why Choose EstateAgency?"
+msgstr ""
+
+#: .\templates\properties\home.html:138
+msgid ""
+"We provide a seamless experience whether you are buying, selling, or renting."
+msgstr ""
+
+#: .\templates\properties\home.html:145
+msgid "Local Expertise"
+msgstr ""
+
+#: .\templates\properties\home.html:146
+msgid ""
+"Our agents live and work in the communities they serve, offering unmatched "
+"local knowledge."
+msgstr ""
+
+#: .\templates\properties\home.html:152
+msgid "Transparent Pricing"
+msgstr ""
+
+#: .\templates\properties\home.html:153
+msgid ""
+"No hidden fees. We believe in clear communication and straightforward "
+"pricing for all services."
+msgstr ""
+
+#: .\templates\properties\home.html:159
+msgid "Award-Winning Service"
+msgstr ""
+
+#: .\templates\properties\home.html:160
+msgid ""
+"Consistently rated as top performers for customer satisfaction and sales "
+"excellence."
+msgstr ""
+
+#: .\templates\properties\home.html:169
+msgid "Get a Free Home Valuation Today"
+msgstr ""
+
+#: .\templates\properties\home.html:170
+msgid ""
+"Curious about what your home is worth? Let our experts provide you with a "
+"comprehensive market analysis."
+msgstr ""
+
+#: .\templates\properties\home.html:173
+msgid "Get Valuation"
+msgstr ""
+
+#: .\templates\properties\property_list.html:5
+msgid "Property Listings"
+msgstr "物業列表"
+
+#: .\templates\properties\property_list.html:50
+msgid "Filters"
+msgstr "篩選"
+
+#: .\templates\properties\property_list.html:51
+msgid "Reset All"
+msgstr "全部重設"
+
+#: .\templates\properties\property_list.html:56
+msgid "Location"
+msgstr "位置"
+
+#: .\templates\properties\property_list.html:59
+msgid "City, Zip, Address"
+msgstr "城市、郵遞區號、地址"
+
+#: .\templates\properties\property_list.html:64
+msgid "Price Range"
+msgstr "價格範圍"
+
+#: .\templates\properties\property_list.html:103
+msgid "Townhouse"
+msgstr "連棟別墅"
+
+#: .\templates\properties\property_list.html:110
+msgid "Bedrooms"
+msgstr "臥室"
+
+#: .\templates\properties\property_list.html:112
+#: .\templates\properties\property_list.html:121
+msgid "Any"
+msgstr "任何"
+
+#: .\templates\properties\property_list.html:119
+msgid "Bathrooms"
+msgstr "浴室"
+
+#: .\templates\properties\property_list.html:130
+msgid "Amenities"
+msgstr "設施"
+
+#: .\templates\properties\property_list.html:136
+msgid "Apply Filters"
+msgstr "套用篩選"
+
+#: .\templates\properties\property_list.html:149
+msgid "Homes for Rent"
+msgstr "出租房屋"
+
+#: .\templates\properties\property_list.html:151
+msgid "Homes for Sale"
+msgstr "出售房屋"
+
+#: .\templates\properties\property_list.html:154
+msgid "in"
+msgstr "在"

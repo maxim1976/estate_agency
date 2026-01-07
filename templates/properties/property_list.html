@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load property_filters %}
+{% load i18n %}
 
-{% block title %}Property Listings - EstateAgency{% endblock %}
+{% block title %}{% trans "Property Listings" %} - EstateAgency{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -46,21 +47,21 @@
 <!-- Sidebar Filters -->
 <aside class="w-full lg:w-80 shrink-0 p-4 lg:p-6 bg-white dark:bg-surface-dark lg:border-r border-gray-100 dark:border-gray-800 lg:sticky lg:top-[65px] lg:h-[calc(100vh-65px)] lg:overflow-y-auto custom-scrollbar z-10">
 <div class="flex items-center justify-between mb-6">
-<h3 class="text-lg font-bold text-text-main-light dark:text-text-main-dark">Filters</h3>
-<button id="resetFilters" class="text-sm font-medium text-primary hover:underline">Reset All</button>
+<h3 class="text-lg font-bold text-text-main-light dark:text-text-main-dark">{% trans "Filters" %}</h3>
+<button id="resetFilters" class="text-sm font-medium text-primary hover:underline">{% trans "Reset All" %}</button>
 </div>
 <div class="space-y-6">
 <!-- Location -->
 <div class="space-y-2">
-<label class="text-sm font-semibold text-text-main-light dark:text-text-main-dark dark:text-gray-200">Location</label>
+<label class="text-sm font-semibold text-text-main-light dark:text-text-main-dark dark:text-gray-200">{% trans "Location" %}</label>
 <div class="relative">
 <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 material-symbols-outlined text-[20px]">search</span>
-<input id="locationInput" class="w-full pl-10 pr-4 py-2.5 bg-background-light dark:bg-background-dark border-none rounded-lg text-sm focus:ring-2 focus:ring-primary text-text-main-light dark:text-text-main-dark placeholder-gray-500" placeholder="City, Zip, Address" type="text"/>
+<input id="locationInput" class="w-full pl-10 pr-4 py-2.5 bg-background-light dark:bg-background-dark border-none rounded-lg text-sm focus:ring-2 focus:ring-primary text-text-main-light dark:text-text-main-dark placeholder-gray-500" placeholder="{% trans 'City, Zip, Address' %}" type="text"/>
 </div>
 </div>
 <!-- Price Range -->
 <div class="space-y-3">
-<label class="text-sm font-semibold text-text-main-light dark:text-text-main-dark dark:text-gray-200">Price Range</label>
+<label class="text-sm font-semibold text-text-main-light dark:text-text-main-dark dark:text-gray-200">{% trans "Price Range" %}</label>
 <div class="flex items-center gap-2">
 <div class="relative w-full">
 <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">$</span>
@@ -75,49 +76,49 @@
 </div>
 <!-- Property Type -->
 <div class="space-y-3">
-<label class="text-sm font-semibold text-text-main-light dark:text-text-main-dark dark:text-gray-200">Property Type</label>
+<label class="text-sm font-semibold text-text-main-light dark:text-text-main-dark dark:text-gray-200">{% trans "Property Type" %}</label>
 <div class="space-y-2">
 <label class="flex items-center gap-3 cursor-pointer group">
 <div class="relative flex items-center">
 <input class="property-type-checkbox peer h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox" value="house"/>
 </div>
-<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition-colors">House</span>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition-colors">{% trans "House" %}</span>
 </label>
 <label class="flex items-center gap-3 cursor-pointer group">
 <div class="relative flex items-center">
 <input class="property-type-checkbox peer h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox" value="apartment"/>
 </div>
-<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition-colors">Apartment</span>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition-colors">{% trans "Apartment" %}</span>
 </label>
 <label class="flex items-center gap-3 cursor-pointer group">
 <div class="relative flex items-center">
 <input class="property-type-checkbox peer h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox" value="condo"/>
 </div>
-<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition-colors">Condo</span>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition-colors">{% trans "Condo" %}</span>
 </label>
 <label class="flex items-center gap-3 cursor-pointer group">
 <div class="relative flex items-center">
 <input class="property-type-checkbox peer h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" type="checkbox" value="townhouse"/>
 </div>
-<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition-colors">Townhouse</span>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition-colors">{% trans "Townhouse" %}</span>
 </label>
 </div>
 </div>
 <!-- Beds & Baths -->
 <div class="space-y-4">
 <div>
-<label class="text-sm font-semibold text-text-main-light dark:text-text-main-dark dark:text-gray-200 block mb-2">Bedrooms</label>
+<label class="text-sm font-semibold text-text-main-light dark:text-text-main-dark dark:text-gray-200 block mb-2">{% trans "Bedrooms" %}</label>
 <div class="flex gap-2">
-<button class="bedroom-btn h-9 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm hover:border-primary hover:text-primary transition-colors" data-value="">Any</button>
+<button class="bedroom-btn h-9 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm hover:border-primary hover:text-primary transition-colors" data-value="">{% trans "Any" %}</button>
 <button class="bedroom-btn h-9 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm hover:border-primary hover:text-primary transition-colors" data-value="2">2+</button>
 <button class="bedroom-btn h-9 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm hover:border-primary hover:text-primary transition-colors" data-value="3">3+</button>
 <button class="bedroom-btn h-9 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm hover:border-primary hover:text-primary transition-colors" data-value="4">4+</button>
 </div>
 </div>
 <div>
-<label class="text-sm font-semibold text-text-main-light dark:text-text-main-dark dark:text-gray-200 block mb-2">Bathrooms</label>
+<label class="text-sm font-semibold text-text-main-light dark:text-text-main-dark dark:text-gray-200 block mb-2">{% trans "Bathrooms" %}</label>
 <div class="flex gap-2">
-<button class="bathroom-btn h-9 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm hover:border-primary hover:text-primary transition-colors" data-value="">Any</button>
+<button class="bathroom-btn h-9 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm hover:border-primary hover:text-primary transition-colors" data-value="">{% trans "Any" %}</button>
 <button class="bathroom-btn h-9 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm hover:border-primary hover:text-primary transition-colors" data-value="2">2+</button>
 <button class="bathroom-btn h-9 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-sm hover:border-primary hover:text-primary transition-colors" data-value="3">3+</button>
 </div>
@@ -126,13 +127,13 @@
 <!-- Amenities -->
 <div class="space-y-3 pt-2 border-t border-gray-100 dark:border-gray-800">
 <button class="flex w-full items-center justify-between text-sm font-semibold text-text-main-light dark:text-text-main-dark dark:text-gray-200 py-2">
-<span>Amenities</span>
+<span>{% trans "Amenities" %}</span>
 <span class="material-symbols-outlined text-gray-400">expand_more</span>
 </button>
 <!-- Collapsed content would go here -->
 </div>
 <button id="applyFilters" class="w-full bg-primary hover:bg-primary-hover text-white h-12 rounded-lg font-bold text-sm shadow-md transition-colors mt-4">
-                    Apply Filters
+                    {% trans "Apply Filters" %}
                 </button>
 </div>
 </aside>
@@ -145,12 +146,12 @@
 <div>
 <h1 class="text-2xl md:text-3xl font-bold text-text-main-light dark:text-text-main-dark tracking-tight">
     {% if request.GET.listing_type == 'rent' %}
-        Homes for Rent
+        {% trans "Homes for Rent" %}
     {% else %}
-        Homes for Sale
+        {% trans "Homes for Sale" %}
     {% endif %}
     {% if request.GET.location %}
-        in {{ request.GET.location }}
+        {% trans "in" %} {{ request.GET.location }}
     {% endif %}
 </h1>
 <p class="text-text-secondary-light dark:text-text-secondary-dark mt-1">
