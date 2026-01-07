@@ -104,8 +104,8 @@ class Property(models.Model):
     ]
     
     LISTING_TYPE_CHOICES = [
-        ('sale', 'For Sale'),
-        ('rent', 'For Rent'),
+        ('sale', 'For Sale/出售'),
+        ('rent', 'For Rent/蒩蒩'),
     ]
     
     title = models.CharField(max_length=200)
