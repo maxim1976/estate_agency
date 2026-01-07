@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-07 11:32+0800\n"
+"POT-Creation-Date: 2026-01-07 11:40+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
 #: .\templates\includes\_header.html:14 .\templates\properties\home.html:21
 msgid "Buy"
 msgstr ""
@@ -122,6 +123,7 @@ msgid "View all listings"
 msgstr ""
 
 #: .\templates\properties\home.html:73
+#: .\templates\properties\property_detail.html:35
 msgid "Featured"
 msgstr ""
 
@@ -202,6 +204,88 @@ msgstr ""
 msgid "Get Valuation"
 msgstr ""
 
+#: .\templates\properties\property_detail.html:14
+msgid "Home"
+msgstr ""
+
+#: .\templates\properties\property_detail.html:16
+#, fuzzy
+#| msgid "Property Type"
+msgid "Properties"
+msgstr "物業類型"
+
+#: .\templates\properties\property_detail.html:39
+msgid "Built in"
+msgstr "建於"
+
+#: .\templates\properties\property_detail.html:44
+msgid "Save"
+msgstr "收藏"
+
+#: .\templates\properties\property_detail.html:48
+msgid "Share"
+msgstr "分享"
+
+#: .\templates\properties\property_detail.html:93
+#: .\templates\properties\property_list.html:110
+msgid "Bedrooms"
+msgstr "臥室"
+
+#: .\templates\properties\property_detail.html:101
+#: .\templates\properties\property_list.html:119
+msgid "Bathrooms"
+msgstr "浴室"
+
+#: .\templates\properties\property_detail.html:109
+msgid "Square M"
+msgstr "平方米"
+
+#: .\templates\properties\property_detail.html:118
+msgid "Parking"
+msgstr "停車位"
+
+#: .\templates\properties\property_detail.html:125
+msgid "About this property"
+msgstr "關於此物業"
+
+#: .\templates\properties\property_detail.html:132
+msgid "Property Information"
+msgstr "物業資訊"
+
+#: .\templates\properties\property_detail.html:137
+msgid "Type"
+msgstr "類型"
+
+#: .\templates\properties\property_detail.html:144
+msgid "Status"
+msgstr "狀態"
+
+#: .\templates\properties\property_detail.html:152
+msgid "Year Built"
+msgstr "建造年份"
+
+#: .\templates\properties\property_detail.html:160
+#: .\templates\properties\property_detail.html:192
+msgid "City"
+msgstr "城市"
+
+#: .\templates\properties\property_detail.html:168
+#: .\templates\properties\property_detail.html:197
+msgid "Postal Code"
+msgstr "郵遞區號"
+
+#: .\templates\properties\property_detail.html:176
+msgid "Area"
+msgstr "面積"
+
+#: .\templates\properties\property_detail.html:184
+msgid "Address"
+msgstr "地址"
+
+#: .\templates\properties\property_detail.html:188
+msgid "Street Address"
+msgstr "街道地址"
+
 #: .\templates\properties\property_list.html:5
 msgid "Property Listings"
 msgstr "物業列表"
@@ -230,18 +314,10 @@ msgstr "價格範圍"
 msgid "Townhouse"
 msgstr "連棟別墅"
 
-#: .\templates\properties\property_list.html:110
-msgid "Bedrooms"
-msgstr "臥室"
-
 #: .\templates\properties\property_list.html:112
 #: .\templates\properties\property_list.html:121
 msgid "Any"
 msgstr "任何"
-
-#: .\templates\properties\property_list.html:119
-msgid "Bathrooms"
-msgstr "浴室"
 
 #: .\templates\properties\property_list.html:130
 msgid "Amenities"

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
+{% load i18n %}
 
 {% block title %}{{ property.title }} - EstateAgency{% endblock %}
 
@@ -10,9 +11,9 @@
 <main class="max-w-[1200px] mx-auto px-4 md:px-8 py-6 pb-20">
 <!-- Breadcrumbs -->
 <div class="flex items-center gap-2 text-sm text-text-muted mb-6">
-<a class="hover:text-primary hover:underline" href="{% url 'properties:home' %}">Home</a>
+<a class="hover:text-primary hover:underline" href="{% url 'properties:home' %}">{% trans "Home" %}</a>
 <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-<a class="hover:text-primary hover:underline" href="{% url 'properties:property_list' %}">Properties</a>
+<a class="hover:text-primary hover:underline" href="{% url 'properties:property_list' %}">{% trans "Properties" %}</a>
 <span class="material-symbols-outlined text-[16px]">chevron_right</span>
 <a class="hover:text-primary hover:underline" href="{% url 'properties:property_list' %}?city={{ property.city }}">{{ property.city }}</a>
 <span class="material-symbols-outlined text-[16px]">chevron_right</span>
@@ -31,20 +32,20 @@
 {% endif %}
 <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-semibold rounded-full uppercase tracking-wide">{{ property.get_property_type_display }}</span>
 {% if property.featured %}
-<span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-xs font-semibold rounded-full uppercase tracking-wide">Featured</span>
+<span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-xs font-semibold rounded-full uppercase tracking-wide">{% trans "Featured" %}</span>
 {% endif %}
 </div>
 <h1 class="text-3xl md:text-4xl font-black text-text-main dark:text-white tracking-tight leading-tight">{{ property.title }}</h1>
-<p class="text-text-muted mt-2 text-lg">{{ property.city }}{% if property.year_built %} • Built in {{ property.year_built }}{% endif %}</p>
+<p class="text-text-muted mt-2 text-lg">{{ property.city }}{% if property.year_built %} • {% trans "Built in" %} {{ property.year_built }}{% endif %}</p>
 </div>
 <div class="flex gap-3">
 <button class="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-card-dark hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm font-medium text-text-main dark:text-white">
 <span class="material-symbols-outlined text-[20px]">favorite</span>
-                    Save
+                    {% trans "Save" %}
                 </button>
 <button class="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-card-dark hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-sm font-medium text-text-main dark:text-white">
 <span class="material-symbols-outlined text-[20px]">ios_share</span>
-                    Share
+                    {% trans "Share" %}
                 </button>
 </div>
 </div>
@@ -89,7 +90,7 @@
 <span class="material-symbols-outlined text-primary text-3xl">bed</span>
 <div>
 <p class="text-2xl font-bold text-text-main dark:text-white">{{ property.bedrooms }}</p>
-<p class="text-xs font-medium text-text-muted uppercase tracking-wide">Bedrooms</p>
+<p class="text-xs font-medium text-text-muted uppercase tracking-wide">{% trans "Bedrooms" %}</p>
 </div>
 </div>
 <div class="w-px h-10 bg-gray-200 dark:bg-gray-700"></div>
@@ -97,7 +98,7 @@
 <span class="material-symbols-outlined text-primary text-3xl">bathtub</span>
 <div>
 <p class="text-2xl font-bold text-text-main dark:text-white">{{ property.bathrooms }}</p>
-<p class="text-xs font-medium text-text-muted uppercase tracking-wide">Bathrooms</p>
+<p class="text-xs font-medium text-text-muted uppercase tracking-wide">{% trans "Bathrooms" %}</p>
 </div>
 </div>
 <div class="w-px h-10 bg-gray-200 dark:border-gray-700 hidden sm:block"></div>
@@ -105,7 +106,7 @@
 <span class="material-symbols-outlined text-primary text-3xl">square_foot</span>
 <div>
 <p class="text-2xl font-bold text-text-main dark:text-white">{{ property.area_sqm|floatformat:0 }}</p>
-<p class="text-xs font-medium text-text-muted uppercase tracking-wide">Square M</p>
+<p class="text-xs font-medium text-text-muted uppercase tracking-wide">{% trans "Square M" %}</p>
 </div>
 </div>
 {% if property.parking_spaces %}
@@ -114,33 +115,33 @@
 <span class="material-symbols-outlined text-primary text-3xl">garage_home</span>
 <div>
 <p class="text-2xl font-bold text-text-main dark:text-white">{{ property.parking_spaces }}</p>
-<p class="text-xs font-medium text-text-muted uppercase tracking-wide">Parking</p>
+<p class="text-xs font-medium text-text-muted uppercase tracking-wide">{% trans "Parking" %}</p>
 </div>
 </div>
 {% endif %}
 </div>
 <!-- Description -->
 <div>
-<h3 class="text-xl font-bold text-text-main dark:text-white mb-4">About this property</h3>
+<h3 class="text-xl font-bold text-text-main dark:text-white mb-4">{% trans "About this property" %}</h3>
 <div class="prose prose-slate dark:prose-invert max-w-none text-text-main dark:text-gray-300 leading-relaxed">
 {{ property.description|linebreaks }}
 </div>
 </div>
 <!-- Property Info -->
 <div>
-<h3 class="text-xl font-bold text-text-main dark:text-white mb-6">Property Information</h3>
+<h3 class="text-xl font-bold text-text-main dark:text-white mb-6">{% trans "Property Information" %}</h3>
 <div class="grid grid-cols-2 sm:grid-cols-3 gap-y-4 gap-x-8">
 <div class="flex items-center gap-3 text-text-main dark:text-gray-300">
 <span class="material-symbols-outlined text-primary">home</span>
 <div>
-<p class="text-xs text-text-muted">Type</p>
+<p class="text-xs text-text-muted">{% trans "Type" %}</p>
 <p class="font-medium">{{ property.get_property_type_display }}</p>
 </div>
 </div>
 <div class="flex items-center gap-3 text-text-main dark:text-gray-300">
 <span class="material-symbols-outlined text-primary">sell</span>
 <div>
-<p class="text-xs text-text-muted">Status</p>
+<p class="text-xs text-text-muted">{% trans "Status" %}</p>
 <p class="font-medium">{{ property.get_status_display }}</p>
 </div>
 </div>
@@ -148,7 +149,7 @@
 <div class="flex items-center gap-3 text-text-main dark:text-gray-300">
 <span class="material-symbols-outlined text-primary">event</span>
 <div>
-<p class="text-xs text-text-muted">Year Built</p>
+<p class="text-xs text-text-muted">{% trans "Year Built" %}</p>
 <p class="font-medium">{{ property.year_built }}</p>
 </div>
 </div>
@@ -156,7 +157,7 @@
 <div class="flex items-center gap-3 text-text-main dark:text-gray-300">
 <span class="material-symbols-outlined text-primary">location_city</span>
 <div>
-<p class="text-xs text-text-muted">City</p>
+<p class="text-xs text-text-muted">{% trans "City" %}</p>
 <p class="font-medium">{{ property.city }}</p>
 </div>
 </div>
@@ -164,7 +165,7 @@
 <div class="flex items-center gap-3 text-text-main dark:text-gray-300">
 <span class="material-symbols-outlined text-primary">mail</span>
 <div>
-<p class="text-xs text-text-muted">Postal Code</p>
+<p class="text-xs text-text-muted">{% trans "Postal Code" %}</p>
 <p class="font-medium">{{ property.postal_code }}</p>
 </div>
 </div>
@@ -172,7 +173,7 @@
 <div class="flex items-center gap-3 text-text-main dark:text-gray-300">
 <span class="material-symbols-outlined text-primary">square_foot</span>
 <div>
-<p class="text-xs text-text-muted">Area</p>
+<p class="text-xs text-text-muted">{% trans "Area" %}</p>
 <p class="font-medium">{{ property.area_sqm }} m²</p>
 </div>
 </div>
@@ -180,20 +181,20 @@
 </div>
 <!-- Address Details -->
 <div class="border-t border-gray-200 dark:border-gray-700 pt-8">
-<h3 class="text-xl font-bold text-text-main dark:text-white mb-6">Address</h3>
+<h3 class="text-xl font-bold text-text-main dark:text-white mb-6">{% trans "Address" %}</h3>
 <div class="bg-white dark:bg-card-dark rounded-lg border border-gray-200 dark:border-gray-700 p-6">
 <div class="space-y-3 text-sm">
 <div class="flex justify-between border-b border-dashed border-gray-200 dark:border-gray-700 pb-2">
-<span class="text-text-muted">Street Address</span>
+<span class="text-text-muted">{% trans "Street Address" %}</span>
 <span class="font-medium text-text-main dark:text-white">{{ property.address }}</span>
 </div>
 <div class="flex justify-between border-b border-dashed border-gray-200 dark:border-gray-700 pb-2">
-<span class="text-text-muted">City</span>
+<span class="text-text-muted">{% trans "City" %}</span>
 <span class="font-medium text-text-main dark:text-white">{{ property.city }}</span>
 </div>
 {% if property.postal_code %}
 <div class="flex justify-between border-b border-dashed border-gray-200 dark:border-gray-700 pb-2">
-<span class="text-text-muted">Postal Code</span>
+<span class="text-text-muted">{% trans "Postal Code" %}</span>
 <span class="font-medium text-text-main dark:text-white">{{ property.postal_code }}</span>
 </div>
 {% endif %}
