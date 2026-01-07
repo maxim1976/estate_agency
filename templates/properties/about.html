@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}About Us - EstateAgency{% endblock %}
+{% block title %}{% trans "About Us" %} - EstateAgency{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
@@ -8,10 +9,10 @@
 <div class="flex min-h-[500px] flex-col gap-6 bg-cover bg-center bg-no-repeat items-center justify-center p-4 relative" data-alt="Modern architectural office building with glass facade reflecting blue sky" style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPCYbOV36inGHUOBO81WtNVWBEl7uOtvX74EUGMrjDPeGoBemCNplXZpeBP_PiLVcJ24umsEz39mRzFlTQzf4G_snCgRt0FT8fscqsS0JjXVuBvHG-dLEKOZSH2XyWsNR59LIAxN5RFVylcicdmKuLXdorIqjoKeGnQWa0iheSORat68_C2dqrefKN4FMsBkLCtOoIe1J0wxKON_AuA986auOL1M1GEsURumgkkqfeDWkEsnE4WsxUMBtgbfSMsvh-Lb9uoILIUlg8");'>
 <div class="flex flex-col gap-4 text-center max-w-[800px] z-10">
 <h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-6xl animate-fade-in-up">
-                        Helping You Find Home Since 1998
+                        {% trans "Helping You Find Home Since 1998" %}
                     </h1>
 <h2 class="text-gray-200 text-base font-medium leading-relaxed md:text-lg max-w-2xl mx-auto">
-                        We are a premium real estate agency dedicated to finding you the perfect property with integrity, market expertise, and a commitment to your future.
+                        {% trans "We are a premium real estate agency dedicated to finding you the perfect property with integrity, market expertise, and a commitment to your future." %}
                     </h2>
 </div>
 </div>
@@ -22,19 +23,19 @@
 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 w-full max-w-[1200px] text-center divide-x divide-white/20">
 <div class="flex flex-col gap-1 px-4">
 <p class="text-3xl md:text-4xl font-bold tracking-tight">25+</p>
-<p class="text-sm md:text-base font-medium opacity-90">Years Experience</p>
+<p class="text-sm md:text-base font-medium opacity-90">{% trans "Years Experience" %}</p>
 </div>
 <div class="flex flex-col gap-1 px-4">
 <p class="text-3xl md:text-4xl font-bold tracking-tight">5k+</p>
-<p class="text-sm md:text-base font-medium opacity-90">Homes Sold</p>
+<p class="text-sm md:text-base font-medium opacity-90">{% trans "Homes Sold" %}</p>
 </div>
 <div class="flex flex-col gap-1 px-4">
 <p class="text-3xl md:text-4xl font-bold tracking-tight">98%</p>
-<p class="text-sm md:text-base font-medium opacity-90">Client Satisfaction</p>
+<p class="text-sm md:text-base font-medium opacity-90">{% trans "Client Satisfaction" %}</p>
 </div>
 <div class="flex flex-col gap-1 px-4">
 <p class="text-3xl md:text-4xl font-bold tracking-tight">350+</p>
-<p class="text-sm md:text-base font-medium opacity-90">Active Listings</p>
+<p class="text-sm md:text-base font-medium opacity-90">{% trans "Active Listings" %}</p>
 </div>
 </div>
 </div>
@@ -45,7 +46,7 @@
 <div class="flex flex-col gap-12">
 <div class="flex flex-col gap-4 text-center md:text-left">
 <h2 class="text-[#111318] dark:text-white tracking-tight text-[32px] font-bold leading-tight md:text-4xl">
-                            Our Core Values
+                            {% trans "Our Core Values" %}
                         </h2>
 <p class="text-[#636f88] dark:text-gray-400 text-lg font-normal leading-relaxed max-w-[720px]">
                             Our mission is built on a foundation of trust, expertise, and a client-first approach. We don't just sell houses; we help build communities.

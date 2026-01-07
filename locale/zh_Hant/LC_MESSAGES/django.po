@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-07 11:40+0800\n"
+"POT-Creation-Date: 2026-01-07 13:16+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,8 +59,127 @@ msgid "Become an Agent"
 msgstr ""
 
 #: .\templates\includes\_header.html:58
+#: .\templates\properties\agent_list.html:72
 msgid "Contact Us"
 msgstr ""
+
+#: .\templates\properties\about.html:4
+msgid "About Us"
+msgstr "關於我們"
+
+#: .\templates\properties\about.html:12
+msgid "Helping You Find Home Since 1998"
+msgstr "自1998年起幫您尋找理想之家"
+
+#: .\templates\properties\about.html:15
+msgid ""
+"We are a premium real estate agency dedicated to finding you the perfect "
+"property with integrity, market expertise, and a commitment to your future."
+msgstr "我們是一家優質房地產公司，致力於以誠信、市場專業知識和對您未來的承諾，為您找到完美的物業。"
+
+#: .\templates\properties\about.html:26
+msgid "Years Experience"
+msgstr "年經驗"
+
+#: .\templates\properties\about.html:30
+msgid "Homes Sold"
+msgstr "已售房屋"
+
+#: .\templates\properties\about.html:34
+msgid "Client Satisfaction"
+msgstr "客戶滿意度"
+
+#: .\templates\properties\about.html:38
+msgid "Active Listings"
+msgstr "活躍房源"
+
+#: .\templates\properties\about.html:49
+msgid "Our Core Values"
+msgstr "我們的核心價值"
+
+#: .\templates\properties\agent_dashboard.html:4
+#: .\templates\properties\agent_dashboard.html:9
+msgid "Agent Dashboard"
+msgstr "經紀人管理面板"
+
+#: .\templates\properties\agent_dashboard.html:10
+msgid "Manage your property listings"
+msgstr "管理您的物業列表"
+
+#: .\templates\properties\agent_dashboard.html:18
+msgid "Total Properties"
+msgstr "物業總數"
+
+#: .\templates\properties\agent_dashboard.html:28
+msgid "Available"
+msgstr "可用"
+
+#: .\templates\properties\agent_dashboard.html:38
+msgid "Pending"
+msgstr "待定"
+
+#: .\templates\properties\agent_dashboard.html:48
+msgid "Sold"
+msgstr "已售"
+
+#: .\templates\properties\agent_dashboard.html:60
+msgid "Add New Property"
+msgstr "新增物業"
+
+#: .\templates\properties\agent_dashboard.html:67
+msgid "Your Properties"
+msgstr "您的物業"
+
+#: .\templates\properties\agent_dashboard.html:75
+msgid "Property"
+msgstr "物業"
+
+#: .\templates\properties\agent_dashboard.html:77
+msgid "Price"
+msgstr "價格"
+
+#: .\templates\properties\agent_dashboard.html:79
+#: .\templates\properties\home.html:73
+#: .\templates\properties\property_detail.html:35
+msgid "Featured"
+msgstr "精選"
+
+#: .\templates\properties\agent_dashboard.html:80
+msgid "Actions"
+msgstr "操作"
+
+#: .\templates\properties\agent_list.html:4
+msgid "Our Agents"
+msgstr "我們的經紀人"
+
+#: .\templates\properties\agent_list.html:12
+msgid "Meet Our Expert Agents"
+msgstr "認識我們的專業經紀人"
+
+#: .\templates\properties\agent_list.html:15
+msgid ""
+"Our team of dedicated professionals is here to help you find your perfect "
+"property. With years of experience and local expertise, we're committed to "
+"making your real estate journey seamless."
+msgstr "我們的專業團隊致力於幫助您找到完美的物業。憑藉多年的經驗和本地專業知識，我們致力於讓您的房地產之旅無縫順暢。"
+
+#: .\templates\properties\agent_list.html:56
+msgid "No agents available at this time."
+msgstr "目前沒有可用的經紀人。"
+
+#: .\templates\properties\agent_list.html:65
+msgid "Ready to work with us?"
+msgstr "準備好與我們合作了嗎？"
+
+#: .\templates\properties\agent_list.html:66
+msgid ""
+"Whether you're buying, selling, or renting, our agents are here to guide you "
+"every step of the way."
+msgstr "無論您是購買、出售還是租賃，我們的經紀人都會在每一步為您提供指導。"
+
+#: .\templates\properties\agent_list.html:69
+msgid "Browse Properties"
+msgstr "瀏覽物業"
 
 #: .\templates\properties\home.html:4
 msgid "Home - Real Estate Listings"
@@ -120,11 +239,6 @@ msgstr ""
 
 #: .\templates\properties\home.html:62
 msgid "View all listings"
-msgstr ""
-
-#: .\templates\properties\home.html:73
-#: .\templates\properties\property_detail.html:35
-msgid "Featured"
 msgstr ""
 
 #: .\templates\properties\home.html:101
@@ -252,14 +366,6 @@ msgstr "關於此物業"
 msgid "Property Information"
 msgstr "物業資訊"
 
-#: .\templates\properties\property_detail.html:137
-msgid "Type"
-msgstr "類型"
-
-#: .\templates\properties\property_detail.html:144
-msgid "Status"
-msgstr "狀態"
-
 #: .\templates\properties\property_detail.html:152
 msgid "Year Built"
 msgstr "建造年份"
@@ -319,22 +425,21 @@ msgstr "連棟別墅"
 msgid "Any"
 msgstr "任何"
 
-#: .\templates\properties\property_list.html:130
-msgid "Amenities"
-msgstr "設施"
-
-#: .\templates\properties\property_list.html:136
+#: .\templates\properties\property_list.html:129
 msgid "Apply Filters"
 msgstr "套用篩選"
 
-#: .\templates\properties\property_list.html:149
+#: .\templates\properties\property_list.html:142
 msgid "Homes for Rent"
 msgstr "出租房屋"
 
-#: .\templates\properties\property_list.html:151
+#: .\templates\properties\property_list.html:144
 msgid "Homes for Sale"
 msgstr "出售房屋"
 
-#: .\templates\properties\property_list.html:154
+#: .\templates\properties\property_list.html:147
 msgid "in"
 msgstr "在"
+
+#~ msgid "Amenities"
+#~ msgstr "設施"

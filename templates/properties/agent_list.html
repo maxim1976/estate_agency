@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Our Agents - EstateAgency{% endblock %}
+{% block title %}{% trans "Our Agents" %} - EstateAgency{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
@@ -8,10 +9,10 @@
     <div class="flex min-h-[300px] flex-col gap-6 items-center justify-center p-4 relative max-w-7xl mx-auto">
         <div class="flex flex-col gap-4 text-center max-w-[800px] z-10">
             <h1 class="text-text-main-light dark:text-text-main-dark text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl">
-                Meet Our Expert Agents
+                {% trans "Meet Our Expert Agents" %}
             </h1>
             <p class="text-text-secondary-light dark:text-text-secondary-dark text-base font-medium leading-relaxed md:text-lg max-w-2xl mx-auto">
-                Our team of dedicated professionals is here to help you find your perfect property. With years of experience and local expertise, we're committed to making your real estate journey seamless.
+                {% trans "Our team of dedicated professionals is here to help you find your perfect property. With years of experience and local expertise, we're committed to making your real estate journey seamless." %}
             </p>
         </div>
     </div>
@@ -52,7 +53,7 @@
         {% else %}
         <div class="text-center py-20">
             <span class="material-symbols-outlined text-6xl text-gray-300 dark:text-gray-600">group</span>
-            <p class="text-xl text-text-secondary-light dark:text-text-secondary-dark mt-4">No agents available at this time.</p>
+            <p class="text-xl text-text-secondary-light dark:text-text-secondary-dark mt-4">{% trans "No agents available at this time." %}</p>
         </div>
         {% endif %}
     </div>
@@ -61,14 +62,14 @@
 <!-- CTA Section -->
 <div class="w-full bg-background-light dark:bg-surface-dark py-20 px-4">
     <div class="max-w-3xl mx-auto flex flex-col items-center text-center gap-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-text-main-light dark:text-text-main-dark">Ready to work with us?</h2>
-        <p class="text-text-secondary-light dark:text-text-secondary-dark text-lg">Whether you're buying, selling, or renting, our agents are here to guide you every step of the way.</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-text-main-light dark:text-text-main-dark">{% trans "Ready to work with us?" %}</h2>
+        <p class="text-text-secondary-light dark:text-text-secondary-dark text-lg">{% trans "Whether you're buying, selling, or renting, our agents are here to guide you every step of the way." %}</p>
         <div class="flex flex-col sm:flex-row gap-4 mt-4 w-full justify-center">
             <a href="{% url 'properties:property_list' %}" class="flex items-center justify-center px-8 h-12 rounded-lg bg-primary hover:bg-primary-hover text-white font-bold text-base transition-colors shadow-lg">
-                Browse Properties
+                {% trans "Browse Properties" %}
             </a>
             <a href="{% url 'properties:contacts' %}" class="flex items-center justify-center px-8 h-12 rounded-lg bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 text-text-main-light dark:text-text-main-dark font-bold text-base transition-colors">
-                Contact Us
+                {% trans "Contact Us" %}
             </a>
         </div>
     </div>
