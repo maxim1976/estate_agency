@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-07 13:16+0800\n"
+"POT-Creation-Date: 2026-01-12 18:56+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,48 +20,48 @@ msgstr ""
 
 #: .\templates\includes\_header.html:14 .\templates\properties\home.html:21
 msgid "Buy"
-msgstr ""
+msgstr "購買"
 
 #: .\templates\includes\_header.html:15 .\templates\properties\home.html:22
 msgid "Rent"
-msgstr ""
+msgstr "租賃"
 
-#: .\templates\includes\_header.html:16 .\templates\properties\home.html:23
+#: .\templates\includes\_header.html:16
 msgid "Sell"
-msgstr ""
+msgstr "出售"
 
 #: .\templates\includes\_header.html:17
 msgid "Agents"
-msgstr ""
+msgstr "經紀人"
 
 #: .\templates\includes\_header.html:18
 msgid "About"
-msgstr ""
+msgstr "關於"
 
 #: .\templates\includes\_header.html:40
 msgid "Hi"
-msgstr ""
+msgstr "您好"
 
 #: .\templates\includes\_header.html:43
 msgid "Dashboard"
-msgstr ""
+msgstr "管理面板"
 
 #: .\templates\includes\_header.html:46
 msgid "Logout"
-msgstr ""
+msgstr "登出"
 
 #: .\templates\includes\_header.html:51
 msgid "Login"
-msgstr ""
+msgstr "登入"
 
 #: .\templates\includes\_header.html:54
 msgid "Become an Agent"
-msgstr ""
+msgstr "成為經紀人"
 
 #: .\templates\includes\_header.html:58
 #: .\templates\properties\agent_list.html:72
 msgid "Contact Us"
-msgstr ""
+msgstr "聯絡我們"
 
 #: .\templates\properties\about.html:4
 msgid "About Us"
@@ -75,7 +75,9 @@ msgstr "自1998年起幫您尋找理想之家"
 msgid ""
 "We are a premium real estate agency dedicated to finding you the perfect "
 "property with integrity, market expertise, and a commitment to your future."
-msgstr "我們是一家優質房地產公司，致力於以誠信、市場專業知識和對您未來的承諾，為您找到完美的物業。"
+msgstr ""
+"我們是一家優質房地產公司，致力於以誠信、市場專業知識和對您未來的承諾，為您找"
+"到完美的物業。"
 
 #: .\templates\properties\about.html:26
 msgid "Years Experience"
@@ -134,12 +136,22 @@ msgstr "您的物業"
 msgid "Property"
 msgstr "物業"
 
+#: .\templates\properties\agent_dashboard.html:76
+#: .\templates\properties\property_detail.html:137
+msgid "Type"
+msgstr "類型"
+
 #: .\templates\properties\agent_dashboard.html:77
 msgid "Price"
 msgstr "價格"
 
+#: .\templates\properties\agent_dashboard.html:78
+#: .\templates\properties\property_detail.html:144
+msgid "Status"
+msgstr "狀態"
+
 #: .\templates\properties\agent_dashboard.html:79
-#: .\templates\properties\home.html:73
+#: .\templates\properties\home.html:91
 #: .\templates\properties\property_detail.html:35
 msgid "Featured"
 msgstr "精選"
@@ -161,7 +173,9 @@ msgid ""
 "Our team of dedicated professionals is here to help you find your perfect "
 "property. With years of experience and local expertise, we're committed to "
 "making your real estate journey seamless."
-msgstr "我們的專業團隊致力於幫助您找到完美的物業。憑藉多年的經驗和本地專業知識，我們致力於讓您的房地產之旅無縫順暢。"
+msgstr ""
+"我們的專業團隊致力於幫助您找到完美的物業。憑藉多年的經驗和本地專業知識，我們"
+"致力於讓您的房地產之旅無縫順暢。"
 
 #: .\templates\properties\agent_list.html:56
 msgid "No agents available at this time."
@@ -183,23 +197,23 @@ msgstr "瀏覽物業"
 
 #: .\templates\properties\home.html:4
 msgid "Home - Real Estate Listings"
-msgstr ""
+msgstr "首頁 - 房地產列表"
 
 #: .\templates\properties\home.html:12
 msgid "满怀信心地找到您的梦想之家"
-msgstr ""
+msgstr "滿懷信心地找到您的夢想之家"
 
 #: .\templates\properties\home.html:15
 msgid "浏览您所在地区的数千套优质房产"
-msgstr ""
+msgstr "瀏覽您所在地區的數千套優質房產"
 
 #: .\templates\properties\home.html:18
 msgid "搜索框"
-msgstr ""
+msgstr "搜尋框"
 
 #: .\templates\properties\home.html:30
 msgid "Enter an address, neighborhood, city, or ZIP code"
-msgstr ""
+msgstr "輸入地址、社區、城市或郵遞區號"
 
 #: .\templates\properties\home.html:35
 #: .\templates\properties\property_list.html:79
@@ -222,111 +236,115 @@ msgid "Condo"
 msgstr "電梯大樓"
 
 #: .\templates\properties\home.html:39
+msgid "Villa"
+msgstr "別墅"
+
+#: .\templates\properties\home.html:40
 msgid "Land"
 msgstr "土地"
 
-#: .\templates\properties\home.html:46
+#: .\templates\properties\home.html:47
 msgid "Search"
-msgstr ""
+msgstr "搜尋"
 
-#: .\templates\properties\home.html:58
+#: .\templates\properties\home.html:76
 msgid "Featured Properties"
-msgstr ""
+msgstr "精選物業"
 
-#: .\templates\properties\home.html:59
+#: .\templates\properties\home.html:77
 msgid "Handpicked listings just for you."
-msgstr ""
+msgstr "為您精心挑選的房源"
 
-#: .\templates\properties\home.html:62
+#: .\templates\properties\home.html:80
 msgid "View all listings"
-msgstr ""
+msgstr "查看所有房源"
 
-#: .\templates\properties\home.html:101
+#: .\templates\properties\home.html:119
 msgid "Beds"
-msgstr ""
+msgstr "臥室"
 
-#: .\templates\properties\home.html:105
+#: .\templates\properties\home.html:123
 msgid "Baths"
-msgstr ""
+msgstr "浴室"
 
-#: .\templates\properties\home.html:114
+#: .\templates\properties\home.html:132
 msgid "View Details"
-msgstr ""
+msgstr "查看詳情"
 
-#: .\templates\properties\home.html:126
+#: .\templates\properties\home.html:144
 msgid "No Featured Properties"
-msgstr ""
-
-#: .\templates\properties\home.html:127
-msgid "Check back soon for new listings!"
-msgstr ""
-
-#: .\templates\properties\home.html:129
-msgid "Browse All Properties"
-msgstr ""
-
-#: .\templates\properties\home.html:137
-msgid "Why Choose EstateAgency?"
-msgstr ""
-
-#: .\templates\properties\home.html:138
-msgid ""
-"We provide a seamless experience whether you are buying, selling, or renting."
-msgstr ""
+msgstr "暫無精選物業"
 
 #: .\templates\properties\home.html:145
-msgid "Local Expertise"
-msgstr ""
+msgid "Check back soon for new listings!"
+msgstr "敬請期待新房源！"
 
-#: .\templates\properties\home.html:146
+#: .\templates\properties\home.html:147
+msgid "Browse All Properties"
+msgstr "瀏覽所有物業"
+
+#: .\templates\properties\home.html:155
+msgid "Why Choose EstateAgency?"
+msgstr "為什麼選擇EstateAgency？"
+
+#: .\templates\properties\home.html:156
+msgid ""
+"We provide a seamless experience whether you are buying, selling, or renting."
+msgstr "無論您是購買、出售還是租賃，我們都為您提供無縫體驗。"
+
+#: .\templates\properties\home.html:163
+msgid "Local Expertise"
+msgstr "本地專業知識"
+
+#: .\templates\properties\home.html:164
 msgid ""
 "Our agents live and work in the communities they serve, offering unmatched "
 "local knowledge."
-msgstr ""
+msgstr "我們的經紀人在他們服務的社區生活和工作，提供無可比擬的本地知識。"
 
-#: .\templates\properties\home.html:152
+#: .\templates\properties\home.html:170
 msgid "Transparent Pricing"
-msgstr ""
+msgstr "透明定價"
 
-#: .\templates\properties\home.html:153
+#: .\templates\properties\home.html:171
 msgid ""
 "No hidden fees. We believe in clear communication and straightforward "
 "pricing for all services."
-msgstr ""
+msgstr "沒有隱藏費用。我們相信清晰溝通和所有服務的直接定價。"
 
-#: .\templates\properties\home.html:159
+#: .\templates\properties\home.html:177
 msgid "Award-Winning Service"
-msgstr ""
+msgstr "屢獲殊榮的服務"
 
-#: .\templates\properties\home.html:160
+#: .\templates\properties\home.html:178
 msgid ""
 "Consistently rated as top performers for customer satisfaction and sales "
 "excellence."
-msgstr ""
+msgstr "在客戶滿意度和銷售卓越方面一直被評為頂級表現者。"
 
-#: .\templates\properties\home.html:169
+#: .\templates\properties\home.html:187
 msgid "Get a Free Home Valuation Today"
-msgstr ""
+msgstr "立即獲取免費房屋估價"
 
-#: .\templates\properties\home.html:170
+#: .\templates\properties\home.html:188
 msgid ""
 "Curious about what your home is worth? Let our experts provide you with a "
 "comprehensive market analysis."
-msgstr ""
+msgstr "好奇您的房子值多少錢？讓我們的專家為您提供全面的市場分析。"
 
-#: .\templates\properties\home.html:173
+#: .\templates\properties\home.html:191
 msgid "Get Valuation"
-msgstr ""
+msgstr "獲取估價"
 
 #: .\templates\properties\property_detail.html:14
 msgid "Home"
-msgstr ""
+msgstr "首頁"
 
 #: .\templates\properties\property_detail.html:16
 #, fuzzy
 #| msgid "Property Type"
 msgid "Properties"
-msgstr "物業類型"
+msgstr "物業"
 
 #: .\templates\properties\property_detail.html:39
 msgid "Built in"
