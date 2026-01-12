@@ -31,7 +31,7 @@ def get_listing_badge(listing_type):
 def get_listing_text(listing_type):
     """Get text for listing type"""
     if listing_type == 'sale':
-        return 'FOR SALE / 出售'
+        return '出售 / FOR SALE'
     elif listing_type == 'rent':
-        return 'FOR RENT / 蒩蒩'
+        return '蒩蒩 /FOR RENT'
     return 'AVAILABLE'
