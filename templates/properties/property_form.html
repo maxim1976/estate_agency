@@ -24,7 +24,7 @@
             <h2 class="text-xl font-bold text-text-main-light dark:text-text-main-dark mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">Basic Information</h2>
             <div class="space-y-4">
                 <div>
-                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">Title *</label>
+                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">標題 / Title *</label>
                     {{ form.title }}
                     {% if form.title.errors %}
                         <p class="text-red-500 text-sm mt-1">{{ form.title.errors.0 }}</p>
@@ -32,7 +32,7 @@
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">Description *</label>
+                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">描述 / Description *</label>
                     {{ form.description }}
                     {% if form.description.errors %}
                         <p class="text-red-500 text-sm mt-1">{{ form.description.errors.0 }}</p>
@@ -41,7 +41,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                        <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">Price ($) *</label>
+                        <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">價格 / Price ($) *</label>
                         {{ form.price }}
                         {% if form.price.errors %}
                             <p class="text-red-500 text-sm mt-1">{{ form.price.errors.0 }}</p>
@@ -49,7 +49,7 @@
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">Listing Type *</label>
+                        <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">上架類型 / Listing Type *</label>
                         {{ form.listing_type }}
                         {% if form.listing_type.errors %}
                             <p class="text-red-500 text-sm mt-1">{{ form.listing_type.errors.0 }}</p>
@@ -57,7 +57,7 @@
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">Property Type *</label>
+                        <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">物業類型 / Property Type *</label>
                         {{ form.property_type }}
                         {% if form.property_type.errors %}
                             <p class="text-red-500 text-sm mt-1">{{ form.property_type.errors.0 }}</p>
@@ -66,7 +66,7 @@
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">Status *</label>
+                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">狀態 / Status *</label>
                     {{ form.status }}
                     {% if form.status.errors %}
                         <p class="text-red-500 text-sm mt-1">{{ form.status.errors.0 }}</p>
@@ -80,7 +80,7 @@
             <h2 class="text-xl font-bold text-text-main-light dark:text-text-main-dark mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">Location</h2>
             <div class="space-y-4">
                 <div>
-                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">Address *</label>
+                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">地址 / Address *</label>
                     {{ form.address }}
                     {% if form.address.errors %}
                         <p class="text-red-500 text-sm mt-1">{{ form.address.errors.0 }}</p>
@@ -89,7 +89,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">City *</label>
+                        <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">城市 / City *</label>
                         {{ form.city }}
                         {% if form.city.errors %}
                             <p class="text-red-500 text-sm mt-1">{{ form.city.errors.0 }}</p>
@@ -97,7 +97,7 @@
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">Postal Code</label>
+                        <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">郵遞區號 / Postal Code</label>
                         {{ form.postal_code }}
                         {% if form.postal_code.errors %}
                             <p class="text-red-500 text-sm mt-1">{{ form.postal_code.errors.0 }}</p>
@@ -107,7 +107,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">Latitude</label>
+                        <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">緯度 / Latitude</label>
                         {{ form.latitude }}
                         {% if form.latitude.errors %}
                             <p class="text-red-500 text-sm mt-1">{{ form.latitude.errors.0 }}</p>
@@ -115,7 +115,7 @@
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">Longitude</label>
+                        <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">經度 / Longitude</label>
                         {{ form.longitude }}
                         {% if form.longitude.errors %}
                             <p class="text-red-500 text-sm mt-1">{{ form.longitude.errors.0 }}</p>
@@ -130,7 +130,7 @@
             <h2 class="text-xl font-bold text-text-main-light dark:text-text-main-dark mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">Property Details</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div>
-                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">Bedrooms *</label>
+                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">臥室數 / Bedrooms *</label>
                     {{ form.bedrooms }}
                     {% if form.bedrooms.errors %}
                         <p class="text-red-500 text-sm mt-1">{{ form.bedrooms.errors.0 }}</p>
@@ -138,7 +138,7 @@
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">Bathrooms *</label>
+                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">浴室數 / Bathrooms *</label>
                     {{ form.bathrooms }}
                     {% if form.bathrooms.errors %}
                         <p class="text-red-500 text-sm mt-1">{{ form.bathrooms.errors.0 }}</p>
@@ -146,7 +146,7 @@
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">Area (sqm) *</label>
+                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">面積 / Area (sqm) *</label>
                     {{ form.area_sqm }}
                     {% if form.area_sqm.errors %}
                         <p class="text-red-500 text-sm mt-1">{{ form.area_sqm.errors.0 }}</p>
@@ -154,7 +154,7 @@
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">Year Built</label>
+                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">建造年份 / Year Built</label>
                     {{ form.year_built }}
                     {% if form.year_built.errors %}
                         <p class="text-red-500 text-sm mt-1">{{ form.year_built.errors.0 }}</p>
@@ -162,7 +162,7 @@
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">Parking Spaces</label>
+                    <label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark mb-2">停車位 / Parking Spaces</label>
                     {{ form.parking_spaces }}
                     {% if form.parking_spaces.errors %}
                         <p class="text-red-500 text-sm mt-1">{{ form.parking_spaces.errors.0 }}</p>

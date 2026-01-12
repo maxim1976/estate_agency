@@ -90,22 +90,22 @@ class Agent(models.Model):
 
 class Property(models.Model):
     STATUS_CHOICES = [
-        ('available', 'Available'),
-        ('pending', 'Pending'),
-        ('sold', 'Sold'),
+        ('available', '可售 / Available'),
+        ('pending', '待處理 / Pending'),
+        ('sold', '已售出 / Sold'),
     ]
     
     TYPE_CHOICES = [
-        ('house', 'House'),
-        ('apartment', 'Apartment'),
-        ('condo', 'Condo'),
-        ('villa', 'Villa'),
-        ('land', 'Land'),
+        ('house', '獨棟房屋 / House'),
+        ('apartment', '公寓 / Apartment'),
+        ('condo', '共管公寓 / Condo'),
+        ('villa', '別墅 / Villa'),
+        ('land', '土地 / Land'),
     ]
     
     LISTING_TYPE_CHOICES = [
-        ('sale', 'For Sale/出售'),
-        ('rent', 'For Rent/蒩蒩'),
+        ('sale', '出售 / For Sale'),
+        ('rent', '出租 / For Rent'),
     ]
     
     title = models.CharField(max_length=200)
