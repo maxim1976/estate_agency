@@ -16,37 +16,55 @@
                         </p>
 </div>
 <!-- {% trans "搜索框" %} -->
-<div class="w-full max-w-4xl bg-surface-light dark:bg-surface-dark rounded-xl shadow-2xl p-2 md:p-3">
+<form method="get" action="{% url 'properties:property_list' %}" class="w-full max-w-4xl bg-surface-light dark:bg-surface-dark rounded-xl shadow-2xl p-2 md:p-3">
 <div class="flex gap-2 mb-3 px-2">
-<button class="text-sm font-bold text-primary border-b-2 border-primary pb-1">{% trans "Buy" %}</button>
-<button class="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-text-main-light dark:hover:text-text-main-dark transition-colors px-3 pb-1">{% trans "Rent" %}</button>
-<button class="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-text-main-light dark:hover:text-text-main-dark transition-colors px-3 pb-1">{% trans "Sell" %}</button>
+<button type="button" onclick="setListingType('sale')" id="btn-sale" class="text-sm font-bold text-primary border-b-2 border-primary pb-1">{% trans "Buy" %}</button>
+<button type="button" onclick="setListingType('rent')" id="btn-rent" class="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-text-main-light dark:hover:text-text-main-dark transition-colors px-3 pb-1">{% trans "Rent" %}</button>
 </div>
+<input type="hidden" name="listing_type" id="listing_type" value="sale">
 <div class="flex flex-col md:flex-row items-center gap-2">
 <div class="flex-1 w-full relative group">
 <div class="absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary-light dark:text-text-secondary-dark">
 <span class="material-symbols-outlined">search</span>
 </div>
-<input class="w-full h-12 pl-10 pr-4 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-0 text-text-main-light dark:text-text-main-dark placeholder-text-secondary-light dark:placeholder-text-secondary-dark transition-all" placeholder="{% trans 'Enter an address, neighborhood, city, or ZIP code' %}" type="text"/>
+<input name="location" class="w-full h-12 pl-10 pr-4 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-0 text-text-main-light dark:text-text-main-dark placeholder-text-secondary-light dark:placeholder-text-secondary-dark transition-all" placeholder="{% trans 'Enter an address, neighborhood, city, or ZIP code' %}" type="text"/>
 </div>
 <div class="hidden md:block w-px h-8 bg-border-light dark:bg-border-dark mx-2"></div>
 <div class="w-full md:w-48 relative">
-<select class="w-full h-12 pl-3 pr-8 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-0 text-text-main-light dark:text-text-main-dark appearance-none cursor-pointer">
-<option>{% trans "Property Type" %}</option>
-<option>{% trans "House" %}</option>
-<option>{% trans "Apartment" %}</option>
-<option>{% trans "Condo" %}</option>
-<option>{% trans "Land" %}</option>
+<select name="property_type" class="w-full h-12 pl-3 pr-8 rounded-lg bg-background-light dark:bg-background-dark border-transparent focus:border-primary focus:ring-0 text-text-main-light dark:text-text-main-dark appearance-none cursor-pointer">
+<option value="">{% trans "Property Type" %}</option>
+<option value="house">{% trans "House" %}</option>
+<option value="apartment">{% trans "Apartment" %}</option>
+<option value="condo">{% trans "Condo" %}</option>
+<option value="villa">{% trans "Villa" %}</option>
+<option value="land">{% trans "Land" %}</option>
 </select>
 <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-text-secondary-light">
 <span class="material-symbols-outlined text-sm">expand_more</span>
 </div>
 </div>
-<button class="w-full md:w-auto h-12 px-8 bg-primary hover:bg-blue-700 text-white font-bold rounded-lg shadow-md transition-colors flex items-center justify-center gap-2">
+<button type="submit" class="w-full md:w-auto h-12 px-8 bg-primary hover:bg-blue-700 text-white font-bold rounded-lg shadow-md transition-colors flex items-center justify-center gap-2">
 <span>{% trans "Search" %}</span>
 </button>
 </div>
-</div>
+</form>
+<script>
+function setListingType(type) {
+    document.getElementById('listing_type').value = type;
+    
+    // Update button styles
+    const btnSale = document.getElementById('btn-sale');
+    const btnRent = document.getElementById('btn-rent');
+    
+    if (type === 'sale') {
+        btnSale.className = 'text-sm font-bold text-primary border-b-2 border-primary pb-1';
+        btnRent.className = 'text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-text-main-light dark:hover:text-text-main-dark transition-colors px-3 pb-1';
+    } else {
+        btnRent.className = 'text-sm font-bold text-primary border-b-2 border-primary pb-1';
+        btnSale.className = 'text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-text-main-light dark:hover:text-text-main-dark transition-colors px-3 pb-1';
+    }
+}
+</script>
 </div>
 </div>
 </section>
