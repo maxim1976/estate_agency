@@ -3,6 +3,10 @@
 <header class="sticky top-0 z-50 w-full bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark px-6 py-3 shadow-sm transition-colors duration-200">
     <div class="mx-auto flex h-12 max-w-7xl items-center justify-between">
         <div class="flex items-center gap-4">
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center size-10 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle menu">
+                <span class="material-symbols-outlined text-2xl" id="menu-icon">menu</span>
+            </button>
             <a href="{% url 'properties:home' %}" class="flex items-center gap-4">
                 <div class="size-8 rounded bg-primary flex items-center justify-center text-white">
                     <span class="material-symbols-outlined text-xl">real_estate_agent</span>
@@ -59,4 +63,76 @@
             </a>
         </div>
     </div>
+    
+    <!-- Mobile Navigation Menu -->
+    <nav id="mobile-menu" class="hidden md:hidden absolute left-0 right-0 top-full bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark shadow-lg">
+        <div class="flex flex-col p-4 space-y-1">
+            <a class="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="{% url 'properties:property_list' %}?listing_type=sale">
+                <span class="material-symbols-outlined text-primary">home</span>
+                {% trans "Buy" %}
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="{% url 'properties:property_list' %}?listing_type=rent">
+                <span class="material-symbols-outlined text-primary">key</span>
+                {% trans "Rent" %}
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="{% url 'properties:contacts' %}">
+                <span class="material-symbols-outlined text-primary">sell</span>
+                {% trans "Sell" %}
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="{% url 'properties:agent_list' %}">
+                <span class="material-symbols-outlined text-primary">groups</span>
+                {% trans "Agents" %}
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="{% url 'properties:about' %}">
+                <span class="material-symbols-outlined text-primary">info</span>
+                {% trans "About" %}
+            </a>
+            
+            <hr class="my-2 border-border-light dark:border-border-dark">
+            
+            {% if user.is_authenticated %}
+                <div class="px-4 py-2 text-sm text-text-secondary-light dark:text-text-secondary-dark">
+                    {% trans "Hi" %}, {{ user.get_full_name|default:user.username }}
+                </div>
+                <a class="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="{% url 'properties:agent_dashboard' %}">
+                    <span class="material-symbols-outlined text-primary">dashboard</span>
+                    {% trans "Dashboard" %}
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="{% url 'properties:agent_logout' %}">
+                    <span class="material-symbols-outlined text-primary">logout</span>
+                    {% trans "Logout" %}
+                </a>
+            {% else %}
+                <a class="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="{% url 'properties:agent_login' %}">
+                    <span class="material-symbols-outlined text-primary">login</span>
+                    {% trans "Login" %}
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="{% url 'properties:agent_register' %}">
+                    <span class="material-symbols-outlined text-primary">person_add</span>
+                    {% trans "Become an Agent" %}
+                </a>
+            {% endif %}
+        </div>
+    </nav>
 </header>
+
+<!-- Mobile Menu Toggle Script -->
+<script>
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-icon');
+        menu.classList.toggle('hidden');
+        icon.textContent = menu.classList.contains('hidden') ? 'menu' : 'close';
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const menu = document.getElementById('mobile-menu');
+        const btn = document.getElementById('mobile-menu-btn');
+        const icon = document.getElementById('menu-icon');
+        if (!menu.contains(event.target) && !btn.contains(event.target) && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+            icon.textContent = 'menu';
+        }
+    });
+</script>
