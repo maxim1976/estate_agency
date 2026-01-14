@@ -138,31 +138,63 @@ USE_TZ = True  # Use timezone-aware datetimes
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-# Media files
+# Media files (local development default)
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-# AWS S3 Configuration
+# ============================================================================
+# AWS S3 STORAGE CONFIGURATION
+# ============================================================================
+# Set USE_S3=True in environment variables to enable S3 storage
+# AWS credentials are optional in development - falls back to local storage
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', '')
+AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', 'ap-northeast-1')
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+AWS_S3_ENDPOINT_URL = f'https://s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+AWS_LOCATION = 'media'
+
+# S3 settings (no ACL - use bucket permissions instead)
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_S3_FILE_OVERWRITE = False
+AWS_QUERYSTRING_AUTH = False  # Don't add auth params to URLs
+
+# Conditional storage backend - use S3 only if credentials are provided
 USE_S3 = os.environ.get('USE_S3', 'False') == 'True'
 
-if USE_S3:
-    # AWS Settings
-    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', 'amz-real-max')
-    AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', 'ap-northeast-1')
-    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-    
-    # S3 Settings
-    AWS_S3_OBJECT_PARAMETERS = {
-        'CacheControl': 'max-age=86400',
+if USE_S3 and AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME:
+    # Use S3 for media files
+    STORAGES = {
+        'default': {
+            'BACKEND': 'storages.backends.s3.S3Storage',
+            'OPTIONS': {
+                'access_key': AWS_ACCESS_KEY_ID,
+                'secret_key': AWS_SECRET_ACCESS_KEY,
+                'bucket_name': AWS_STORAGE_BUCKET_NAME,
+                'region_name': AWS_S3_REGION_NAME,
+                'endpoint_url': AWS_S3_ENDPOINT_URL,
+                'location': AWS_LOCATION,
+            },
+        },
+        'staticfiles': {
+            'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+        },
     }
-    AWS_S3_FILE_OVERWRITE = False
-    AWS_QUERYSTRING_AUTH = False
-    
-    # Media files (uploads) - use custom storage backend
-    DEFAULT_FILE_STORAGE = 'core.storage_backends.MediaStorage'
-    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+else:
+    # Fallback to local storage (development or missing credentials)
+    STORAGES = {
+        'default': {
+            'BACKEND': 'django.core.files.storage.FileSystemStorage',
+        },
+        'staticfiles': {
+            'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
+        },
+    }
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/6.0/ref/settings/#default-auto-field
@@ -189,8 +221,10 @@ if not DEBUG:
         )
     }
     
-    # Static files with Whitenoise
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    # Static files with Whitenoise (update STORAGES dict)
+    STORAGES['staticfiles'] = {
+        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+    }
     
     # CSRF Trusted Origins - IMPORTANT for Railway!
     CSRF_TRUSTED_ORIGINS = [
