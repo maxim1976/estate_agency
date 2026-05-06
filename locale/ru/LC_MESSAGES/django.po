@@ -1,0 +1,343 @@
+# Russian translation for Estate Agency
+msgid ""
+msgstr ""
+"Project-Id-Version: agency\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-06 00:00+0700\n"
+"PO-Revision-Date: 2026-05-06 00:00+0700\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "Buy"
+msgstr "Купить"
+
+msgid "Rent"
+msgstr "Аренда"
+
+msgid "Sell"
+msgstr "Продать"
+
+msgid "Agents"
+msgstr "Агенты"
+
+msgid "About"
+msgstr "О нас"
+
+msgid "Hi"
+msgstr "Привет"
+
+msgid "Dashboard"
+msgstr "Панель управления"
+
+msgid "Logout"
+msgstr "Выйти"
+
+msgid "Login"
+msgstr "Войти"
+
+msgid "Become an Agent"
+msgstr "Стать агентом"
+
+msgid "Contact Us"
+msgstr "Связаться с нами"
+
+msgid "About Us"
+msgstr "О нас"
+
+msgid "Helping You Find Home Since 1998"
+msgstr "Помогаем найти дом с 1998 года"
+
+msgid ""
+"We are a premium real estate agency dedicated to finding you the perfect "
+"property with integrity, market expertise, and a commitment to your future."
+msgstr ""
+"Мы — премиальное агентство недвижимости, посвящённое поиску идеального "
+"объекта для вас с честностью, экспертизой рынка и заботой о вашем будущем."
+
+msgid "Years Experience"
+msgstr "Лет опыта"
+
+msgid "Homes Sold"
+msgstr "Продано объектов"
+
+msgid "Client Satisfaction"
+msgstr "Довольных клиентов"
+
+msgid "Active Listings"
+msgstr "Активных объявлений"
+
+msgid "Our Core Values"
+msgstr "Наши ценности"
+
+msgid "Agent Dashboard"
+msgstr "Панель агента"
+
+msgid "Manage your property listings"
+msgstr "Управление объявлениями"
+
+msgid "Total Properties"
+msgstr "Всего объектов"
+
+msgid "Available"
+msgstr "Доступно"
+
+msgid "Pending"
+msgstr "В ожидании"
+
+msgid "Sold"
+msgstr "Продано"
+
+msgid "Add New Property"
+msgstr "Добавить объект"
+
+msgid "Your Properties"
+msgstr "Ваши объекты"
+
+msgid "Property"
+msgstr "Объект"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "Price"
+msgstr "Цена"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Featured"
+msgstr "Рекомендуемое"
+
+msgid "Actions"
+msgstr "Действия"
+
+msgid "Our Agents"
+msgstr "Наши агенты"
+
+msgid "Meet Our Expert Agents"
+msgstr "Познакомьтесь с нашими агентами"
+
+msgid ""
+"Our team of dedicated professionals is here to help you find your perfect "
+"property. With years of experience and local expertise, we're committed to "
+"making your real estate journey seamless."
+msgstr ""
+"Наша команда профессионалов готова помочь вам найти идеальный объект. "
+"Благодаря многолетнему опыту и знанию местного рынка мы обеспечим вам "
+"комфортный путь в сфере недвижимости."
+
+msgid "No agents available at this time."
+msgstr "В данный момент агенты недоступны."
+
+msgid "Ready to work with us?"
+msgstr "Готовы работать с нами?"
+
+msgid ""
+"Whether you're buying, selling, or renting, our agents are here to guide you "
+"every step of the way."
+msgstr ""
+"Покупаете, продаёте или арендуете — наши агенты помогут вам на каждом шагу."
+
+msgid "Browse Properties"
+msgstr "Смотреть объекты"
+
+msgid "Home - Real Estate Listings"
+msgstr "Главная — Объекты недвижимости"
+
+msgid "满怀信心地找到您的梦想之家"
+msgstr "Найдите дом своей мечты с уверенностью"
+
+msgid "浏览您所在地区的数千套优质房产"
+msgstr "Тысячи качественных объектов в вашем регионе"
+
+msgid "搜索框"
+msgstr "Поиск"
+
+msgid "Enter an address, neighborhood, city, or ZIP code"
+msgstr "Введите адрес, район, город или почтовый индекс"
+
+msgid "Property Type"
+msgstr "Тип недвижимости"
+
+msgid "House"
+msgstr "Дом"
+
+msgid "Apartment"
+msgstr "Квартира"
+
+msgid "Condo"
+msgstr "Кондоминиум"
+
+msgid "Villa"
+msgstr "Вилла"
+
+msgid "Land"
+msgstr "Земельный участок"
+
+msgid "Search"
+msgstr "Найти"
+
+msgid "Featured Properties"
+msgstr "Рекомендуемые объекты"
+
+msgid "Handpicked listings just for you."
+msgstr "Отборные объявления специально для вас."
+
+msgid "View all listings"
+msgstr "Все объявления"
+
+msgid "Beds"
+msgstr "Спален"
+
+msgid "Baths"
+msgstr "Ванных"
+
+msgid "View Details"
+msgstr "Подробнее"
+
+msgid "No Featured Properties"
+msgstr "Рекомендуемых объектов нет"
+
+msgid "Check back soon for new listings!"
+msgstr "Скоро появятся новые объявления!"
+
+msgid "Browse All Properties"
+msgstr "Все объекты"
+
+msgid "Why Choose EstateAgency?"
+msgstr "Почему выбирают нас?"
+
+msgid ""
+"We provide a seamless experience whether you are buying, selling, or renting."
+msgstr "Мы обеспечиваем комфортный процесс — покупки, продажи или аренды."
+
+msgid "Local Expertise"
+msgstr "Знание местного рынка"
+
+msgid ""
+"Our agents live and work in the communities they serve, offering unmatched "
+"local knowledge."
+msgstr ""
+"Наши агенты живут и работают в тех районах, которые обслуживают, "
+"предлагая непревзойдённое знание местного рынка."
+
+msgid "Transparent Pricing"
+msgstr "Прозрачные цены"
+
+msgid ""
+"No hidden fees. We believe in clear communication and straightforward "
+"pricing for all services."
+msgstr ""
+"Никаких скрытых комиссий. Мы верим в честное общение и понятные "
+"условия по всем услугам."
+
+msgid "Award-Winning Service"
+msgstr "Отмеченный наградами сервис"
+
+msgid ""
+"Consistently rated as top performers for customer satisfaction and sales "
+"excellence."
+msgstr "Постоянно входим в топ по удовлетворённости клиентов и качеству продаж."
+
+msgid "Get a Free Home Valuation Today"
+msgstr "Получите бесплатную оценку недвижимости"
+
+msgid ""
+"Curious about what your home is worth? Let our experts provide you with a "
+"comprehensive market analysis."
+msgstr ""
+"Хотите узнать стоимость вашего жилья? Наши эксперты проведут полный "
+"анализ рынка."
+
+msgid "Get Valuation"
+msgstr "Получить оценку"
+
+msgid "Home"
+msgstr "Главная"
+
+msgid "Properties"
+msgstr "Объекты"
+
+msgid "Built in"
+msgstr "Год постройки"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Share"
+msgstr "Поделиться"
+
+msgid "Bedrooms"
+msgstr "Спальни"
+
+msgid "Bathrooms"
+msgstr "Ванные"
+
+msgid "Square M"
+msgstr "Кв. м"
+
+msgid "Parking"
+msgstr "Парковка"
+
+msgid "About this property"
+msgstr "Об объекте"
+
+msgid "Property Information"
+msgstr "Информация об объекте"
+
+msgid "Year Built"
+msgstr "Год постройки"
+
+msgid "City"
+msgstr "Город"
+
+msgid "Postal Code"
+msgstr "Почтовый индекс"
+
+msgid "Area"
+msgstr "Площадь"
+
+msgid "Address"
+msgstr "Адрес"
+
+msgid "Street Address"
+msgstr "Улица и номер дома"
+
+msgid "Property Listings"
+msgstr "Объявления"
+
+msgid "Filters"
+msgstr "Фильтры"
+
+msgid "Reset All"
+msgstr "Сбросить всё"
+
+msgid "Location"
+msgstr "Местоположение"
+
+msgid "City, Zip, Address"
+msgstr "Город, индекс, адрес"
+
+msgid "Price Range"
+msgstr "Диапазон цен"
+
+msgid "Townhouse"
+msgstr "Таунхаус"
+
+msgid "Any"
+msgstr "Любое"
+
+msgid "Apply Filters"
+msgstr "Применить"
+
+msgid "Homes for Rent"
+msgstr "Аренда жилья"
+
+msgid "Homes for Sale"
+msgstr "Продажа жилья"
+
+msgid "in"
+msgstr "в"

@@ -112,12 +112,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
 # Default language
-LANGUAGE_CODE = "zh-hant"
+LANGUAGE_CODE = "ru"
 
 # Supported languages
 LANGUAGES = [
-    ('en', 'English'),
-    ('zh-hant', '繁體中文'),
+    ('ru', 'Русский'),
 ]
 
 # Translation files location
@@ -125,7 +124,7 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
 
-TIME_ZONE = "Asia/Taipei"  # Taiwan timezone
+TIME_ZONE = "Asia/Krasnoyarsk"
 
 USE_I18N = True  # Enable internationalization
 
