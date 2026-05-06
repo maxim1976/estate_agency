@@ -226,11 +226,15 @@ if not DEBUG:
     }
     
     # CSRF Trusted Origins - IMPORTANT for Railway!
-    CSRF_TRUSTED_ORIGINS = [
-        'https://' + host.strip() 
-        for host in os.environ.get('ALLOWED_HOSTS', '').split(',') 
-        if host.strip()
-    ]
+    _csrf_origins = os.environ.get('CSRF_TRUSTED_ORIGINS', '')
+    if _csrf_origins:
+        CSRF_TRUSTED_ORIGINS = [o.strip() for o in _csrf_origins.split(',') if o.strip()]
+    else:
+        CSRF_TRUSTED_ORIGINS = [
+            'https://' + host.strip()
+            for host in os.environ.get('ALLOWED_HOSTS', '').split(',')
+            if host.strip()
+        ]
     
     # Railway proxy configuration - IMPORTANT!
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
