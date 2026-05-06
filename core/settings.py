@@ -235,16 +235,6 @@ if not DEBUG:
         'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
     }
     
-    # CSRF Trusted Origins - IMPORTANT for Railway!
-    CSRF_TRUSTED_ORIGINS = [
-        'https://' + host.strip()
-        for host in os.environ.get('ALLOWED_HOSTS', '').split(',')
-        if host.strip()
-    ]
-    _extra_csrf = os.environ.get('CSRF_TRUSTED_ORIGINS', '')
-    if _extra_csrf:
-        CSRF_TRUSTED_ORIGINS += [o.strip() for o in _extra_csrf.split(',') if o.strip()]
-    
     # Railway proxy configuration - IMPORTANT!
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     
