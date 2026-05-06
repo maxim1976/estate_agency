@@ -36,7 +36,7 @@ CSRF_TRUSTED_ORIGINS = [
     o.strip()
     for o in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
     if o.strip()
-]
+] + ['https://web-production-3eb1e.up.railway.app']
 
 
 # Application definition
