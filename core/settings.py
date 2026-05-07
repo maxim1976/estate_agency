@@ -26,18 +26,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY', "django-insecure-l824-@cw3=m@%c8$@&2^b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
+
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://' + host.strip()
-    for host in os.environ.get('ALLOWED_HOSTS', '').split(',')
-    if host.strip()
-] + [
-    o.strip()
-    for o in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
-    if o.strip()
-] + ['https://web-production-3eb1e.up.railway.app']
-
+    'https://web-production-3eb1e.up.railway.app'
+]
 
 # Application definition
 
