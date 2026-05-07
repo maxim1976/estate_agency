@@ -85,11 +85,14 @@ WSGI_APPLICATION = "core.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+import dj_database_url
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    'default': dj_database_url.config(
+        default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
 
 
@@ -179,7 +182,6 @@ if USE_S3 and AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET
                 'secret_key': AWS_SECRET_ACCESS_KEY,
                 'bucket_name': AWS_STORAGE_BUCKET_NAME,
                 'region_name': AWS_S3_REGION_NAME,
-                'endpoint_url': AWS_S3_ENDPOINT_URL,
                 'location': AWS_LOCATION,
             },
         },
@@ -212,18 +214,7 @@ GOOGLE_MAPS_API_KEY = ""  # Add your Google Maps API key here
 # PRODUCTION SETTINGS
 # ============================================================================
 
-# Database configuration for production (Railway PostgreSQL)
 if not DEBUG:
-    import dj_database_url
-    
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=os.environ.get('DATABASE_URL'),
-            conn_max_age=600,
-            conn_health_checks=True,
-        )
-    }
-    
     # Static files with Whitenoise (update STORAGES dict)
     STORAGES['staticfiles'] = {
         'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
